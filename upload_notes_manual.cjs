@@ -23,7 +23,7 @@ async function uploadFile(filePath, relativePath) {
         });
         console.log(`[SUCCESS] ${relativePath}: ${response.data.message}`);
     } catch (error) {
-        console.error(`[FAILED] ${relativePath}: ${error.response?.data?.error || error.message}`);
+        console.error(`[FAILED] ${relativePath}:`, error.response?.data || error.message);
     }
 }
 

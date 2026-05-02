@@ -263,13 +263,17 @@ exports.getAdminStats = async (req, res) => {
 };
 
 exports.bulkUploadNotes = async (req, res) => {
+    console.log('--- STARTING BULK UPLOAD HANDLER ---');
     try {
         const fs = require('fs');
         const path = require('path');
         const files = req.files;
         const relativePaths = req.body.paths;
 
+        console.log(`Received ${files?.length} files and ${Array.isArray(relativePaths) ? relativePaths.length : '1'} paths`);
+
         if (!files || files.length === 0) {
+            console.log('No files received in request');
             return res.status(400).json({ error: 'No files received' });
         }
 
@@ -277,8 +281,9 @@ exports.bulkUploadNotes = async (req, res) => {
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const rawPath = Array.isArray(relativePaths) ? relativePaths[i] : relativePaths;
+            console.log(`Processing file: ${file.originalname}, Raw Path: ${rawPath}`);
             
-            // Clean up the path: ensure it starts with 'notes/' if it doesn't
+            // Clean up the path
             let relativePath = rawPath;
             if (!relativePath.startsWith('notes/') && !relativePath.startsWith('public/')) {
                 relativePath = 'notes/' + relativePath;
@@ -286,32 +291,31 @@ exports.bulkUploadNotes = async (req, res) => {
                 relativePath = relativePath.replace('public/', '');
             }
 
-            // Construct the final storage path
             const storagePath = path.join(__dirname, '../../public', relativePath);
             const dir = path.dirname(storagePath);
+            console.log(`Storage Path: ${storagePath}, Dir: ${dir}`);
 
-            // Ensure directory exists
             if (!fs.existsSync(dir)) {
+                console.log(`Creating directory: ${dir}`);
                 fs.mkdirSync(dir, { recursive: true });
             }
 
-            // Copy and then unlink (safer than rename across partitions)
             try {
+                console.log(`Moving file from ${file.path} to ${storagePath}`);
                 fs.copyFileSync(file.path, storagePath);
                 fs.unlinkSync(file.path);
             } catch (fileErr) {
-                console.error(`File operation failed for ${file.path} -> ${storagePath}:`, fileErr);
-                // Continue with next file instead of crashing the whole batch
+                console.error(`FILE OPERATION FAILED:`, fileErr);
                 continue;
             }
 
-            // Extract subject name from path (e.g., "notes/DAA/unit1.pdf" -> "DAA")
             const pathParts = relativePath.split('/');
             const subjectName = pathParts[1] || 'General';
+            console.log(`Subject Name identified: ${subjectName}`);
 
-            // Find or create subject
             let subject = await Subject.findOne({ name: new RegExp(`^${subjectName}$`, 'i') });
             if (!subject) {
+                console.log(`Subject not found, creating: ${subjectName}`);
                 subject = new Subject({ 
                     name: subjectName, 
                     course: 'B.Tech', 
@@ -321,13 +325,13 @@ exports.bulkUploadNotes = async (req, res) => {
                 await subject.save();
             }
 
-            // Add to StudyMaterial (Update if exists, or create new)
             const materialData = {
                 subjectId: subject._id,
                 title: path.basename(relativePath, '.pdf'),
                 type: 'note',
                 url: `/${relativePath}`
             };
+            console.log(`Saving StudyMaterial: ${materialData.title}`);
 
             await StudyMaterial.findOneAndUpdate(
                 { url: materialData.url },
@@ -338,9 +342,10 @@ exports.bulkUploadNotes = async (req, res) => {
             results.push(materialData);
         }
 
+        console.log(`Batch injection complete. Successfully processed ${results.length} files.`);
         res.json({ message: `Successfully synced ${results.length} files.`, count: results.length });
     } catch (err) {
-        console.error('CRITICAL Bulk Sync Error:', err);
+        console.error('CRITICAL BULK SYNC CRASH:', err);
         res.status(500).json({ 
             error: err.message, 
             stack: err.stack,
