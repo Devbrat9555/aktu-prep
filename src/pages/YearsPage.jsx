@@ -1,0 +1,115 @@
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { getYears } from '../services/api';
+import { Calendar, ArrowLeft, House, CaretRight, GraduationCap } from '@phosphor-icons/react';
+import { motion } from 'framer-motion';
+
+const YearsPage = () => {
+    const { course } = useParams();
+    const [years, setYears] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        getYears(course)
+            .then((res) => {
+                setYears(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error(err);
+                setLoading(false);
+            });
+    }, [course]);
+
+    if (loading) return (
+        <div className="flex items-center justify-center min-h-screen bg-[#0f172a]">
+            <div className="h-12 w-12 rounded-full border-t-2 border-b-2 border-indigo-500 animate-spin"></div>
+        </div>
+    );
+
+    return (
+        <div className="min-h-screen bg-[#0f172a] text-white overflow-x-hidden">
+            {/* Background blobs */}
+            <div className="fixed top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+                <div className="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] bg-indigo-600/10 blur-[120px] rounded-full animate-pulse"></div>
+            </div>
+
+            <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
+                {/* Breadcrumbs */}
+                <nav className="flex items-center gap-2 mb-10 text-slate-500 text-xs font-black uppercase tracking-widest">
+                    <Link to="/" className="flex items-center gap-1 hover:text-white transition-colors">
+                        <House weight="fill" /> HOME
+                    </Link>
+                    <CaretRight weight="bold" />
+                    <span className="text-indigo-400">{course}</span>
+                </nav>
+
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                    <div className="space-y-2">
+                        <div className="flex items-center gap-3 text-indigo-500">
+                            <GraduationCap size={32} weight="duotone" />
+                            <span className="h-[2px] w-12 bg-indigo-500/30"></span>
+                        </div>
+                        <h1 className="text-4xl md:text-6xl font-black italic tracking-tighter uppercase leading-none">
+                            ACADEMIC <br />
+                            <span className="text-indigo-500 underline decoration-indigo-500/20 underline-offset-8">JOURNEY</span>
+                        </h1>
+                    </div>
+                    <p className="text-slate-400 font-medium max-w-md">
+                        Select your current academic year to access specific previous year papers, model solutions, and high-quality notes.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {years.map((year, idx) => (
+                        <motion.div 
+                            key={year}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: idx * 0.1 }}
+                            onClick={() => navigate(`/semesters/${course}/${year}`)}
+                            className="group relative glass p-8 rounded-[2.5rem] border border-white/5 hover:border-indigo-500/30 transition-all duration-500 cursor-pointer overflow-hidden"
+                        >
+                            {/* Decorative background number */}
+                            <div className="absolute -right-4 -bottom-4 text-9xl font-black text-white/5 italic select-none group-hover:text-indigo-500/10 transition-colors">
+                                {year}
+                            </div>
+
+                            <div className="relative z-10 space-y-6">
+                                <div className="w-14 h-14 bg-indigo-500/10 rounded-2xl flex items-center justify-center text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500 shadow-xl shadow-indigo-500/0 group-hover:shadow-indigo-500/20">
+                                    <Calendar size={28} weight="duotone" />
+                                </div>
+                                
+                                <div>
+                                    <h2 className="text-2xl font-black italic uppercase tracking-tight mb-1">Year {year}</h2>
+                                    <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Available Materials</p>
+                                </div>
+
+                                <div className="flex items-center text-indigo-400 text-xs font-black uppercase tracking-tighter group-hover:translate-x-2 transition-transform">
+                                    EXPLORE SEMESTERS <CaretRight weight="bold" className="ml-1" />
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6 }}
+                    className="mt-16 text-center"
+                >
+                    <button 
+                        onClick={() => navigate(-1)}
+                        className="inline-flex items-center gap-2 px-8 py-3 bg-white/5 hover:bg-white/10 rounded-2xl text-slate-400 hover:text-white font-black text-xs uppercase tracking-widest transition-all"
+                    >
+                        <ArrowLeft weight="bold" /> GO BACK
+                    </button>
+                </motion.div>
+            </div>
+        </div>
+    );
+};
+
+export default YearsPage;

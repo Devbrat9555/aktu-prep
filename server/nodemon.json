@@ -1,0 +1,9 @@
+{
+  "ignore": [
+    "server/cache/**",
+    "server/debug.log",
+    "server/logs/**",
+    "*.log"
+  ],
+  "ext": "js,json"
+}

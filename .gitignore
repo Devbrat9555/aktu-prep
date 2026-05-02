@@ -1,0 +1,49 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+.idea
+.DS_Store
+._*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.env
+.env.local
+.env.dev
+
+dev-dist
+
+# Server specific
+server/cache/
+server/debug.log
+server/logs/
+server/.env
+
+# Large Files (>100MB)
+*.zip
+*.bin
+*.exe
+*.part
+*Quantum.pdf
+*QUANTUM.pdf
+*quantum.pdf
+
+# Added to reduce repo size
+public/notes/
+dist/
