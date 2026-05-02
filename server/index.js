@@ -40,6 +40,19 @@ app.use((req, res, next) => {
     next();
 });
 
+// Global Error Handler (JSON for API, HTML for others)
+app.use((err, req, res, next) => {
+    console.error('GLOBAL ERROR:', err);
+    if (req.path.startsWith('/api')) {
+        return res.status(err.status || 500).json({
+            error: err.message,
+            stack: err.stack,
+            context: 'Global Middleware Error'
+        });
+    }
+    next(err);
+});
+
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
