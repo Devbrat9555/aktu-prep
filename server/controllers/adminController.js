@@ -325,13 +325,19 @@ exports.bulkUploadNotes = async (req, res) => {
                 await subject.save();
             }
 
+            const fileName = path.basename(relativePath, '.pdf');
+            // Auto-detect unit from filename (e.g., "Unit 1", "U1", "Unit-1")
+            const unitMatch = fileName.match(/(?:Unit|U|Unit-)\s*(\d+)/i);
+            const unitNumber = unitMatch ? parseInt(unitMatch[1]) : 0;
+
             const materialData = {
                 subjectId: subject._id,
-                title: path.basename(relativePath, '.pdf'),
-                type: 'note',
+                title: fileName,
+                type: 'notes',
+                unit: unitNumber,
                 url: `/${relativePath}`
             };
-            console.log(`Saving StudyMaterial: ${materialData.title}`);
+            console.log(`Saving StudyMaterial: ${materialData.title} as unit ${unitNumber}`);
 
             await StudyMaterial.findOneAndUpdate(
                 { url: materialData.url },
