@@ -29,6 +29,9 @@ const AdminPage = () => {
     const { isSignedIn } = useAuth();
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('stats');
+    const [syncProgress, setSyncProgress] = useState(0);
+    const [isSyncing, setIsSyncing] = useState(false);
+    const [syncStatus, setSyncStatus] = useState('');
     const [stats, setStats] = useState({ users: 0, posts: 0, subjects: 0, materials: 0, questions: 0 });
     const [allUsers, setAllUsers] = useState([]);
     const [allFeedback, setAllFeedback] = useState([]);
@@ -566,39 +569,61 @@ const AdminPage = () => {
                                             if (files.length === 0) return;
                                             toast.info(`INJECTING ${files.length} FILES... STAND BY.`);
                                             
+                                            setIsSyncing(true);
+                                            setSyncProgress(0);
+                                            setSyncStatus(`INJECTING ${files.length} FILES...`);
+                                            
                                             // Batch upload logic
-                                            const batchSize = 3;
+                                            const batchSize = 1; // Single file for max stability
                                             for (let i = 0; i < files.length; i += batchSize) {
                                                 const batch = files.slice(i, i + batchSize);
                                                 const formData = new FormData();
                                                 batch.forEach(file => {
-                                                    // Only upload PDFs
                                                     if (file.name.endsWith('.pdf')) {
                                                         formData.append('files', file);
-                                                        // Get the path relative to the notes folder
                                                         formData.append('paths', file.webkitRelativePath);
                                                     }
                                                 });
                                                 
-                                                try {
-                                                    await adminApi.bulkUploadNotes(formData);
-                                                    const progress = Math.round(((i + batch.length) / files.length) * 100);
-                                                    toast.success(`SYNC: ${progress}% COMPLETE`, { id: 'sync-toast' });
-                                                } catch (err) {
-                                                    console.error("SYNC ERROR:", err);
-                                                    toast.error(`FAIL: ${batch.map(f => f.name).join(', ')} failed. Retrying...`);
+                                                if (formData.has('files')) {
+                                                    try {
+                                                        await adminApi.bulkUploadNotes(formData);
+                                                        const progress = Math.round(((i + batch.length) / files.length) * 100);
+                                                        setSyncProgress(progress);
+                                                        setSyncStatus(`SYNCING: ${batch[0].name}`);
+                                                    } catch (err) {
+                                                        console.error("SYNC ERROR:", err);
+                                                        setSyncStatus(`FAILED: ${batch[0].name} (Retrying...)`);
+                                                    }
                                                 }
                                             }
-                                            toast.success("CORE SYNC SUCCESSFUL: All 9GB Injected.");
+                                            setIsSyncing(false);
+                                            setSyncStatus('CORE SYNC SUCCESSFUL');
+                                            toast.success("All 9GB Injected Successfully.");
                                         }}
                                         className="hidden"
                                     />
                                     <label 
                                         htmlFor="bulk-folder"
-                                        className="px-12 py-6 bg-amber-500 hover:bg-amber-400 text-black font-black uppercase tracking-[0.3em] text-sm rounded-3xl cursor-pointer transition-all shadow-2xl shadow-amber-500/20 active:scale-95 flex items-center gap-4"
+                                        className={`px-12 py-6 ${isSyncing ? 'bg-slate-800 text-slate-500 cursor-not-allowed' : 'bg-amber-500 hover:bg-amber-400 text-black cursor-pointer'} font-black uppercase tracking-[0.3em] text-sm rounded-3xl transition-all shadow-2xl shadow-amber-500/20 active:scale-95 flex items-center gap-4`}
                                     >
-                                        <Upload size={24} weight="bold" /> Start Bulk Sync
+                                        <Upload size={24} weight="bold" /> {isSyncing ? 'Sync in Progress...' : 'Start Bulk Sync'}
                                     </label>
+
+                                    {isSyncing && (
+                                        <div className="w-full max-w-xl space-y-4 animate-in slide-in-from-bottom-4">
+                                            <div className="flex justify-between items-end">
+                                                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-500">{syncStatus}</span>
+                                                <span className="text-2xl font-black italic text-white">{syncProgress}%</span>
+                                            </div>
+                                            <div className="h-4 bg-white/5 rounded-full overflow-hidden border border-white/5 p-1">
+                                                <div 
+                                                    className="h-full bg-amber-500 rounded-full transition-all duration-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]"
+                                                    style={{ width: `${syncProgress}%` }}
+                                                ></div>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         )}
