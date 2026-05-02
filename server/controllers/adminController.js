@@ -341,6 +341,10 @@ exports.bulkUploadNotes = async (req, res) => {
         res.json({ message: `Successfully synced ${results.length} files.`, count: results.length });
     } catch (err) {
         console.error('CRITICAL Bulk Sync Error:', err);
-        res.status(500).json({ error: err.message });
+        res.status(500).json({ 
+            error: err.message, 
+            stack: err.stack,
+            context: 'Global Catch'
+        });
     }
 };
