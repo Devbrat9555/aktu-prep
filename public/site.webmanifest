@@ -1,8 +1,8 @@
 {
-    "name": "GATEQuest",
-    "short_name": "GATEQuest",
+    "name": "AKTU Prep",
+    "short_name": "AKTU Prep",
     "id": "/",
-    "description": "A distraction-free, minimalist app to help students prepare for the GATE exam efficiently.",
+    "description": "A comprehensive portal for AKTU students to access resources, notes, and previous year papers.",
     "start_url": "/",
     "scope": "/",
     "lang": "en",
@@ -91,7 +91,7 @@
             "src": "/screenshots/About.png",
             "sizes": "1080x1920",
             "type": "image/png",
-            "label": "About GATEQuest"
+            "label": "About AKTU Prep"
         },
         {
             "src": "/screenshots/Desktop.png",
@@ -107,7 +107,7 @@
     },
     "protocol_handlers": [
         {
-            "protocol": "web+gatequest",
+            "protocol": "web+aktuprep",
             "url": "/handle-protocol?url=%s"
         }
     ],
