@@ -267,7 +267,7 @@ exports.bulkUploadNotes = async (req, res) => {
         const fs = require('fs');
         const path = require('path');
         const files = req.files;
-        const relativePaths = req.body.paths; // e.g., "notes/DAA/unit1.pdf"
+        const relativePaths = req.body.paths;
 
         if (!files || files.length === 0) {
             return res.status(400).json({ error: 'No files received' });
@@ -276,8 +276,16 @@ exports.bulkUploadNotes = async (req, res) => {
         const results = [];
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            const relativePath = Array.isArray(relativePaths) ? relativePaths[i] : relativePaths;
+            const rawPath = Array.isArray(relativePaths) ? relativePaths[i] : relativePaths;
             
+            // Clean up the path: ensure it starts with 'notes/' if it doesn't
+            let relativePath = rawPath;
+            if (!relativePath.startsWith('notes/') && !relativePath.startsWith('public/')) {
+                relativePath = 'notes/' + relativePath;
+            } else if (relativePath.startsWith('public/notes/')) {
+                relativePath = relativePath.replace('public/', '');
+            }
+
             // Construct the final storage path
             const storagePath = path.join(__dirname, '../../public', relativePath);
             const dir = path.dirname(storagePath);
@@ -287,12 +295,19 @@ exports.bulkUploadNotes = async (req, res) => {
                 fs.mkdirSync(dir, { recursive: true });
             }
 
-            // Move file to final destination
-            fs.renameSync(file.path, storagePath);
+            // Copy and then unlink (safer than rename across partitions)
+            try {
+                fs.copyFileSync(file.path, storagePath);
+                fs.unlinkSync(file.path);
+            } catch (fileErr) {
+                console.error(`File operation failed for ${file.path} -> ${storagePath}:`, fileErr);
+                // Continue with next file instead of crashing the whole batch
+                continue;
+            }
 
             // Extract subject name from path (e.g., "notes/DAA/unit1.pdf" -> "DAA")
             const pathParts = relativePath.split('/');
-            const subjectName = pathParts[1]; // Index 1 is the subject folder
+            const subjectName = pathParts[1] || 'General';
 
             // Find or create subject
             let subject = await Subject.findOne({ name: new RegExp(`^${subjectName}$`, 'i') });
@@ -306,20 +321,26 @@ exports.bulkUploadNotes = async (req, res) => {
                 await subject.save();
             }
 
-            // Add to StudyMaterial
-            const material = new StudyMaterial({
+            // Add to StudyMaterial (Update if exists, or create new)
+            const materialData = {
                 subjectId: subject._id,
                 title: path.basename(relativePath, '.pdf'),
                 type: 'note',
                 url: `/${relativePath}`
-            });
-            await material.save();
-            results.push(material);
+            };
+
+            await StudyMaterial.findOneAndUpdate(
+                { url: materialData.url },
+                materialData,
+                { upsert: true, new: true }
+            );
+            
+            results.push(materialData);
         }
 
         res.json({ message: `Successfully synced ${results.length} files.`, count: results.length });
     } catch (err) {
-        console.error('Bulk Sync Error:', err);
+        console.error('CRITICAL Bulk Sync Error:', err);
         res.status(500).json({ error: err.message });
     }
 };
