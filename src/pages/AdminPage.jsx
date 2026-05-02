@@ -15,7 +15,8 @@ import {
     FileText,
     Note,
     Upload,
-    Sparkle
+    Sparkle,
+    Lightning
 } from '@phosphor-icons/react';
 import { adminApi, getSubjects } from '../services/api';
 import { toast } from 'sonner';

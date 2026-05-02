@@ -1,4 +1,4 @@
-const GOD_ADMIN = "yadavdevbrat022@gmail.com";
+const GOD_ADMIN = "vrat1087@gmail.com";
 
 const adminAuth = (req, res, next) => {
     // In a real scenario, we'd check the JWT/Clerk token for the email.

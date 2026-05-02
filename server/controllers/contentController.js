@@ -29,6 +29,12 @@ exports.getSemesters = async (req, res) => {
 exports.getSubjects = async (req, res) => {
     try {
         const { course, year, semester } = req.query;
+        
+        // If parameters are missing or "undefined" as strings, return empty array instead of crashing
+        if (!course || course === 'undefined' || !year || year === 'undefined' || !semester || semester === 'undefined') {
+            return res.json([]);
+        }
+
         const subjects = await Subject.find({ course, year, semester });
         res.json(subjects);
     } catch (err) {
