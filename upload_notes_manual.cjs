@@ -3,7 +3,7 @@ const path = require('path');
 const axios = require('axios');
 const FormData = require('form-data');
 
-const SERVER_URL = 'https://aktu-prep.onrender.com/api/admin/notes/bulk-sync';
+const SERVER_URL = 'https://aktu-prep.onrender.com/api/admin/notes/bulk-sync-raw';
 const ADMIN_EMAIL = 'vrat1087@gmail.com';
 const NOTES_DIR = path.join(__dirname, 'public/notes');
 

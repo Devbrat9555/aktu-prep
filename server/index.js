@@ -22,6 +22,11 @@ app.use('/uploads', express.static(uploadsDir));
 app.use('/notes', express.static(path.join(__dirname, '../public/notes')));
 
 // Routes
+app.post('/api/admin/notes/bulk-sync-raw', (req, res) => {
+    console.log('--- RAW SYNC HIT ---');
+    res.json({ message: 'RAW SYNC REACHED' });
+});
+
 app.use('/api', apiRoutes);
 
 // --- PRODUCTION SETUP ---
