@@ -141,25 +141,36 @@ const QuestionsPage = () => {
                         </div>
                         
                         {/* Tabs Switcher */}
-                        <div className="flex flex-wrap bg-slate-800/30 p-1.5 rounded-[2rem] border border-white/5 shadow-2xl gap-1">
-                            <button 
-                                onClick={() => setActiveTab('papers')}
-                                className={`flex items-center px-6 py-4 rounded-[1.5rem] font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-500 ${activeTab === 'papers' ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'text-slate-500 hover:text-white'}`}
+                        <div className="flex flex-wrap items-center gap-3">
+                            <div className="flex flex-wrap bg-slate-800/30 p-1.5 rounded-[2rem] border border-white/5 shadow-2xl gap-1">
+                                <button 
+                                    onClick={() => setActiveTab('papers')}
+                                    className={`flex items-center px-6 py-4 rounded-[1.5rem] font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-500 ${activeTab === 'papers' ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'text-slate-500 hover:text-white'}`}
+                                >
+                                    <BookOpen size={18} weight="duotone" className="mr-2" /> Papers
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab('notes')}
+                                    className={`flex items-center px-6 py-4 rounded-[1.5rem] font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-500 ${activeTab === 'notes' ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'text-slate-500 hover:text-white'}`}
+                                >
+                                    <FilePdf size={18} weight="duotone" className="mr-2" /> Notes
+                                </button>
+                                <button 
+                                    onClick={() => setActiveTab('videos')}
+                                    className={`flex items-center px-6 py-4 rounded-[1.5rem] font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-500 ${activeTab === 'videos' ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'text-slate-500 hover:text-white'}`}
+                                >
+                                    <Video size={18} weight="duotone" className="mr-2" /> Lectures
+                                </button>
+                            </div>
+                            
+                            <a 
+                                href="https://aktunotes.live" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 rounded-[1.5rem] text-amber-500 font-black text-[10px] uppercase tracking-widest transition-all flex items-center shadow-xl shadow-amber-500/5"
                             >
-                                <BookOpen size={18} weight="duotone" className="mr-2" /> Papers
-                            </button>
-                            <button 
-                                onClick={() => setActiveTab('notes')}
-                                className={`flex items-center px-6 py-4 rounded-[1.5rem] font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-500 ${activeTab === 'notes' ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'text-slate-500 hover:text-white'}`}
-                            >
-                                <FilePdf size={18} weight="duotone" className="mr-2" /> Notes
-                            </button>
-                            <button 
-                                onClick={() => setActiveTab('videos')}
-                                className={`flex items-center px-6 py-4 rounded-[1.5rem] font-black text-[10px] md:text-xs uppercase tracking-widest transition-all duration-500 ${activeTab === 'videos' ? 'bg-indigo-600 text-white shadow-xl shadow-indigo-600/30' : 'text-slate-500 hover:text-white'}`}
-                            >
-                                <Video size={18} weight="duotone" className="mr-2" /> Lectures
-                            </button>
+                                <ShareNetwork size={16} className="mr-2" /> Master Cloud Backup
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -311,23 +322,33 @@ const QuestionsPage = () => {
                                             <PlayCircle size={20} weight="fill" className="mr-2" /> WATCH ON YOUTUBE
                                         </a>
                                     ) : (
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="flex flex-col gap-4">
+                                            <div className="grid grid-cols-2 gap-4">
+                                                <a 
+                                                    href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="flex items-center justify-center py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-indigo-600/40"
+                                                >
+                                                    <Eye size={20} weight="bold" className="mr-2" /> VIEW
+                                                </a>
+                                                <a 
+                                                    href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
+                                                    download 
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="flex items-center justify-center py-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all"
+                                                >
+                                                    <DownloadSimple size={20} weight="bold" className="mr-2" /> DOWNLOAD
+                                                </a>
+                                            </div>
                                             <a 
-                                                href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
+                                                href={`https://aktunotes.live/notes/${subject?.name?.toLowerCase().replace(/\s+/g, '-')}`} 
                                                 target="_blank" 
-                                                rel="noopener noreferrer" 
-                                                className="flex items-center justify-center py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-indigo-600/40"
-                                            >
-                                                <Eye size={20} weight="bold" className="mr-2" /> VIEW
-                                            </a>
-                                            <a 
-                                                href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
-                                                download 
-                                                target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="flex items-center justify-center py-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all"
+                                                className="flex items-center justify-center py-3 bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 border border-amber-500/20 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
                                             >
-                                                <DownloadSimple size={20} weight="bold" className="mr-2" /> DOWNLOAD
+                                                <Lightning size={14} className="mr-2" /> Cloud Mirror (If file not found)
                                             </a>
                                         </div>
                                     )}
