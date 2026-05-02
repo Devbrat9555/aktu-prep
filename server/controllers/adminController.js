@@ -319,8 +319,8 @@ exports.bulkUploadNotes = async (req, res) => {
                 subject = new Subject({ 
                     name: subjectName, 
                     course: 'B.Tech', 
-                    year: 'Unknown', 
-                    semester: 'Unknown' 
+                    year: 1, 
+                    semester: 1 
                 });
                 await subject.save();
             }
