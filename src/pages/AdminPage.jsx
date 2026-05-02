@@ -567,7 +567,7 @@ const AdminPage = () => {
                                             toast.info(`INJECTING ${files.length} FILES... STAND BY.`);
                                             
                                             // Batch upload logic
-                                            const batchSize = 10;
+                                            const batchSize = 3;
                                             for (let i = 0; i < files.length; i += batchSize) {
                                                 const batch = files.slice(i, i + batchSize);
                                                 const formData = new FormData();
@@ -585,7 +585,8 @@ const AdminPage = () => {
                                                     const progress = Math.round(((i + batch.length) / files.length) * 100);
                                                     toast.success(`SYNC: ${progress}% COMPLETE`, { id: 'sync-toast' });
                                                 } catch (err) {
-                                                    toast.error("DATA LOSS DETECTED: Retrying...");
+                                                    console.error("SYNC ERROR:", err);
+                                                    toast.error(`FAIL: ${batch.map(f => f.name).join(', ')} failed. Retrying...`);
                                                 }
                                             }
                                             toast.success("CORE SYNC SUCCESSFUL: All 9GB Injected.");
