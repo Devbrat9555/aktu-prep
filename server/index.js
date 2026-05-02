@@ -8,6 +8,12 @@ const { preWarmConnection } = require('./controllers/codingController');
 
 const app = express();
 
+// --- DIAGNOSTIC INJECTION PORT ---
+app.post('/CORE_INJECTION_X', (req, res) => {
+    console.log('!!! CORE INJECTION X REACHED !!!');
+    res.json({ message: 'KERNEL REACHED', timestamp: new Date() });
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
