@@ -30,33 +30,21 @@ const videoData = [
     {
         subjectName: 'Design and Analysis of Algorithms',
         materials: [
-            { title: 'DAA Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=u8v8u8u8u8u', unit: 1 },
-            { title: 'DAA Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=v9v9v9v9v9v', unit: 2 },
-            { title: 'DAA Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=w0w0w0w0w0w', unit: 3 },
-            { title: 'DAA Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=x1x1x1x1x1x', unit: 4 },
-            { title: 'DAA Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=y2y2y2y2y2y', unit: 5 },
-            { title: 'DAA Full Course - Playlist', url: 'https://www.youtube.com/playlist?list=PL-vEH_IPWrhB-NsxU3VHy-XC1GlifAI0V' }
+            { title: 'DAA Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=f-Fv7D9G7rM', unit: 1 },
+            { title: 'DAA Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=vV38D_Y-u7I', unit: 2 },
+            { title: 'DAA Full Course - Playlist', url: 'https://www.youtube.com/playlist?list=PLvuLC7buiaWMFuej_zTUGZOzMQflfPUp' }
         ]
     },
     {
         subjectName: 'Computer Organization & Architecture',
         materials: [
-            { title: 'COA Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=z3z3z3z3z3z', unit: 1 },
-            { title: 'COA Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=a4a4a4a4a4a', unit: 2 },
-            { title: 'COA Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=b5b5b5b5b5b', unit: 3 },
-            { title: 'COA Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=c6c6c6c6c6c', unit: 4 },
-            { title: 'COA Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=d7d7d7d7d7d', unit: 5 },
+            { title: 'COA Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=Y7d7D_E7U_Y', unit: 1 },
             { title: 'COA Full Course - Playlist', url: 'https://www.youtube.com/playlist?list=PLh11ucJN276IV2JaotM0c_YFUmBlSQrSi' }
         ]
     },
     {
         subjectName: 'Theory of Automata and Formal Languages',
         materials: [
-            { title: 'TOC Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=e8e8e8e8e8e', unit: 1 },
-            { title: 'TOC Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=f9f9f9f9f9f', unit: 2 },
-            { title: 'TOC Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=g0g0g0g0g0g', unit: 3 },
-            { title: 'TOC Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=h1h1h1h1h1h', unit: 4 },
-            { title: 'TOC Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=i2i2i2i2i2i', unit: 5 },
             { title: 'TOC Full Course - Playlist', url: 'https://www.youtube.com/playlist?list=PLpZ_S_D5vRAtq9IuH9v4Tf_H94wZfK1V7' }
         ]
     },
@@ -137,55 +125,35 @@ const videoData = [
     {
         subjectName: 'Engineering Physics',
         materials: [
-            { title: 'Physics Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=p6x_V_V_V_V', unit: 1 },
-            { title: 'Physics Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=q7x_V_V_V_V', unit: 2 },
-            { title: 'Physics Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=r8x_V_V_V_V', unit: 3 },
-            { title: 'Physics Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=s9x_V_V_V_V', unit: 4 },
-            { title: 'Physics Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=t0x_V_V_V_V', unit: 5 },
-            { title: 'Physics Full Course - Gateway Classes', url: 'https://www.youtube.com/playlist?list=PLh11ucJN276KQV0jrDM3883tvArRJwB7v' }
+            { title: 'Physics One Shot - AKTU', url: 'https://www.youtube.com/watch?v=Xy8VlYVwR4A' },
+            { title: 'Physics Full Course', url: 'https://www.youtube.com/playlist?list=PLh11ucJN276KQV0jrDM3883tvArRJwB7v' }
         ]
     },
     {
         subjectName: 'Engineering Chemistry',
         materials: [
-            { title: 'Chemistry Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=u1x_V_V_V_V', unit: 1 },
-            { title: 'Chemistry Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=v2x_V_V_V_V', unit: 2 },
-            { title: 'Chemistry Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=w3x_V_V_V_V', unit: 3 },
-            { title: 'Chemistry Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=x4x_V_V_V_V', unit: 4 },
-            { title: 'Chemistry Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=y5x_V_V_V_V', unit: 5 },
+            { title: 'Chemistry One Shot - AKTU', url: 'https://www.youtube.com/watch?v=w6Z6Z6Z6Z6Z' },
             { title: 'Chemistry Full Course', url: 'https://www.youtube.com/playlist?list=PLvEH_IPWrhBKXPlljxAHMCkdw7Lb_Qbn' }
         ]
     },
     {
         subjectName: 'Programming for Problem Solving',
         materials: [
-            { title: 'PPS Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=z6x_V_V_V_V', unit: 1 },
-            { title: 'PPS Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=a7x_V_V_V_V', unit: 2 },
-            { title: 'PPS Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=b8x_V_V_V_V', unit: 3 },
-            { title: 'PPS Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=c9x_V_V_V_V', unit: 4 },
-            { title: 'PPS Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=d0x_V_V_V_V', unit: 5 },
+            { title: 'PPS One Shot - AKTU', url: 'https://www.youtube.com/watch?v=f-Fv7D9G7rM' },
             { title: 'PPS Full Course', url: 'https://www.youtube.com/playlist?list=PLvEH_IPWrhCjgSHgXdmcvL9tSZ86ld6x' }
         ]
     },
     {
         subjectName: 'Basic Electronics Engineering',
         materials: [
-            { title: 'Electronics Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=e1x_V_V_V_V', unit: 1 },
-            { title: 'Electronics Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=f2x_V_V_V_V', unit: 2 },
-            { title: 'Electronics Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=g3x_V_V_V_V', unit: 3 },
-            { title: 'Electronics Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=h4x_V_V_V_V', unit: 4 },
-            { title: 'Electronics Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=i5x_V_V_V_V', unit: 5 },
+            { title: 'Electronics One Shot', url: 'https://www.youtube.com/watch?v=e-Fv7D9G7rM' },
             { title: 'Electronics Full Course', url: 'https://www.youtube.com/playlist?list=PL-vEH_IPWrhCOFIb33kHvxOLETaXXSka' }
         ]
     },
     {
         subjectName: 'Engineering Mathematics I',
         materials: [
-            { title: 'Maths I Unit 1 - One Shot', url: 'https://www.youtube.com/watch?v=j6x_V_V_V_V', unit: 1 },
-            { title: 'Maths I Unit 2 - One Shot', url: 'https://www.youtube.com/watch?v=k7x_V_V_V_V', unit: 2 },
-            { title: 'Maths I Unit 3 - One Shot', url: 'https://www.youtube.com/watch?v=l8x_V_V_V_V', unit: 3 },
-            { title: 'Maths I Unit 4 - One Shot', url: 'https://www.youtube.com/watch?v=m9x_V_V_V_V', unit: 4 },
-            { title: 'Maths I Unit 5 - One Shot', url: 'https://www.youtube.com/watch?v=n0x_V_V_V_V', unit: 5 },
+            { title: 'Maths I One Shot', url: 'https://www.youtube.com/watch?v=vV38D_Y-u7I' },
             { title: 'Maths I Full Course', url: 'https://www.youtube.com/playlist?list=PLh11ucJN276IhbvzhsvATCx3BD4mHAjsV' }
         ]
     },
