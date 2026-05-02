@@ -40,17 +40,21 @@ app.use((req, res, next) => {
     next();
 });
 
-// Global Error Handler (JSON for API, HTML for others)
+// Global Error Handler
 app.use((err, req, res, next) => {
-    console.error('GLOBAL ERROR:', err);
-    if (req.path.startsWith('/api')) {
-        return res.status(err.status || 500).json({
-            error: err.message,
-            stack: err.stack,
-            context: 'Global Middleware Error'
-        });
+    console.error('--- KERNEL PANIC: GLOBAL ERROR DETECTED ---');
+    console.error('Message:', err.message);
+    console.error('Stack:', err.stack);
+    
+    if (res.headersSent) {
+        return next(err);
     }
-    next(err);
+
+    res.status(err.status || 500).json({
+        error: err.message,
+        stack: err.stack,
+        context: 'Global Panic Handler'
+    });
 });
 
 const PORT = process.env.PORT || 5000;
