@@ -65,7 +65,19 @@ router.delete('/admin/questions/:id', adminController.deleteQuestion);
 router.get('/admin/materials', adminController.getAllMaterials);
 router.put('/admin/materials/:id', adminController.updateMaterial);
 router.delete('/admin/materials/:id', adminController.deleteMaterial);
-router.post('/admin/notes/bulk-sync', upload.array('files'), adminController.bulkUploadNotes);
+router.post('/admin/notes/bulk-sync', (req, res, next) => {
+    upload.array('files')(req, res, (err) => {
+        if (err) {
+            console.error('MULTER ERROR:', err);
+            return res.status(500).json({ 
+                error: 'Multer Error', 
+                message: err.message, 
+                stack: err.stack 
+            });
+        }
+        next();
+    });
+}, adminController.bulkUploadNotes);
 
 // Bookmark Routes (Protected)
 router.post('/bookmark', auth, bookmarkController.addBookmark);
