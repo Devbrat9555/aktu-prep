@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Notification, GraduationCap, Star, Lightning } from '@phosphor-icons/react';
+import { Notification, GraduationCap, Star, Lightning, List, X } from '@phosphor-icons/react';
 import NotificationDialog from './NotificationDialog.js';
 import useWindowSize from '../hooks/useWindowSize.ts';
 import { useNavigate } from 'react-router-dom';
@@ -12,7 +12,9 @@ const Navbar = () => {
     const [showNotifications, setShowNotifications] = useState(false);
     const [unreadNotifications, setUnreadNotifications] = useState(false);
     const [showFeedback, setShowFeedback] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const notificationRef = useRef<HTMLDivElement | null>(null);
+    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 
     const { width } = useWindowSize();
     const navigate = useNavigate();
@@ -22,6 +24,9 @@ const Navbar = () => {
     const handleClickOutside = useCallback((event: MouseEvent) => {
         if (notificationRef.current && !notificationRef.current.contains(event.target as Node)) {
             setShowNotifications(false);
+        }
+        if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+            setIsMobileMenuOpen(false);
         }
     }, []);
 
@@ -80,6 +85,53 @@ const Navbar = () => {
                     >
                         About
                     </button>
+                </div>
+
+                {/* Mobile Menu Button */}
+                <div className="lg:hidden flex items-center" ref={mobileMenuRef}>
+                    <button 
+                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        className="p-2 hover:bg-white/5 rounded-xl transition-colors text-slate-400"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <List size={24} />}
+                    </button>
+
+                    {isMobileMenuOpen && (
+                        <motion.div 
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            className="absolute top-20 right-6 w-48 bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl z-[60]"
+                        >
+                            <div className="flex flex-col gap-4">
+                                {isAdmin && (
+                                    <button 
+                                        onClick={() => { navigate('/admin'); setIsMobileMenuOpen(false); }}
+                                        className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 hover:text-white transition-colors py-2"
+                                    >
+                                        Admin Panel
+                                    </button>
+                                )}
+                                <button 
+                                    onClick={() => { navigate('/settings'); setIsMobileMenuOpen(false); }}
+                                    className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-indigo-400 transition-colors py-2"
+                                >
+                                    Settings
+                                </button>
+                                <button 
+                                    onClick={() => { navigate('/community'); setIsMobileMenuOpen(false); }}
+                                    className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-indigo-400 transition-colors py-2"
+                                >
+                                    Community
+                                </button>
+                                <button 
+                                    onClick={() => { navigate('/about'); setIsMobileMenuOpen(false); }}
+                                    className="text-left text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-indigo-400 transition-colors py-2"
+                                >
+                                    About
+                                </button>
+                            </div>
+                        </motion.div>
+                    )}
                 </div>
 
 
