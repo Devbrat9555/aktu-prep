@@ -221,6 +221,7 @@ const AdminPage = () => {
                                 { id: 'users', label: 'Student Matrix', icon: <Users size={20} /> },
                                 { id: 'subject', label: 'Core Subjects', icon: <BookOpen size={20} /> },
                                 { id: 'question', label: 'Data Upload', icon: <Upload size={20} /> },
+                                { id: 'bulk_sync', label: 'BULK SYNC (9GB)', icon: <Lightning size={20} className="text-amber-500" /> },
                                 { id: 'manage_questions', label: 'Data Vault', icon: <Database size={20} /> },
                                 { id: 'feedback', label: 'Pulse Monitor', icon: <Globe size={20} /> },
                                 { id: 'add_user', label: 'Initialize User', icon: <Plus size={20} /> },
@@ -539,7 +540,66 @@ const AdminPage = () => {
                             </div>
                         )}
 
-                        {activeTab === 'feedback' && (
+                        {activeTab === 'bulk_sync' && (
+                            <div className="space-y-12 animate-in fade-in">
+                                <div className="space-y-4">
+                                    <h2 className="text-4xl font-black italic uppercase tracking-tighter text-amber-500">9GB BULK <span className="text-white underline decoration-amber-500/20">SYNC</span></h2>
+                                    <p className="text-slate-400 font-medium italic">Select your local "notes" folder to sync all 9GB of data to the server at once.</p>
+                                </div>
+                                <div className="bg-black/40 p-12 rounded-[3rem] border-2 border-dashed border-amber-500/20 flex flex-col items-center justify-center space-y-8 text-center">
+                                    <div className="w-24 h-24 bg-amber-500/10 rounded-full flex items-center justify-center text-amber-500">
+                                        <Lightning size={48} weight="fill" className="animate-pulse" />
+                                    </div>
+                                    <div className="space-y-4 max-w-md">
+                                        <h3 className="text-xl font-black uppercase italic">Kernel Data Injection</h3>
+                                        <p className="text-sm text-slate-500 leading-relaxed">This will scan your local <code className="text-amber-500 font-mono">public/notes</code> directory and upload everything to the production server. Make sure you have a stable internet connection.</p>
+                                    </div>
+                                    <input 
+                                        type="file" 
+                                        id="bulk-folder"
+                                        webkitdirectory="true" 
+                                        directory="true" 
+                                        multiple 
+                                        onChange={async (e) => {
+                                            const files = Array.from(e.target.files);
+                                            if (files.length === 0) return;
+                                            toast.info(`INJECTING ${files.length} FILES... STAND BY.`);
+                                            
+                                            // Batch upload logic
+                                            const batchSize = 10;
+                                            for (let i = 0; i < files.length; i += batchSize) {
+                                                const batch = files.slice(i, i + batchSize);
+                                                const formData = new FormData();
+                                                batch.forEach(file => {
+                                                    // Only upload PDFs
+                                                    if (file.name.endsWith('.pdf')) {
+                                                        formData.append('files', file);
+                                                        // Get the path relative to the notes folder
+                                                        formData.append('paths', file.webkitRelativePath);
+                                                    }
+                                                });
+                                                
+                                                try {
+                                                    await adminApi.bulkUploadNotes(formData);
+                                                    const progress = Math.round(((i + batch.length) / files.length) * 100);
+                                                    toast.success(`SYNC: ${progress}% COMPLETE`, { id: 'sync-toast' });
+                                                } catch (err) {
+                                                    toast.error("DATA LOSS DETECTED: Retrying...");
+                                                }
+                                            }
+                                            toast.success("CORE SYNC SUCCESSFUL: All 9GB Injected.");
+                                        }}
+                                        className="hidden"
+                                    />
+                                    <label 
+                                        htmlFor="bulk-folder"
+                                        className="px-12 py-6 bg-amber-500 hover:bg-amber-400 text-black font-black uppercase tracking-[0.3em] text-sm rounded-3xl cursor-pointer transition-all shadow-2xl shadow-amber-500/20 active:scale-95 flex items-center gap-4"
+                                    >
+                                        <Upload size={24} weight="bold" /> Start Bulk Sync
+                                    </label>
+                                </div>
+                            </div>
+                        )}
                             <div className="space-y-12 animate-in fade-in">
                                 <h2 className="text-3xl font-black italic uppercase tracking-tighter">Pulse <span className="text-rose-500">Monitor</span></h2>
                                 <div className="space-y-6">

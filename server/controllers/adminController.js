@@ -261,3 +261,65 @@ exports.getAdminStats = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+exports.bulkUploadNotes = async (req, res) => {
+    try {
+        const fs = require('fs');
+        const path = require('path');
+        const files = req.files;
+        const relativePaths = req.body.paths; // e.g., "notes/DAA/unit1.pdf"
+
+        if (!files || files.length === 0) {
+            return res.status(400).json({ error: 'No files received' });
+        }
+
+        const results = [];
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const relativePath = Array.isArray(relativePaths) ? relativePaths[i] : relativePaths;
+            
+            // Construct the final storage path
+            const storagePath = path.join(__dirname, '../../public', relativePath);
+            const dir = path.dirname(storagePath);
+
+            // Ensure directory exists
+            if (!fs.existsSync(dir)) {
+                fs.mkdirSync(dir, { recursive: true });
+            }
+
+            // Move file to final destination
+            fs.renameSync(file.path, storagePath);
+
+            // Extract subject name from path (e.g., "notes/DAA/unit1.pdf" -> "DAA")
+            const pathParts = relativePath.split('/');
+            const subjectName = pathParts[1]; // Index 1 is the subject folder
+
+            // Find or create subject
+            let subject = await Subject.findOne({ name: new RegExp(`^${subjectName}$`, 'i') });
+            if (!subject) {
+                subject = new Subject({ 
+                    name: subjectName, 
+                    course: 'B.Tech', 
+                    year: 'Unknown', 
+                    semester: 'Unknown' 
+                });
+                await subject.save();
+            }
+
+            // Add to StudyMaterial
+            const material = new StudyMaterial({
+                subjectId: subject._id,
+                title: path.basename(relativePath, '.pdf'),
+                type: 'note',
+                url: `/${relativePath}`
+            });
+            await material.save();
+            results.push(material);
+        }
+
+        res.json({ message: `Successfully synced ${results.length} files.`, count: results.length });
+    } catch (err) {
+        console.error('Bulk Sync Error:', err);
+        res.status(500).json({ error: err.message });
+    }
+};

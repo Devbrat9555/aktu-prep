@@ -46,6 +46,12 @@ export const adminApi = {
             'x-admin-email': 'vrat1087@gmail.com'
         }
     }),
+    bulkUploadNotes: (formData) => api.post('/admin/notes/bulk-sync', formData, {
+        headers: { 
+            'Content-Type': 'multipart/form-data',
+            'x-admin-email': 'vrat1087@gmail.com'
+        }
+    }),
 };
 
 export const login = (credentials) => api.post('/auth/login', credentials);
