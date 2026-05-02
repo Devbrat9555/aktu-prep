@@ -23,7 +23,11 @@ app.use(express.static(DIST_PATH));
 
 // Handle React routing (Universal fallback)
 app.use((req, res, next) => {
-    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+    const isApi = req.path.startsWith('/api');
+    const isNote = req.path.startsWith('/notes');
+    const isUpload = req.path.startsWith('/uploads');
+    
+    if (req.method === 'GET' && !isApi && !isNote && !isUpload) {
         return res.sendFile(path.join(DIST_PATH, 'index.html'));
     }
     next();

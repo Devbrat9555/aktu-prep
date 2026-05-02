@@ -57,7 +57,7 @@ const QuestionsPage = () => {
     }, [subjectId]);
 
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
-    const SERVER_URL = API_BASE_URL.replace('/api', '');
+    const SERVER_URL = API_BASE_URL.replace(/\/api$/, '') || window.location.origin;
 
     const handleBookmark = (id) => {
         addBookmark(id)
@@ -312,10 +312,21 @@ const QuestionsPage = () => {
                                         </a>
                                     ) : (
                                         <div className="grid grid-cols-2 gap-4">
-                                            <a href={`${SERVER_URL}${m.url}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-indigo-600/40">
+                                            <a 
+                                                href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
+                                                target="_blank" 
+                                                rel="noopener noreferrer" 
+                                                className="flex items-center justify-center py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-indigo-600/40"
+                                            >
                                                 <Eye size={20} weight="bold" className="mr-2" /> VIEW
                                             </a>
-                                            <a href={`${SERVER_URL}${m.url}`} download className="flex items-center justify-center py-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all">
+                                            <a 
+                                                href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
+                                                download 
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="flex items-center justify-center py-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all"
+                                            >
                                                 <DownloadSimple size={20} weight="bold" className="mr-2" /> DOWNLOAD
                                             </a>
                                         </div>
