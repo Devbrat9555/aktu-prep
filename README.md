@@ -87,4 +87,4 @@ Contributions make the community amazing!
 5. Open a Pull Request
 
 ---
-**Maintained by [Devbrat Yadav](https://github.com/Devbrat9555)**
+**Maintained by [Devbrat Yadav](https://www.linkedin.com/in/devbrat1087)**
