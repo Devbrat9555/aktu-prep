@@ -1,70 +1,90 @@
-# AKTU Prep
+# 🎓 AKTU Prep
 
-A comprehensive study companion for AKTU (Dr. A.P.J. Abdul Kalam Technical University) students, providing organized notes, video lectures, and previous year question papers.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![React](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Backend-Node.js-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB-47A248?logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+[![Render](https://img.shields.io/badge/Deployment-Render-46E3B7?logo=render&logoColor=white)](https://render.com/)
 
-![AKTU Prep Logo](/public/logo.png)
+**AKTU Prep** is the ultimate digital repository for AKTU students. It provides a high-performance, unit-wise organized collection of 9GB+ study materials, curated video lectures, and expert-verified solutions for B.Tech, MBA, and B.Pharma.
 
-## 🚀 About The Project
-AKTU Prep is designed to simplify the academic journey for technical university students. It organizes vast amounts of study material (9GB+) into a navigable, unit-wise repository for every subject across all semesters.
-
-## ✨ Key Features
-- **Unit-Wise Notes**: Access structured PDF notes for every unit of your syllabus.
-- **Video Lectures**: Curated one-shot and detailed video lectures from top educators.
-- **Previous Year Papers**: Practice with actual university exam papers organized by year.
-- **Smart Search**: Quickly find any subject, topic, or specific unit.
-- **Admin Controls**: Dedicated dashboard for adding/deleting content in real-time.
-- **Mobile Friendly**: Fully responsive design for studying on the go.
-- **PWA Support**: Install it on your device for a native app experience.
-
-## 🛠️ Tech Stack
-- **Frontend**: React, Vite, Framer Motion
-- **Backend**: Node.js, Express, MongoDB
-- **Authentication**: Clerk / Auth Custom
-- **Icons**: Phosphor Icons
-- **Deployment**: Render
-
-## 📁 Project Structure
-```text
-AKTU-Prep/
-├── public/                # Static assets (PDFs, Images, Sounds)
-├── server/                # Node.js Backend
-│   ├── controllers/       # Business logic
-│   ├── models/            # Database schemas
-│   ├── routes/            # API endpoints
-│   └── index.js           # Server entry point
-├── src/                   # React Frontend
-│   ├── components/        # UI Components
-│   ├── context/           # State management
-│   ├── pages/             # App views
-│   └── services/          # API integration
-```
-
-## 🛠️ Getting Started
-1. **Clone the repo**:
-   ```bash
-   git clone https://github.com/Devbrat9555/aktu-prep.git
-   ```
-2. **Install Dependencies**:
-   ```bash
-   npm install
-   cd server && npm install
-   ```
-3. **Environment Setup**:
-   Create a `.env` in the `server` folder with:
-   ```text
-   MONGODB_URI=your_mongodb_url
-   PORT=5000
-   ```
-4. **Run Locally**:
-   ```bash
-   # Root directory
-   npm run dev
-   # Server directory
-   npm start
-   ```
-
-## 📜 License
-Distributed under the MIT License.
+[Live Demo](https://aktu-prep.onrender.com) • [Report Bug](https://github.com/Devbrat9555/aktu-prep/issues) • [Request Feature](https://github.com/Devbrat9555/aktu-prep/issues)
 
 ---
-**Made with ❤️ for AKTU Students**
+
+## 🌟 Vision
+To empower technical university students with a distraction-free, premium learning environment where every resource is just two clicks away.
+
+## 🚀 Key Features
+- **📚 9GB+ Unit-Wise Repository**: Structured notes for every unit of the AKTU syllabus.
+- **🎥 Curated Video Hub**: One-shot and detailed lectures from top-tier educators.
+- **📝 PYQ Engine**: 10+ years of Previous Year Papers with unit-level sorting.
+- **⚡ Smart Search**: Instant lookup for subjects, topics, or specific unit numbers.
+- **🛡️ Admin Dashboard**: Real-time content management (Add/Delete/Sync).
+- **📱 PWA Ready**: Install as a native app on mobile and desktop.
+
+## 🛠️ Advanced Tech Stack
+
+### Frontend
+- **Framework**: React.js (TypeScript)
+- **Styling**: Tailwind CSS & Glassmorphism UI
+- **Animations**: Framer Motion
+- **Icons**: Phosphor Icons
+
+### Backend
+- **Server**: Node.js & Express
+- **Database**: MongoDB (Mongoose)
+- **Auth**: Clerk Professional Authentication
+- **File Management**: Optimized Multer Streaming
+
+### Deployment
+- **Platform**: Render (Automated CI/CD)
+- **Domain**: Cloudflare Protected
+
+---
+
+## 📂 Project Architecture
+```text
+AKTU-Prep/
+├── public/                # Static assets & Optimized PDFs
+├── server/                # Production Backend Engine
+│   ├── controllers/       # Business logic & Payload handling
+│   ├── models/            # Mongoose Schemas (Subject, Material, Paper)
+│   ├── routes/            # RESTful API Endpoints
+│   └── index.js           # Entry Point
+├── src/                   # High-Performance Frontend
+│   ├── components/        # Atomic UI Components
+│   ├── context/           # Global State (Auth, Theme)
+│   ├── pages/             # Dynamic Route Views
+│   └── services/          # Axios API Interceptors
+```
+
+## 🛠️ Installation & Setup
+
+1. **Clone & Install**:
+   ```bash
+   git clone https://github.com/Devbrat9555/aktu-prep.git
+   npm install && cd server && npm install
+   ```
+2. **Environment Variables**:
+   Create `.env` in the `server` root:
+   ```env
+   MONGODB_URI=your_cluster_url
+   PORT=5000
+   ```
+3. **Launch**:
+   ```bash
+   npm run dev  # Frontend
+   npm start    # Backend
+   ```
+
+## 🤝 Contributing
+Contributions make the community amazing! 
+1. Fork the Project
+2. Create your Feature Branch
+3. Commit your Changes
+4. Push to the Branch
+5. Open a Pull Request
+
+---
+**Maintained by [Devbrat Yadav](https://github.com/Devbrat9555)**
