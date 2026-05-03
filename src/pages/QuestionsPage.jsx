@@ -18,11 +18,21 @@ import {
     DownloadSimple,
     Copy,
     Lightning,
-    Certificate
+    Certificate,
+    Trash,
+    Plus,
+    X,
+    UploadSimple,
+    Globe
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useUser } from '@clerk/clerk-react';
+import { adminApi, addStudyMaterial } from '../services/api';
+import { toast } from 'sonner';
 
 const QuestionsPage = () => {
+    const { user } = useUser();
+    const isAdmin = user?.primaryEmailAddress?.emailAddress === 'vrat1087@gmail.com';
     const { subjectId } = useParams();
     const [questions, setQuestions] = useState([]);
     const [materials, setMaterials] = useState([]);
@@ -34,6 +44,18 @@ const QuestionsPage = () => {
     // Search & Filter State
     const [searchTerm, setSearchTerm] = useState('');
     const [activeUnit, setActiveUnit] = useState('All');
+
+    // Admin Modal State
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [newMaterial, setNewMaterial] = useState({
+        title: '',
+        type: 'notes',
+        url: '',
+        unit: '1',
+        description: '',
+        file: null
+    });
 
     useEffect(() => {
         setLoading(true);
@@ -74,6 +96,60 @@ const QuestionsPage = () => {
     const copySolution = (solution) => {
         navigator.clipboard.writeText(solution);
         alert('Solution copied!');
+    };
+
+    const handleDelete = async (type, id) => {
+        if (!window.confirm(`Are you sure you want to delete this ${type === 'materials' ? 'item' : 'question'}?`)) return;
+        try {
+            await adminApi.deleteResource(type, id);
+            toast.success('Deleted successfully');
+            // Refresh data
+            if (type === 'materials') {
+                const mRes = await getStudyMaterial(subjectId);
+                setMaterials(mRes.data);
+            } else {
+                const qRes = await getQuestions(subjectId);
+                setQuestions(qRes.data);
+            }
+        } catch (err) {
+            console.error(err);
+            toast.error('Failed to delete');
+        }
+    };
+
+    const handleAddSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        try {
+            const formData = new FormData();
+            formData.append('subjectId', subjectId);
+            formData.append('title', newMaterial.title);
+            formData.append('type', newMaterial.type);
+            formData.append('unit', newMaterial.unit);
+            formData.append('description', newMaterial.description);
+            
+            if (newMaterial.type === 'notes' && newMaterial.file) {
+                formData.append('file', newMaterial.file);
+            } else {
+                formData.append('url', newMaterial.url);
+            }
+
+            await addStudyMaterial(formData);
+            toast.success('Material added successfully');
+            setShowAddModal(false);
+            
+            // Reset form
+            setNewMaterial({ title: '', type: 'notes', url: '', unit: '1', description: '', file: null });
+            
+            // Refresh data
+            const mRes = await getStudyMaterial(subjectId);
+            setMaterials(mRes.data);
+        } catch (err) {
+            console.error(err);
+            toast.error('Failed to add material');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // --- SMART SORTING & FILTERING ---
@@ -163,13 +239,22 @@ const QuestionsPage = () => {
                                 </button>
                             </div>
                             
+                            {isAdmin && (
+                                <button 
+                                    onClick={() => setShowAddModal(true)}
+                                    className="px-6 py-4 bg-green-600 hover:bg-green-500 rounded-[1.5rem] text-white font-black text-[10px] uppercase tracking-widest transition-all flex items-center shadow-xl shadow-green-600/20"
+                                >
+                                    <Plus size={16} className="mr-2" /> Add {activeTab === 'notes' ? 'Note' : 'Lecture'}
+                                </button>
+                            )}
+
                             <a 
-                                href="https://aktunotes.live" 
+                                href="https://aktu-prep.onrender.com" 
                                 target="_blank" 
                                 rel="noopener noreferrer"
                                 className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 rounded-[1.5rem] text-amber-500 font-black text-[10px] uppercase tracking-widest transition-all flex items-center shadow-xl shadow-amber-500/5"
                             >
-                                <ShareNetwork size={16} className="mr-2" /> Master Cloud Backup
+                                <Globe size={16} className="mr-2" /> AKTU Prep Mirror
                             </a>
                         </div>
                     </div>
@@ -215,6 +300,14 @@ const QuestionsPage = () => {
                                             >
                                                 <ShareNetwork size={18} weight="duotone" className="mr-2" /> Share
                                             </button>
+                                            {isAdmin && (
+                                                <button 
+                                                    onClick={(e) => { e.stopPropagation(); handleDelete('questions', q._id); }} 
+                                                    className="flex items-center text-xs font-black uppercase tracking-widest text-red-500 hover:text-red-400 transition-colors"
+                                                >
+                                                    <Trash size={18} weight="duotone" className="mr-2" /> Delete
+                                                </button>
+                                            )}
                                             <button className="flex items-center text-xs font-black uppercase tracking-widest text-indigo-400 hover:text-indigo-300">
                                                 {expandedId === q._id ? 'Hide Solution' : 'View Expert Solution'} 
                                                 {expandedId === q._id ? <CaretUp size={16} weight="bold" className="ml-2" /> : <CaretDown size={16} weight="bold" className="ml-2" />}
@@ -310,9 +403,19 @@ const QuestionsPage = () => {
                                         <div className={`p-5 rounded-3xl ${m.type === 'video' ? 'bg-red-500/10 text-red-400 shadow-xl shadow-red-500/10' : 'bg-blue-500/10 text-blue-400 shadow-xl shadow-blue-500/10'}`}>
                                             {m.type === 'video' ? <Video size={32} weight="duotone" /> : <BookOpen size={32} weight="duotone" />}
                                         </div>
-                                        {m.title.toLowerCase().includes('unit') && (
-                                            <span className="px-4 py-1.5 bg-indigo-500/20 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 border border-indigo-500/20">Unit Focused</span>
-                                        )}
+                                        <div className="flex items-center gap-2">
+                                            {m.title.toLowerCase().includes('unit') && (
+                                                <span className="px-4 py-1.5 bg-indigo-500/20 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 border border-indigo-500/20">Unit Focused</span>
+                                            )}
+                                            {isAdmin && (
+                                                <button 
+                                                    onClick={() => handleDelete('materials', m._id)}
+                                                    className="p-3 bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white rounded-xl transition-all"
+                                                >
+                                                    <Trash size={18} weight="bold" />
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                     <h3 className="text-2xl font-black italic uppercase tracking-tight text-white mb-4 group-hover:text-indigo-400 transition-colors leading-tight">{m.title}</h3>
                                     <p className="text-slate-400 font-medium text-sm mb-10 line-clamp-2 leading-relaxed">{m.description || 'Access high-quality study material for this topic.'}</p>
@@ -343,12 +446,12 @@ const QuestionsPage = () => {
                                                 </a>
                                             </div>
                                             <a 
-                                                href={`https://aktunotes.live/notes/${subject?.name?.toLowerCase().replace(/\s+/g, '-')}`} 
+                                                href="https://aktu-prep.onrender.com" 
                                                 target="_blank" 
                                                 rel="noopener noreferrer"
                                                 className="flex items-center justify-center py-3 bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 border border-amber-500/20 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
                                             >
-                                                <Lightning size={14} className="mr-2" /> Cloud Mirror (If file not found)
+                                                <Lightning size={14} className="mr-2" /> AKTU Prep Backup (If file missing)
                                             </a>
                                         </div>
                                     )}
@@ -363,6 +466,118 @@ const QuestionsPage = () => {
                     </div>
                 )}
             </div>
+
+            {/* Admin Add Modal */}
+            <AnimatePresence>
+                {showAddModal && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-md">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="bg-slate-900 border border-white/10 rounded-[3rem] w-full max-w-xl overflow-hidden shadow-2xl"
+                        >
+                            <div className="p-8 border-b border-white/5 flex items-center justify-between bg-indigo-600/5">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-3 bg-indigo-600 rounded-2xl text-white">
+                                        <Plus size={24} weight="bold" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-xl font-black text-white italic uppercase tracking-tight">Add New {activeTab === 'notes' ? 'Study Note' : 'Video Lecture'}</h2>
+                                        <p className="text-slate-500 text-xs font-medium uppercase tracking-widest mt-1">Subject ID: {subjectId}</p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setShowAddModal(false)} className="p-2 hover:bg-white/5 rounded-xl text-slate-500 hover:text-white transition-all">
+                                    <X size={24} weight="bold" />
+                                </button>
+                            </div>
+
+                            <form onSubmit={handleAddSubmit} className="p-8 space-y-6">
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Title / Filename</label>
+                                    <input 
+                                        type="text" 
+                                        required
+                                        placeholder="e.g. Unit 1 Quantum Notes"
+                                        value={newMaterial.title}
+                                        onChange={(e) => setNewMaterial({...newMaterial, title: e.target.value})}
+                                        className="w-full px-6 py-4 bg-slate-800/50 border border-white/5 rounded-2xl text-white outline-none focus:border-indigo-500/50 transition-all"
+                                    />
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Unit</label>
+                                        <select 
+                                            value={newMaterial.unit}
+                                            onChange={(e) => setNewMaterial({...newMaterial, unit: e.target.value})}
+                                            className="w-full px-6 py-4 bg-slate-800/50 border border-white/5 rounded-2xl text-white outline-none focus:border-indigo-500/50 appearance-none cursor-pointer"
+                                        >
+                                            {[1, 2, 3, 4, 5, 'Revision', 'Quantum'].map(u => <option key={u} value={u}>{u}</option>)}
+                                        </select>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Material Type</label>
+                                        <div className="flex bg-slate-800/50 border border-white/5 rounded-2xl p-1">
+                                            <button 
+                                                type="button"
+                                                onClick={() => setNewMaterial({...newMaterial, type: 'notes'})}
+                                                className={`flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${newMaterial.type === 'notes' ? 'bg-indigo-600 text-white' : 'text-slate-500 hover:text-white'}`}
+                                            >
+                                                Notes
+                                            </button>
+                                            <button 
+                                                type="button"
+                                                onClick={() => setNewMaterial({...newMaterial, type: 'video'})}
+                                                className={`flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${newMaterial.type === 'video' ? 'bg-red-600 text-white' : 'text-slate-500 hover:text-white'}`}
+                                            >
+                                                Video
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {newMaterial.type === 'notes' ? (
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Upload PDF File</label>
+                                        <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-white/10 rounded-[2rem] hover:border-indigo-500/50 hover:bg-indigo-500/5 transition-all cursor-pointer group">
+                                            <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                                                <UploadSimple size={32} className="text-slate-500 group-hover:text-indigo-400 mb-2" />
+                                                <p className="text-xs text-slate-500 group-hover:text-slate-300 font-bold uppercase tracking-widest">
+                                                    {newMaterial.file ? newMaterial.file.name : 'Click to select PDF'}
+                                                </p>
+                                            </div>
+                                            <input type="file" accept=".pdf" className="hidden" onChange={(e) => setNewMaterial({...newMaterial, file: e.target.files[0]})} />
+                                        </label>
+                                    </div>
+                                ) : (
+                                    <div className="space-y-2">
+                                        <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">YouTube URL</label>
+                                        <input 
+                                            type="url" 
+                                            required
+                                            placeholder="https://youtube.com/watch?v=..."
+                                            value={newMaterial.url}
+                                            onChange={(e) => setNewMaterial({...newMaterial, url: e.target.value})}
+                                            className="w-full px-6 py-4 bg-slate-800/50 border border-white/5 rounded-2xl text-white outline-none focus:border-indigo-500/50 transition-all"
+                                        />
+                                    </div>
+                                )}
+
+                                <div className="pt-4">
+                                    <button 
+                                        type="submit" 
+                                        disabled={isSubmitting}
+                                        className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] text-white shadow-2xl transition-all ${isSubmitting ? 'bg-slate-700 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/30'}`}
+                                    >
+                                        {isSubmitting ? 'UPLOADING...' : 'SAVE MATERIAL'}
+                                    </button>
+                                </div>
+                            </form>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };
