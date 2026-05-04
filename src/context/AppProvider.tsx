@@ -14,6 +14,9 @@ const defaultSettings: Settings = {
     shareProgress: true,
     dataCollection: true,
     aiProvider: 'chatgpt',
+    aiCustomPrompt: '',
+    campusBuzz: true,
+    studyPersona: 'expert',
 };
 
 // The AppProvider component manages application-specific settings like sound, timers and dark mode.

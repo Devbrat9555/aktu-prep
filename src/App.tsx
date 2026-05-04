@@ -14,6 +14,7 @@ import AppRoutes from './routes/AppRoutes.tsx';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 import { GoalProvider } from './context/GoalProvider.tsx';
 import UserSync from './components/UserSync';
+import InstallPWA from './components/InstallPWA';
 
 /**
  * @function App
@@ -37,6 +38,7 @@ function App() {
                             {/* AppRoutes contains all the defined application routes. */}
                             <AppRoutes />
 
+                            <InstallPWA />
                             {/* Vercel Speed Insights */}
                             <SpeedInsights />
                         </AppProvider>

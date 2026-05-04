@@ -5,7 +5,7 @@ const studyMaterialSchema = new mongoose.Schema({
     title: { type: String, required: true },
     type: { type: String, enum: ['video', 'notes'], required: true },
     url: { type: String, required: true }, // YouTube link or file path
-    unit: { type: Number }, // Unit number 1-5
+    unit: { type: String }, // Unit number 1-5, or 'Playlist', 'Full Course'
     description: { type: String }
 }, { timestamps: true });
 

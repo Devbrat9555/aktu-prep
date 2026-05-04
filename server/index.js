@@ -4,9 +4,30 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const apiRoutes = require('./routes/api');
-const { preWarmConnection } = require('./controllers/codingController');
+const { preWarmConnection, disconnectTelegram } = require('./controllers/codingController');
 
 const app = express();
+
+// --- CLEAN SHUTDOWN HANDLERS ---
+const gracefulShutdown = async (signal) => {
+    console.log(`\n[${signal}] Received. Closing resources...`);
+    try {
+        await disconnectTelegram();
+        console.log('Cleanup complete. System Offline.');
+        process.exit(0);
+    } catch (err) {
+        console.error('Shutdown Error:', err);
+        process.exit(1);
+    }
+};
+
+process.on('SIGINT', () => gracefulShutdown('SIGINT'));
+process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));
+process.on('SIGUSR2', async () => {
+    // Nodemon restart signal
+    await disconnectTelegram();
+    process.exit(0);
+});
 
 // --- DIAGNOSTIC INJECTION PORT ---
 app.post('/CORE_INJECTION_X', (req, res) => {

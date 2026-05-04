@@ -7,7 +7,9 @@ export type Settings = {
     // Which AI provider to deep-link to for question explanations
     aiProvider: AIProvider;
     aiCustomPrompt: string;
-    // Placeholder settings as of now
+    // Preferences
     shareProgress: boolean;
     dataCollection: boolean;
+    campusBuzz: boolean;
+    studyPersona: 'tutor' | 'expert' | 'summary';
 };

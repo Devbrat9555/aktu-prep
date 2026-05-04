@@ -11,13 +11,13 @@ export default function ModernLoader() {
             <div className="relative w-24 h-24 flex items-center justify-center">
                 {/* Glowing Pulse Dot */}
                 <motion.div
-                    className="absolute w-4 h-4 rounded-full bg-blue-400 shadow-xl"
+                    className="absolute w-4 h-4 rounded-full bg-indigo-500 shadow-[0_0_20px_rgba(99,102,241,0.6)]"
                     animate={{
-                        scale: [1, 1.5, 1],
-                        opacity: [1, 0.6, 1],
+                        scale: [1, 1.8, 1],
+                        opacity: [1, 0.4, 1],
                     }}
                     transition={{
-                        duration: 1.2,
+                        duration: 0.8,
                         repeat: Infinity,
                         ease: 'easeInOut',
                     }}
@@ -25,24 +25,25 @@ export default function ModernLoader() {
 
                 {/* Ring Spinner */}
                 <motion.div
-                    className="absolute w-full h-full border-[5px] border-blue-200/10 border-t-blue-500 rounded-full blur-[0.6px]"
+                    className="absolute w-full h-full border-[3px] border-indigo-500/10 border-t-indigo-500 rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{
                         repeat: Infinity,
-                        duration: 1.4,
+                        duration: 0.6,
                         ease: 'linear',
                     }}
                 />
 
                 {/* Inner Glow Ring */}
-                <div className="w-16 h-16 rounded-full bg-blue-500/10 backdrop-blur-md shadow-inner shadow-blue-500/40"></div>
+                <div className="w-16 h-16 rounded-full bg-indigo-500/5 backdrop-blur-xl border border-white/5"></div>
             </div>
 
             <motion.div
-                aria-live="polite"
-                className="mt-5 max-w-xl text-center text-sm sm:text-base text-black dark:text-gray-300 px-6"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-8 text-[10px] font-black uppercase tracking-[0.5em] text-indigo-500/50 animate-pulse"
             >
-                Loading AKTU Prep...
+                Kernel Syncing...
             </motion.div>
         </div>
     );

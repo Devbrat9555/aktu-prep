@@ -14,6 +14,7 @@ const adminAuth = require('../middleware/adminAuth');
 router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);
 router.post('/auth/sync', authController.syncUser);
+router.post('/auth/profile', authController.updateProfile);
 
 // Content Routes
 router.get('/courses', contentController.getCourses);
@@ -22,6 +23,7 @@ router.get('/semesters', contentController.getSemesters);
 router.get('/subjects', contentController.getSubjects);
 router.get('/subjects/:id', contentController.getSubjectById);
 router.get('/questions', contentController.getQuestions);
+router.get('/drive/notes', contentController.getDriveNotes);
 
 // Coding Routes
 router.get('/coding', codingController.getCodingResources);

@@ -47,6 +47,7 @@ const QuestionsPage = () => {
 
     // Admin Modal State
     const [showAddModal, setShowAddModal] = useState(false);
+    const [viewPdfUrl, setViewPdfUrl] = useState(null); // For embedded PDF viewer
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [newMaterial, setNewMaterial] = useState({
         title: '',
@@ -154,9 +155,28 @@ const QuestionsPage = () => {
 
     // --- SMART SORTING & FILTERING ---
     const getUnitNumber = (m) => {
-        if (m.unit) return m.unit;
+        if (m.unit === 'Full Course') return 0; // Show first
+        if (m.unit) return parseInt(m.unit) || 999;
         const match = m.title.match(/(?:Unit|Unit-)\s*(\d+)/i);
         return match ? parseInt(match[1]) : 999;
+    };
+
+    const getDriveDownloadUrl = (url) => {
+        if (!url || !url.includes('drive.google.com')) return url;
+        const match = url.match(/\/d\/([^\/]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+        }
+        return url;
+    };
+
+    const getDrivePreviewUrl = (url) => {
+        if (!url || !url.includes('drive.google.com')) return url;
+        const match = url.match(/\/d\/([^\/]+)/);
+        if (match && match[1]) {
+            return `https://drive.google.com/file/d/${match[1]}/preview`;
+        }
+        return url;
     };
 
     const filteredMaterials = materials
@@ -170,6 +190,7 @@ const QuestionsPage = () => {
             const matchesUnit = activeUnit === 'All' || 
                                (activeUnit === 'Revision' && m.title.toLowerCase().includes('revision')) ||
                                (activeUnit === 'Quantum' && m.title.toLowerCase().includes('quantum')) ||
+                               (activeUnit === 'Full Course' && m.unit === 'Full Course') ||
                                (mUnit.toString() === activeUnit);
                                
             return matchesSearch && matchesUnit;
@@ -248,14 +269,6 @@ const QuestionsPage = () => {
                                 </button>
                             )}
 
-                            <a 
-                                href="https://aktu-prep.onrender.com" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="px-6 py-4 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 rounded-[1.5rem] text-amber-500 font-black text-[10px] uppercase tracking-widest transition-all flex items-center shadow-xl shadow-amber-500/5"
-                            >
-                                <Globe size={16} className="mr-2" /> AKTU Prep Mirror
-                            </a>
                         </div>
                     </div>
                 </div>
@@ -373,13 +386,13 @@ const QuestionsPage = () => {
                                 />
                             </div>
                             <div className="flex overflow-x-auto pb-2 md:pb-0 gap-3 w-full md:w-auto no-scrollbar">
-                                {['All', '1', '2', '3', '4', '5', 'Quantum', 'Revision'].map((unit) => (
+                                {['All', 'Full Course', '1', '2', '3', '4', '5', 'Quantum', 'Revision'].map((unit) => (
                                     <button
                                         key={unit}
                                         onClick={() => setActiveUnit(unit)}
                                         className={`px-6 py-4 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all border whitespace-nowrap ${activeUnit === unit ? 'bg-indigo-600 border-indigo-500 text-white shadow-lg shadow-indigo-600/30' : 'bg-slate-800/50 border-white/5 text-slate-500 hover:text-white'}`}
                                     >
-                                        {unit === 'All' || unit === 'Revision' || unit === 'Quantum' ? unit : `Unit ${unit}`}
+                                        {unit === 'All' || unit === 'Revision' || unit === 'Quantum' || unit === 'Full Course' ? unit : `Unit ${unit}`}
                                     </button>
                                 ))}
                             </div>
@@ -427,16 +440,14 @@ const QuestionsPage = () => {
                                     ) : (
                                         <div className="flex flex-col gap-4">
                                             <div className="grid grid-cols-2 gap-4">
-                                                <a 
-                                                    href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer" 
+                                                <button 
+                                                    onClick={() => setViewPdfUrl(getDrivePreviewUrl(m.url))}
                                                     className="flex items-center justify-center py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-indigo-600/40"
                                                 >
                                                     <Eye size={20} weight="bold" className="mr-2" /> VIEW
-                                                </a>
+                                                </button>
                                                 <a 
-                                                    href={m.url.startsWith('http') ? m.url : `${SERVER_URL}${m.url}`} 
+                                                    href={getDriveDownloadUrl(m.url)} 
                                                     download 
                                                     target="_blank"
                                                     rel="noopener noreferrer"
@@ -445,14 +456,6 @@ const QuestionsPage = () => {
                                                     <DownloadSimple size={20} weight="bold" className="mr-2" /> DOWNLOAD
                                                 </a>
                                             </div>
-                                            <a 
-                                                href="https://aktu-prep.onrender.com" 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                                className="flex items-center justify-center py-3 bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 border border-amber-500/20 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
-                                            >
-                                                <Lightning size={14} className="mr-2" /> AKTU Prep Backup (If file missing)
-                                            </a>
                                         </div>
                                     )}
                                 </motion.div>
@@ -513,7 +516,7 @@ const QuestionsPage = () => {
                                             onChange={(e) => setNewMaterial({...newMaterial, unit: e.target.value})}
                                             className="w-full px-6 py-4 bg-slate-800/50 border border-white/5 rounded-2xl text-white outline-none focus:border-indigo-500/50 appearance-none cursor-pointer"
                                         >
-                                            {[1, 2, 3, 4, 5, 'Revision', 'Quantum'].map(u => <option key={u} value={u}>{u}</option>)}
+                                            {[1, 2, 3, 4, 5, 'Revision', 'Quantum', 'Full Course'].map(u => <option key={u} value={u}>{u}</option>)}
                                         </select>
                                     </div>
                                     <div className="space-y-2">
@@ -574,6 +577,52 @@ const QuestionsPage = () => {
                                     </button>
                                 </div>
                             </form>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
+
+            {/* Embedded PDF Viewer Modal */}
+            <AnimatePresence>
+                {viewPdfUrl && (
+                    <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 md:p-10 bg-slate-950/90 backdrop-blur-xl">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.9 }}
+                            className="relative w-full h-full max-w-6xl bg-slate-900 rounded-[2.5rem] border border-white/10 overflow-hidden shadow-2xl flex flex-col"
+                        >
+                            <div className="p-6 border-b border-white/5 flex items-center justify-between bg-slate-900/50">
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white">
+                                        <FilePdf size={24} weight="fill" />
+                                    </div>
+                                    <h2 className="text-lg font-black text-white italic uppercase tracking-tight">Study Material Preview</h2>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <a 
+                                        href={getDriveDownloadUrl(viewPdfUrl)} 
+                                        download 
+                                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 hover:text-white transition-all flex items-center gap-2 text-xs font-black uppercase tracking-widest"
+                                    >
+                                        <DownloadSimple size={20} /> <span className="hidden sm:inline">Download</span>
+                                    </a>
+                                    <button 
+                                        onClick={() => setViewPdfUrl(null)} 
+                                        className="p-3 bg-white/5 hover:bg-white/10 rounded-xl text-slate-400 hover:text-white transition-all"
+                                    >
+                                        <X size={24} weight="bold" />
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="flex-1 bg-slate-800/50">
+                                <iframe 
+                                    src={viewPdfUrl} 
+                                    className="w-full h-full border-none"
+                                    allow="autoplay"
+                                    title="PDF Preview"
+                                ></iframe>
+                            </div>
                         </motion.div>
                     </div>
                 )}

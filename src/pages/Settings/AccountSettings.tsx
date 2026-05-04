@@ -1,29 +1,59 @@
 import { useState } from 'react';
 import { getUserProfile, updateUserProfile } from '../../helper.ts';
-import { User, IdentificationCard, GraduationCap, FloppyDisk, CircleNotch, BookOpen, Hash } from '@phosphor-icons/react';
+import { User, IdentificationCard, GraduationCap, FloppyDisk, CircleNotch, BookOpen, Hash, CheckCircle, Trophy } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button.tsx';
 import { Input } from '@/components/ui/input.tsx';
 import { Label } from '@/components/ui/label.tsx';
 import { toast } from 'sonner';
+import { useUser } from '@clerk/clerk-react';
+import axios from 'axios';
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 
 const AccountSettings = () => {
-    const user = getUserProfile();
-    const [name, setName] = useState(user?.name || '');
-    const [college, setCollege] = useState(user?.college || 'Prasad Institute of Technology (PIT)');
-    const [rollNo, setRollNo] = useState(user?.rollNo || '');
-    const [branch, setBranch] = useState(user?.branch || 'Computer Science');
-    const [year, setYear] = useState(user?.year || '3rd Year');
+    const { user: clerkUser } = useUser();
+    const storedIdentity = JSON.parse(localStorage.getItem('student_identity') || '{}');
+    
+    const [name, setName] = useState(storedIdentity.name || '');
+    const [college, setCollege] = useState(storedIdentity.college || 'Prasad Institute of Technology (PIT)');
+    const [rollNo, setRollNo] = useState(storedIdentity.rollNo || '');
+    const [branch, setBranch] = useState(storedIdentity.branch || 'Computer Science');
+    const [year, setYear] = useState(storedIdentity.year || '3rd Year');
+    const [points, setPoints] = useState(storedIdentity.points || 0);
+    const [isVerified, setIsVerified] = useState(storedIdentity.isVerified || false);
     const [isSaving, setIsSaving] = useState(false);
 
     const handleSaveButton = async () => {
+        if (!clerkUser) {
+            toast.error('Please login to sync your ID card.');
+            return;
+        }
+
         setIsSaving(true);
         try {
-            const updated = { ...user, name, college, rollNo, branch, year };
-            updateUserProfile(updated);
-            localStorage.setItem('student_identity', JSON.stringify(updated));
-            toast.success('Academic ID Updated! 🎓');
+            const email = clerkUser.primaryEmailAddress?.emailAddress;
+            const res = await axios.post(`${API_BASE_URL}/auth/profile`, {
+                email, name, college, rollNo, branch, year
+            });
+
+            const updatedIdentity = { 
+                name, college, rollNo, branch, year, 
+                points: res.data.user.points, 
+                isVerified: res.data.user.isVerified 
+            };
+            
+            localStorage.setItem('student_identity', JSON.stringify(updatedIdentity));
+            setPoints(res.data.user.points);
+            setIsVerified(res.data.user.isVerified);
+
+            if (res.data.rewarded) {
+                toast.success('Reward Unlocked: 100 Academic Credits! 🏆');
+            } else {
+                toast.success('Academic ID Synced to Server! 🎓');
+            }
         } catch (err) {
-            toast.error('Unable to sync ID card.');
+            console.error('Sync Error:', err);
+            toast.error('Sync failed. Admin is unreachable.');
         } finally {
             setIsSaving(false);
         }
@@ -42,8 +72,8 @@ const AccountSettings = () => {
                     <div className="relative">
                         <div className="h-32 w-32 rounded-[2.5rem] bg-indigo-600/10 border-2 border-indigo-500/20 p-1">
                             <div className="h-full w-full rounded-[2.2rem] overflow-hidden bg-slate-950 flex items-center justify-center">
-                                {user?.avatar ? (
-                                    <img src={user?.avatar} alt="Student" className="w-full h-full object-cover" />
+                                {clerkUser?.imageUrl ? (
+                                    <img src={clerkUser.imageUrl} alt="Student" className="w-full h-full object-cover" />
                                 ) : (
                                     <User size={48} weight="duotone" className="text-indigo-400" />
                                 )}
@@ -62,8 +92,14 @@ const AccountSettings = () => {
                             </h3>
                         </div>
                         <div className="flex flex-wrap justify-center md:justify-start gap-3">
-                            <span className="px-4 py-1.5 bg-white/5 rounded-xl border border-white/5 text-[9px] font-black uppercase tracking-widest text-slate-400">PIT-OS v2.4</span>
-                            <span className="px-4 py-1.5 bg-indigo-500/10 rounded-xl border border-indigo-500/20 text-[9px] font-black uppercase tracking-widest text-indigo-400">{branch}</span>
+                            <span className="px-4 py-1.5 bg-white/5 rounded-xl border border-white/5 text-[9px] font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
+                                <CheckCircle size={14} className={isVerified ? 'text-emerald-500' : 'text-slate-700'} weight="fill" />
+                                {isVerified ? 'Verified Student' : 'Unverified'}
+                            </span>
+                            <span className="px-4 py-1.5 bg-amber-500/10 rounded-xl border border-amber-500/20 text-[9px] font-black uppercase tracking-widest text-amber-500 flex items-center gap-2">
+                                <Trophy size={14} weight="fill" />
+                                {points} Credits
+                            </span>
                         </div>
                     </div>
                 </div>

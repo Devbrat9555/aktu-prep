@@ -24,18 +24,19 @@ export default defineConfig({
                 theme_color: '#6366f1',
                 icons: [
                     {
-                        src: '/logo.svg',
+                        src: '/logo.png',
                         sizes: '192x192',
-                        type: 'image/svg',
+                        type: 'image/png',
                     },
                     {
-                        src: '/logo.svg',
+                        src: '/logo.png',
                         sizes: '512x512',
-                        type: 'image/svg',
+                        type: 'image/png',
                     },
                 ],
             },
             workbox: {
+                cleanupOutdatedCaches: true,
                 navigateFallbackDenylist: [/^\/api/],
                 globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
                 runtimeCaching: [

@@ -184,6 +184,22 @@ exports.getAdminData = async (req, res) => {
     }
 };
 
+const { fetchFilesFromFolder } = require('../utils/googleDrive');
+
+exports.getDriveNotes = async (req, res) => {
+    try {
+        const { folderId } = req.query;
+        // Default to the provided folder if none specified
+        const targetFolderId = folderId || '1e-oxKRm2DCqgKLJ_cSkEBoW2EROm_Gib';
+        
+        const files = await fetchFilesFromFolder(targetFolderId);
+        res.json(files);
+    } catch (err) {
+        console.error('Drive fetch error:', err.message);
+        res.status(500).json({ error: err.message });
+    }
+};
+
 exports.getSubjectById = async (req, res) => {
     try {
         const { id } = req.params;

@@ -15,7 +15,6 @@ const STUDY_PERSONAS = [
 
 const AskAI = () => {
     const { settings, handleSettingToggle } = useSettings();
-    const [persona, setPersona] = useState('expert');
 
     return (
         <div className="space-y-10">
@@ -74,9 +73,9 @@ const AskAI = () => {
                     {STUDY_PERSONAS.map((p) => (
                         <button
                             key={p.id}
-                            onClick={() => setPersona(p.id)}
+                            onClick={() => handleSettingToggle('studyPersona', p.id as any)}
                             className={`flex flex-col items-center gap-3 p-6 rounded-[2rem] border transition-all text-center
-                            ${persona === p.id ? 'bg-rose-600/10 border-rose-500 text-rose-400 shadow-lg' : 'bg-slate-950 border-white/5 text-slate-500 hover:border-white/10'}`}
+                            ${settings.studyPersona === p.id ? 'bg-rose-600/10 border-rose-500 text-rose-400 shadow-lg' : 'bg-slate-950 border-white/5 text-slate-500 hover:border-white/10'}`}
                         >
                             <div className="text-2xl">{p.icon}</div>
                             <div className="space-y-1">

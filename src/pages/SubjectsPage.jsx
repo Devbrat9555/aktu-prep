@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { getSubjects } from '../services/api';
-import { BookOpenText, ArrowLeft, House, CaretRight, Notebook, ArrowSquareOut } from '@phosphor-icons/react';
-import { motion } from 'framer-motion';
+import { BookOpenText, ArrowLeft, House, CaretRight, Notebook, ArrowSquareOut, Plus, X, Trash } from '@phosphor-icons/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useUser } from '@clerk/clerk-react';
+import { adminApi } from '../services/api';
+import { toast } from 'sonner';
 
 const SubjectsPage = () => {
     const { course, year, semester } = useParams();
+    const { user } = useUser();
+    const isAdmin = user?.primaryEmailAddress?.emailAddress === 'vrat1087@gmail.com';
     const [subjects, setSubjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [showAddModal, setShowAddModal] = useState(false);
+    const [newSubjectName, setNewSubjectName] = useState('');
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const navigate = useNavigate();
 
-    useEffect(() => {
+    const fetchSubjects = () => {
+        setLoading(true);
         getSubjects(course, year, semester)
             .then((res) => {
                 setSubjects(res.data);
@@ -20,7 +29,49 @@ const SubjectsPage = () => {
                 console.error(err);
                 setLoading(false);
             });
+    };
+
+    useEffect(() => {
+        fetchSubjects();
     }, [course, year, semester]);
+
+    const handleAddSubject = async (e) => {
+        e.preventDefault();
+        if (!newSubjectName.trim()) return;
+        
+        setIsSubmitting(true);
+        try {
+            await adminApi.addSubject({
+                name: newSubjectName,
+                course,
+                year: parseInt(year),
+                semester: parseInt(semester)
+            });
+            toast.success('Subject added successfully');
+            setNewSubjectName('');
+            setShowAddModal(false);
+            fetchSubjects(); // Refresh list
+        } catch (err) {
+            console.error(err);
+            toast.error('Failed to add subject');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleDeleteSubject = async (e, subjectId) => {
+        e.stopPropagation(); // Don't navigate
+        if (!window.confirm('Are you sure you want to delete this subject? All associated questions and notes will remain but the subject will be removed from this list.')) return;
+        
+        try {
+            await adminApi.deleteResource('subjects', subjectId);
+            toast.success('Subject deleted');
+            fetchSubjects(); // Refresh list
+        } catch (err) {
+            console.error(err);
+            toast.error('Failed to delete subject');
+        }
+    };
 
     if (loading) return (
         <div className="flex items-center justify-center min-h-screen bg-[#0f172a]">
@@ -59,6 +110,14 @@ const SubjectsPage = () => {
                             AVAILABLE <br />
                             <span className="text-indigo-500 underline decoration-indigo-500/20 underline-offset-8">SUBJECTS</span>
                         </h1>
+                        {isAdmin && (
+                            <button 
+                                onClick={() => setShowAddModal(true)}
+                                className="mt-6 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-white font-black text-xs uppercase tracking-widest transition-all flex items-center shadow-xl shadow-indigo-600/20"
+                            >
+                                <Plus size={20} weight="bold" className="mr-2" /> Add Subject
+                            </button>
+                        )}
                     </div>
                     <p className="text-slate-400 font-medium max-w-md">
                         Explore the curriculum for Semester {semester}. Each subject contains hand-picked papers, detailed solutions, and comprehensive notes.
@@ -85,8 +144,18 @@ const SubjectsPage = () => {
                                 </div>
                             </div>
 
-                            <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-slate-500 group-hover:bg-indigo-500 group-hover:text-white group-hover:rotate-45 transition-all duration-500">
-                                <ArrowSquareOut size={24} weight="bold" />
+                            <div className="flex items-center gap-4">
+                                {isAdmin && (
+                                    <button 
+                                        onClick={(e) => handleDeleteSubject(e, subject._id)}
+                                        className="w-10 h-10 rounded-full bg-red-500/10 text-red-500 hover:bg-red-500 hover:text-white transition-all flex items-center justify-center relative z-20"
+                                    >
+                                        <Trash size={18} weight="bold" />
+                                    </button>
+                                )}
+                                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-slate-500 group-hover:bg-indigo-500 group-hover:text-white group-hover:rotate-45 transition-all duration-500">
+                                    <ArrowSquareOut size={24} weight="bold" />
+                                </div>
                             </div>
                         </motion.div>
                     )) : (
@@ -111,6 +180,58 @@ const SubjectsPage = () => {
                     </button>
                 </motion.div>
             </div>
+
+            {/* Add Subject Modal */}
+            <AnimatePresence>
+                {showAddModal && (
+                    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-md">
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                            className="bg-slate-900 border border-white/10 rounded-[3rem] w-full max-w-md overflow-hidden shadow-2xl"
+                        >
+                            <div className="p-8 border-b border-white/5 flex items-center justify-between bg-indigo-600/5">
+                                <div className="flex items-center gap-3">
+                                    <div className="p-3 bg-indigo-600 rounded-2xl text-white">
+                                        <Plus size={24} weight="bold" />
+                                    </div>
+                                    <div>
+                                        <h2 className="text-xl font-black text-white italic uppercase tracking-tight">Add Subject</h2>
+                                        <p className="text-slate-500 text-xs font-medium uppercase tracking-widest mt-1">{course} • Year {year} • Sem {semester}</p>
+                                    </div>
+                                </div>
+                                <button onClick={() => setShowAddModal(false)} className="p-2 hover:bg-white/5 rounded-xl text-slate-500 hover:text-white transition-all">
+                                    <X size={24} weight="bold" />
+                                </button>
+                            </div>
+
+                            <form onSubmit={handleAddSubject} className="p-8 space-y-6">
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-2">Subject Name</label>
+                                    <input 
+                                        type="text" 
+                                        required
+                                        autoFocus
+                                        placeholder="e.g. Distributed Systems"
+                                        value={newSubjectName}
+                                        onChange={(e) => setNewSubjectName(e.target.value)}
+                                        className="w-full px-6 py-4 bg-slate-800/50 border border-white/5 rounded-2xl text-white outline-none focus:border-indigo-500/50 transition-all"
+                                    />
+                                </div>
+
+                                <button 
+                                    type="submit" 
+                                    disabled={isSubmitting}
+                                    className={`w-full py-5 rounded-2xl font-black text-xs uppercase tracking-[0.3em] text-white shadow-2xl transition-all ${isSubmitting ? 'bg-slate-700 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-500 shadow-indigo-600/30'}`}
+                                >
+                                    {isSubmitting ? 'CREATING...' : 'CREATE SUBJECT'}
+                                </button>
+                            </form>
+                        </motion.div>
+                    </div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

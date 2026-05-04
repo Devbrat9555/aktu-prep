@@ -79,8 +79,8 @@ const AppSettings = () => {
                             </div>
                         </div>
                         <ToggleSwitch
-                            isOn={true}
-                            onToggle={() => {}}
+                            isOn={settings.campusBuzz}
+                            onToggle={() => handleSettingToggle('campusBuzz')}
                         />
                     </div>
                 </div>
@@ -111,20 +111,22 @@ const AppSettings = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div className="p-8 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col gap-2">
                         <span className="text-slate-500 font-black uppercase tracking-widest text-[9px]">Focus Efficiency</span>
-                        <span className="text-2xl font-black text-indigo-500 tracking-tighter italic">98.4%</span>
+                        <span className="text-2xl font-black text-indigo-500 tracking-tighter italic">
+                            {JSON.parse(localStorage.getItem('student_attendance') || '[]').length > 0 ? '94.2%' : '100%'}
+                        </span>
                         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-2">
-                            <div className="w-[98%] h-full bg-indigo-500" />
+                            <div className="w-[94%] h-full bg-indigo-500" />
                         </div>
                     </div>
                     <div className="p-8 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col gap-2">
                         <span className="text-slate-500 font-black uppercase tracking-widest text-[9px]">Neural Latency</span>
-                        <span className="text-2xl font-black text-rose-500 tracking-tighter italic">14ms</span>
+                        <span className="text-2xl font-black text-rose-500 tracking-tighter italic">12ms</span>
                         <p className="text-[8px] text-slate-600 font-bold uppercase tracking-widest">Direct Link Active</p>
                     </div>
                     <div className="p-8 bg-black/40 rounded-[2rem] border border-white/5 flex flex-col gap-2">
                         <span className="text-slate-500 font-black uppercase tracking-widest text-[9px]">OS Integrity</span>
                         <span className="text-2xl font-black text-emerald-500 tracking-tighter italic">STABLE</span>
-                        <p className="text-[8px] text-slate-600 font-bold uppercase tracking-widest">PIT-KERNEL-2.4</p>
+                        <p className="text-[8px] text-slate-600 font-bold uppercase tracking-widest">PIT-KERNEL-{APP_VERSION}</p>
                     </div>
                 </div>
             </div>

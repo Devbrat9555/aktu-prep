@@ -52,3 +52,28 @@ exports.syncUser = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+exports.updateProfile = async (req, res) => {
+    try {
+        const { email, name, college, rollNo, branch, year } = req.body;
+        const user = await User.findOne({ email });
+        if (!user) return res.status(404).json({ message: 'User not found' });
+
+        user.name = name || user.name;
+        user.college = college || user.college;
+        user.rollNo = rollNo || user.rollNo;
+        user.branch = branch || user.branch;
+        user.year = year || user.year;
+
+        // Reward system: Give points if all fields are filled
+        if (user.college && user.rollNo && user.branch && user.year && !user.isVerified) {
+            user.points += 100;
+            user.isVerified = true;
+        }
+
+        await user.save();
+        res.json({ message: 'Profile synced successfully', user, rewarded: user.isVerified });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};

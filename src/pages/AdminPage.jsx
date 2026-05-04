@@ -160,7 +160,10 @@ const AdminPage = () => {
         return (
             <div className="min-h-screen bg-[#020617] flex flex-col items-center justify-center space-y-8">
                 <div className="relative">
-                    <div className="w-24 h-24 border-t-2 border-b-2 border-indigo-500 rounded-full animate-spin"></div>
+                    <div 
+                        className="w-24 h-24 border-t-2 border-b-2 border-indigo-500 rounded-full animate-spin"
+                        style={{ animationDuration: '0.6s' }}
+                    ></div>
                     <div className="absolute inset-0 flex items-center justify-center">
                         <Cpu size={32} className="text-indigo-500 animate-pulse" />
                     </div>
@@ -627,6 +630,7 @@ const AdminPage = () => {
                                 </div>
                             </div>
                         )}
+                        {activeTab === 'feedback' && (
                             <div className="space-y-12 animate-in fade-in">
                                 <h2 className="text-3xl font-black italic uppercase tracking-tighter">Pulse <span className="text-rose-500">Monitor</span></h2>
                                 <div className="space-y-6">

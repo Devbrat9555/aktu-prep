@@ -7,39 +7,12 @@ const SERVER_URL = 'https://aktu-prep.onrender.com/api/admin/notes/bulk-sync';
 const ADMIN_EMAIL = 'vrat1087@gmail.com';
 const NOTES_DIR = path.join(__dirname, 'public/notes');
 
-async function uploadFile(filePath, relativePath) {
-    try {
-        const formData = new FormData();
-        formData.append('files', fs.createReadStream(filePath));
-        formData.append('paths', relativePath);
-
-        const response = await axios.post(SERVER_URL, formData, {
-            headers: {
-                ...formData.getHeaders(),
-                'x-admin-email': ADMIN_EMAIL
-            },
-            maxContentLength: Infinity,
-            maxBodyLength: Infinity,
-            timeout: 120000 // 2 minute timeout
-        });
-        console.log(`[SUCCESS] ${relativePath}: ${response.data.message}`);
-    } catch (error) {
-        const errorData = error.response?.data;
-        if (errorData && errorData.error) {
-            console.error(`[FAILED] ${relativePath}: ${errorData.error} (Context: ${errorData.context})`);
-            if (errorData.stack) console.error(errorData.stack.split('\n')[0]); // Print first line of stack
-        } else {
-            console.error(`[FAILED] ${relativePath}: ${error.message}`);
-        }
-    }
-}
-
 async function walk(dir, fileList = []) {
     const files = fs.readdirSync(dir);
     for (const file of files) {
         const filePath = path.join(dir, file);
         if (fs.statSync(filePath).isDirectory()) {
-            walk(filePath, fileList);
+            await walk(filePath, fileList);
         } else if (file.endsWith('.pdf')) {
             fileList.push(filePath);
         }
@@ -47,24 +20,71 @@ async function walk(dir, fileList = []) {
     return fileList;
 }
 
+async function uploadWithRetry(filePath, relativePath, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            const formData = new FormData();
+            formData.append('files', fs.createReadStream(filePath));
+            formData.append('paths', relativePath);
+
+            const response = await axios.post(SERVER_URL, formData, {
+                headers: {
+                    ...formData.getHeaders(),
+                    'x-admin-email': ADMIN_EMAIL
+                },
+                maxContentLength: Infinity,
+                maxBodyLength: Infinity,
+                timeout: 180000 // 3 minute timeout
+            });
+            const logMsg = `[SUCCESS] ${new Date().toLocaleTimeString()} - ${relativePath}\n`;
+            console.log(logMsg.trim());
+            fs.appendFileSync('sync_progress.txt', logMsg);
+            return true;
+        } catch (error) {
+            const isLastRetry = i === retries - 1;
+            const errorMsg = error.response?.status === 502 ? 'Server Overloaded (502)' : error.message;
+            
+            if (isLastRetry) {
+                const logError = `[FATAL] ${relativePath}: ${errorMsg} after ${retries} attempts\n`;
+                console.error(logError.trim());
+                fs.appendFileSync('sync_progress.txt', logError);
+            } else {
+                console.log(`[RETRYING ${i+1}/${retries}] ${relativePath}: ${errorMsg}`);
+                await new Promise(resolve => setTimeout(resolve, 3000)); // Wait 3s before retry
+            }
+        }
+    }
+    return false;
+}
+
 async function main() {
-    console.log('--- STARTING REAL CORE DATA INJECTION ---');
+    console.log('--- STARTING ROBUST CORE DATA INJECTION ---');
     if (!fs.existsSync(NOTES_DIR)) {
         console.error('Notes directory not found!');
         return;
     }
 
     const allFiles = await walk(NOTES_DIR);
-    console.log(`Found ${allFiles.length} PDF files. Starting upload...`);
+    console.log(`Found ${allFiles.length} PDF files. Starting upload with retry logic...`);
+
+    const total = allFiles.length;
+    let completed = 0;
 
     for (const filePath of allFiles) {
         const relativePath = path.relative(path.join(__dirname, 'public'), filePath).replace(/\\/g, '/');
-        await uploadFile(filePath, relativePath);
-        // 1.5s delay to prevent server/network overwhelm
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        
+        const success = await uploadWithRetry(filePath, relativePath);
+        completed++;
+        
+        if (completed % 5 === 0) {
+            console.log(`Overall Progress: ${completed}/${total} (${((completed/total)*100).toFixed(1)}%)`);
+        }
+        
+        // Safety delay
+        await new Promise(resolve => setTimeout(resolve, 800));
     }
 
-    console.log('--- REAL DATA INJECTION COMPLETE ---');
+    console.log('--- ROBUST DATA INJECTION COMPLETE ---');
 }
 
 main();

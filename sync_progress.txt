@@ -1,0 +1,570 @@
+[SUCCESS] 10:57:11 am - notes/AI/AI Notes.pdf
+[SUCCESS] 10:57:21 am - notes/AI/AI ALL UNIT BY BREVI LEARNING.pdf
+[SUCCESS] 10:58:02 am - notes/AI/Ai All Unit Combined Notes PDF.pdf
+[SUCCESS] 10:58:11 am - notes/AI/AI_in_6_Hours_lyst1728638806090 (1).pdf
+[SUCCESS] 10:58:17 am - notes/AI/AI Quantum 2025.pdf
+[SUCCESS] 10:58:21 am - notes/BIG DATA/5_6208373044524619147.pdf
+[SUCCESS] 10:58:57 am - notes/AI/Artificial Intelligence All unit Multi Atom.pdf
+[SUCCESS] 10:59:06 am - notes/BIG DATA/Big Data Unit 2 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 10:59:06 am - notes/AI/AI QUANTUM.pdf
+[SUCCESS] 10:59:10 am - notes/BIG DATA/Big Data 3rd yr.pdf
+[SUCCESS] 10:59:11 am - notes/BIG DATA/Big Data Unit 4 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 10:59:12 am - notes/BIG DATA/Big Data Unit 3 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 10:59:17 am - notes/BIG DATA/Unit 1 Big Data Tutorial.pdf
+[SUCCESS] 10:59:18 am - notes/BIG DATA/Big Data Unit 5 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 10:59:21 am - notes/BIG DATA/Unit 2 Big Data Tutorial.pdf
+[SUCCESS] 10:59:23 am - notes/BIG DATA/Unit 3 Big Data Tutorial.pdf
+[SUCCESS] 10:59:25 am - notes/BIG DATA/Big-Data-All-Units-By-MultiAtoms.pdf
+[SUCCESS] 10:59:28 am - notes/BIG DATA/Unit 4 Big Data Tutorial.pdf
+[SUCCESS] 10:59:28 am - notes/BIG DATA/Unit 5 Big Data Tutorial.pdf
+[SUCCESS] 11:00:11 am - notes/CHEMISTRY/CHEMISTRY UNIT 1.pdf
+[SUCCESS] 11:00:13 am - notes/CHEMISTRY/CHEMISTRY ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:00:35 am - notes/CHEMISTRY/CHEMISTRY UNIT 3.pdf
+[SUCCESS] 11:00:43 am - notes/CHEMISTRY/Chemistry Quantum Series.pdf
+[SUCCESS] 11:00:50 am - notes/CHEMISTRY/CHEMISTRY UNIT 4.pdf
+[SUCCESS] 11:00:54 am - notes/CHEMISTRY/CHEMISTRY UNIT 2.pdf
+[SUCCESS] 11:00:56 am - notes/CHEMISTRY/Engineering Chemistry Important Que.pdf
+[SUCCESS] 11:01:22 am - notes/CHEMISTRY/Chemistry_BTech_1st_sem_.pdf
+[SUCCESS] 11:01:29 am - notes/CHEMISTRY/CHEMISTRY UNIT 5.pdf
+[SUCCESS] 11:01:38 am - notes/CLOUD COMPUTING/CHAPTER 1 CLOUD COMPUTING (1).pdf
+[SUCCESS] 11:01:43 am - notes/CLOUD COMPUTING/CHAPTER 2 CLOUD COMPUTING.pdf
+[SUCCESS] 11:01:50 am - notes/CLOUD COMPUTING/CHAPTER 3 CLOUD COMPUTING.pdf
+[SUCCESS] 11:02:03 am - notes/CLOUD COMPUTING/CHAPTER 5 CLOUD COMPUTING.pdf
+[SUCCESS] 11:02:05 am - notes/CLOUD COMPUTING/CHATER 4 CLOUD COMPUTING.pdf
+[SUCCESS] 11:02:06 am - notes/CLOUD COMPUTING/678543619-cloud-computing-quantum-koe-081 (1)_watermark (1).pdf
+[SUCCESS] 11:02:12 am - notes/CHEMISTRY/Engineering Chemistry.pdf
+[SUCCESS] 11:02:16 am - notes/CLOUD COMPUTING/Cloud Computing All Unit Combined Notes PDF.pdf
+[SUCCESS] 11:02:18 am - notes/CLOUD COMPUTING/Cloud Computing Unit 1 One shot (EduShine Classes).pdf
+[SUCCESS] 11:02:35 am - notes/CLOUD COMPUTING/CLOUD COMPUTING ALL UNIT BY MULTI ATOMS (1).pdf
+[SUCCESS] 11:02:38 am - notes/COA/COA IMP QUESTIONS.pdf
+[SUCCESS] 11:02:39 am - notes/COA/COA IMP QUESTIONS_b5182a80-f59f-46a1-bdd7-6dcdf1212364.pdf
+[SUCCESS] 11:02:46 am - notes/COA/COA QP 2017-23.pdf
+[SUCCESS] 11:02:49 am - notes/CLOUD COMPUTING/cloud-computung-all-units-by-multi-atoms.pdf
+[SUCCESS] 11:03:08 am - notes/COA/COA U-1 ONE SHOT NOTES_0034d0dc-b206-40e4-a10b-031dbf053943.pdf
+[SUCCESS] 11:03:43 am - notes/COA/COA U-2  ONE SHOT NOTES_3fa15631-4ddd-4861-a957-2ed1f5e6d05e.pdf
+[FAILED] notes/COA/COA U-3 ONE SHOT NOTES_4af1d3e7-8883-4cd7-a3e5-fad0de9000fb.pdf: Request failed with status code 502
+[FAILED] notes/COA/COA Quantum 2024-25.pdf: Request failed with status code 502
+[FAILED] notes/CLOUD COMPUTING/Cloud computing quantum 2025-26.pdf: Request failed with status code 502
+[FAILED] notes/COA/COA UNIT 1 MULTI ATOMS.pdf: stream has been aborted
+[FAILED] notes/COA/COA UNIT 2 MULTI ATOMS.pdf: stream has been aborted
+[FAILED] notes/COA/COA UNIT 3 MULTI ATOMS.pdf: stream has been aborted
+[FAILED] notes/COA/COA UNIT 4 MULTI ATOMS.pdf: stream has been aborted
+[FAILED] notes/COA/COA UNIT 5 MULTI ATOMS.pdf: stream has been aborted
+[FAILED] notes/COA/COA_Complete Notes.pdf: stream has been aborted
+[FAILED] notes/COA/COA_compressed.pdf: stream has been aborted
+[FAILED] notes/COA/COA_computer_organisation_and_architecture_,quantum,2nd_year_202.pdf: stream has been aborted
+[FAILED] notes/COA/COI UNIT-5 ONE SHOT Notes_48519261_2024_12_17_11_10 (1).pdf: stream has been aborted
+[FAILED] notes/COA/COA_U_4_ONE_SHOT_NOTES_6e9c9f83_6c3a_40ec_afdb_4d22f61f8368_1.pdf: stream has been aborted
+[FAILED] notes/Compiler Design/CD U-4 ONE SHOT P-1  P-2 Notes.pdf: stream has been aborted
+[FAILED] notes/Compiler Design/CD U-2 Combined Notes_58383320_2025_04_15_17_51.pdf: stream has been aborted
+[FAILED] notes/Compiler Design/CD-All-Units-Notes-By-Multi-Atoms (1).pdf: stream has been aborted
+[FAILED] notes/Compiler Design/CD-U-1-Combined-Notes.pdf: stream has been aborted
+[FAILED] notes/Compiler Design/CD-U-3-Combined-Notes-1.pdf: stream has been aborted
+[FAILED] notes/Compiler Design/CD-U-5-ONE-SHOT-Notes.pdf: stream has been aborted
+[FAILED] notes/Compiler Design/Compiler Design (2024-25).pdf: stream has been aborted
+[FAILED] notes/COMPUTER GRAPHICS/Computer Graphics  Unit 5 Complete Notes (RRSIMT Classes).pdf: stream has been aborted
+[FAILED] notes/COA/COA U-5 ONE SHOT NOTES_4ce790af-6f72-4e5b-8bcc-f3fc3571432c.pdf: socket hang up
+[FAILED] notes/COMPUTER GRAPHICS/COMPUTER GRAPHICS NOTES.pdf: stream has been aborted
+[FAILED] notes/COMPUTER GRAPHICS/COMPUTER GRAPHICS QUANTUM.pdf: stream has been aborted
+[FAILED] notes/COMPUTER GRAPHICS/Computer Graphics U1 One shot Notes by RRSIMT CLASSES.pdf: stream has been aborted
+[FAILED] notes/COMPUTER GRAPHICS/Computer Graphics Unit 3 One shot Notes By Rrsimt.pdf: stream has been aborted
+[FAILED] notes/COMPUTER GRAPHICS/Computer Graphics Unit 2 One Shot Notes.pdf: stream has been aborted
+[SUCCESS] 11:07:36 am - notes/AI/AI ALL UNIT BY BREVI LEARNING.pdf
+[SUCCESS] 11:08:04 am - notes/AI/Ai All Unit Combined Notes PDF.pdf
+[SUCCESS] 11:08:09 am - notes/AI/AI Notes.pdf
+[SUCCESS] 11:08:39 am - notes/AI/AI Quantum 2025.pdf
+[SUCCESS] 11:09:37 am - notes/AI/AI QUANTUM.pdf
+[SUCCESS] 11:09:42 am - notes/AI/AI_in_6_Hours_lyst1728638806090 (1).pdf
+[SUCCESS] 11:10:09 am - notes/AI/Artificial Intelligence All unit Multi Atom.pdf
+[SUCCESS] 11:10:13 am - notes/BIG DATA/5_6208373044524619147.pdf
+[SUCCESS] 11:10:42 am - notes/BIG DATA/Big Data 3rd yr.pdf
+[SUCCESS] 11:10:46 am - notes/BIG DATA/Big Data Unit 2 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 11:10:50 am - notes/BIG DATA/Big Data Unit 3 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 11:10:54 am - notes/BIG DATA/Big Data Unit 4 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 11:10:59 am - notes/BIG DATA/Big Data Unit 5 (Easy Notes ) Edushine Classes.pdf
+[SUCCESS] 11:11:11 am - notes/BIG DATA/Big-Data-All-Units-By-MultiAtoms.pdf
+[SUCCESS] 11:11:16 am - notes/BIG DATA/Unit 1 Big Data Tutorial.pdf
+[SUCCESS] 11:11:22 am - notes/BIG DATA/Unit 2 Big Data Tutorial.pdf
+[SUCCESS] 11:11:26 am - notes/BIG DATA/Unit 3 Big Data Tutorial.pdf
+[SUCCESS] 11:11:32 am - notes/BIG DATA/Unit 4 Big Data Tutorial.pdf
+[SUCCESS] 11:11:37 am - notes/BIG DATA/Unit 5 Big Data Tutorial.pdf
+[SUCCESS] 11:12:11 am - notes/CHEMISTRY/CHEMISTRY ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:13:19 am - notes/CHEMISTRY/Chemistry Quantum Series.pdf
+[SUCCESS] 11:13:38 am - notes/CHEMISTRY/CHEMISTRY UNIT 1.pdf
+[SUCCESS] 11:13:52 am - notes/CHEMISTRY/CHEMISTRY UNIT 2.pdf
+[SUCCESS] 11:14:01 am - notes/CHEMISTRY/CHEMISTRY UNIT 3.pdf
+[SUCCESS] 11:14:07 am - notes/CHEMISTRY/CHEMISTRY UNIT 4.pdf
+[SUCCESS] 11:14:22 am - notes/CHEMISTRY/CHEMISTRY UNIT 5.pdf
+[SUCCESS] 11:14:33 am - notes/CHEMISTRY/Chemistry_BTech_1st_sem_.pdf
+[SUCCESS] 11:14:35 am - notes/CHEMISTRY/Engineering Chemistry Important Que.pdf
+[SUCCESS] 11:15:01 am - notes/CHEMISTRY/Engineering Chemistry.pdf
+[SUCCESS] 11:15:17 am - notes/CLOUD COMPUTING/678543619-cloud-computing-quantum-koe-081 (1)_watermark (1).pdf
+[SUCCESS] 11:15:20 am - notes/CLOUD COMPUTING/CHAPTER 1 CLOUD COMPUTING (1).pdf
+[SUCCESS] 11:15:24 am - notes/CLOUD COMPUTING/CHAPTER 2 CLOUD COMPUTING.pdf
+[SUCCESS] 11:15:27 am - notes/CLOUD COMPUTING/CHAPTER 3 CLOUD COMPUTING.pdf
+[SUCCESS] 11:15:32 am - notes/CLOUD COMPUTING/CHAPTER 5 CLOUD COMPUTING.pdf
+[SUCCESS] 11:15:35 am - notes/CLOUD COMPUTING/CHATER 4 CLOUD COMPUTING.pdf
+[SUCCESS] 11:15:46 am - notes/CLOUD COMPUTING/CLOUD COMPUTING ALL UNIT BY MULTI ATOMS (1).pdf
+[SUCCESS] 11:15:51 am - notes/CLOUD COMPUTING/Cloud Computing All Unit Combined Notes PDF.pdf
+[SUCCESS] 11:16:17 am - notes/CLOUD COMPUTING/Cloud computing quantum 2025-26.pdf
+[SUCCESS] 11:16:19 am - notes/CLOUD COMPUTING/Cloud Computing Unit 1 One shot (EduShine Classes).pdf
+[SUCCESS] 11:16:30 am - notes/CLOUD COMPUTING/cloud-computung-all-units-by-multi-atoms.pdf
+[SUCCESS] 11:16:33 am - notes/COA/COA IMP QUESTIONS.pdf
+[SUCCESS] 11:16:35 am - notes/COA/COA IMP QUESTIONS_b5182a80-f59f-46a1-bdd7-6dcdf1212364.pdf
+[SUCCESS] 11:16:38 am - notes/COA/COA QP 2017-23.pdf
+[SUCCESS] 11:16:57 am - notes/COA/COA Quantum 2024-25.pdf
+[SUCCESS] 11:17:05 am - notes/COA/COA U-1 ONE SHOT NOTES_0034d0dc-b206-40e4-a10b-031dbf053943.pdf
+[SUCCESS] 11:17:14 am - notes/COA/COA U-2  ONE SHOT NOTES_3fa15631-4ddd-4861-a957-2ed1f5e6d05e.pdf
+[SUCCESS] 11:17:22 am - notes/COA/COA U-3 ONE SHOT NOTES_4af1d3e7-8883-4cd7-a3e5-fad0de9000fb.pdf
+[SUCCESS] 11:17:27 am - notes/COA/COA U-5 ONE SHOT NOTES_4ce790af-6f72-4e5b-8bcc-f3fc3571432c.pdf
+[SUCCESS] 11:17:31 am - notes/COA/COA UNIT 1 MULTI ATOMS.pdf
+[SUCCESS] 11:17:34 am - notes/COA/COA UNIT 2 MULTI ATOMS.pdf
+[SUCCESS] 11:17:37 am - notes/COA/COA UNIT 3 MULTI ATOMS.pdf
+[SUCCESS] 11:17:40 am - notes/COA/COA UNIT 4 MULTI ATOMS.pdf
+[SUCCESS] 11:17:43 am - notes/COA/COA UNIT 5 MULTI ATOMS.pdf
+[SUCCESS] 11:17:54 am - notes/COA/COA_Complete Notes.pdf
+[SUCCESS] 11:18:06 am - notes/COA/COA_compressed.pdf
+[SUCCESS] 11:18:31 am - notes/COA/COA_computer_organisation_and_architecture_,quantum,2nd_year_202.pdf
+[SUCCESS] 11:18:34 am - notes/COA/COA_U_4_ONE_SHOT_NOTES_6e9c9f83_6c3a_40ec_afdb_4d22f61f8368_1.pdf
+[SUCCESS] 11:18:45 am - notes/COA/COI UNIT-5 ONE SHOT Notes_48519261_2024_12_17_11_10 (1).pdf
+[SUCCESS] 11:18:50 am - notes/Compiler Design/CD U-2 Combined Notes_58383320_2025_04_15_17_51.pdf
+[SUCCESS] 11:18:55 am - notes/Compiler Design/CD U-4 ONE SHOT P-1  P-2 Notes.pdf
+[SUCCESS] 11:19:13 am - notes/Compiler Design/CD-All-Units-Notes-By-Multi-Atoms (1).pdf
+[SUCCESS] 11:19:25 am - notes/Compiler Design/CD-U-1-Combined-Notes.pdf
+[SUCCESS] 11:19:28 am - notes/Compiler Design/CD-U-3-Combined-Notes-1.pdf
+[SUCCESS] 11:19:32 am - notes/Compiler Design/CD-U-5-ONE-SHOT-Notes.pdf
+[SUCCESS] 11:19:59 am - notes/Compiler Design/Compiler Design (2024-25).pdf
+[SUCCESS] 11:20:03 am - notes/COMPUTER GRAPHICS/Computer Graphics  Unit 5 Complete Notes (RRSIMT Classes).pdf
+[SUCCESS] 11:20:06 am - notes/COMPUTER GRAPHICS/COMPUTER GRAPHICS NOTES.pdf
+[SUCCESS] 11:20:08 am - notes/COMPUTER GRAPHICS/COMPUTER GRAPHICS QUANTUM.pdf
+[SUCCESS] 11:20:17 am - notes/COMPUTER GRAPHICS/Computer Graphics U1 One shot Notes by RRSIMT CLASSES.pdf
+[SUCCESS] 11:20:28 am - notes/COMPUTER GRAPHICS/Computer Graphics Unit 2 One Shot Notes.pdf
+[SUCCESS] 11:20:39 am - notes/COMPUTER GRAPHICS/Computer Graphics Unit 3 One shot Notes By Rrsimt.pdf
+[SUCCESS] 11:20:46 am - notes/COMPUTER GRAPHICS/Computer Graphics Unit 4 One shot By RRSIMT.pdf
+[SUCCESS] 11:20:51 am - notes/COMPUTER NETWORK/CN-Numericals-byMultiAtoms.pdf
+[SUCCESS] 11:20:59 am - notes/COMPUTER NETWORK/CN-Unit-1-byMultiAtoms.pdf
+[SUCCESS] 11:21:06 am - notes/COMPUTER NETWORK/CN-UNIT-2-BYMULTIATOMS  (1).pdf
+[SUCCESS] 11:21:15 am - notes/COMPUTER NETWORK/CN-UNIT-3-BYMULTIATOMS.pdf
+[SUCCESS] 11:21:21 am - notes/COMPUTER NETWORK/CN-UNIT-4-BYMULTIATOMS.pdf
+[SUCCESS] 11:21:26 am - notes/COMPUTER NETWORK/CN-UNIT-5-BYMULTIATOMS.pdf
+[SUCCESS] 11:21:28 am - notes/COMPUTER NETWORK/computer network 5 years paper solution BY ABHISHEK YADAV.pdf
+[SUCCESS] 11:22:02 am - notes/COMPUTER NETWORK/Computer Networks Quantum 2024-25.pdf
+[SUCCESS] 11:22:10 am - notes/COMPUTER NETWORK/Edushine cn unit-1.pdf
+[SUCCESS] 11:22:15 am - notes/COMPUTER NETWORK/Edushine cn unit-2.pdf
+[SUCCESS] 11:22:21 am - notes/COMPUTER NETWORK/Edushine cn unit-3.pdf
+[SUCCESS] 11:22:25 am - notes/COMPUTER NETWORK/Edushine cn unit-4.pdf
+[SUCCESS] 11:22:29 am - notes/COMPUTER NETWORK/Edushine cn unit-5.pdf
+[SUCCESS] 11:22:32 am - notes/CONSTITUTION OF INDIA/COI All 5 Units_removed.pdf
+[SUCCESS] 11:22:35 am - notes/CONSTITUTION OF INDIA/COI ALL UNIT BY ENGINEERING BEING.pdf
+[SUCCESS] 11:22:44 am - notes/CONSTITUTION OF INDIA/COI ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:22:46 am - notes/CONSTITUTION OF INDIA/COI ALL UNIT BY PSIT.pdf
+[SUCCESS] 11:22:55 am - notes/CONSTITUTION OF INDIA/coi-notes-unitwise.pdf
+[SUCCESS] 11:23:07 am - notes/CONSTITUTION OF INDIA/Constitution Of India Quantum Pdf 2024-2025 (1) (1).pdf
+[SUCCESS] 11:23:10 am - notes/CONSTITUTION OF INDIA/DOC-20251210-WA0001 (1).pdf
+[SUCCESS] 11:23:13 am - notes/CONSTITUTION OF INDIA/DOC-20251210-WA0002.pdf
+[SUCCESS] 11:23:16 am - notes/CONSTITUTION OF INDIA/DOC-20251210-WA0003.pdf
+[SUCCESS] 11:23:27 am - notes/CONSTITUTION OF INDIA/DOC-20251210-WA0004.pdf
+[SUCCESS] 11:23:36 am - notes/CYBER SECURITY/CYBER SECURITY ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:23:38 am - notes/CYBER SECURITY/Cyber Security All unit important.pdf
+[SUCCESS] 11:23:40 am - notes/CYBER SECURITY/Cyber security PYQ 2.pdf
+[SUCCESS] 11:23:42 am - notes/CYBER SECURITY/Cyber Security PYQ 3.pdf
+[SUCCESS] 11:23:44 am - notes/CYBER SECURITY/Cyber Security Unit 1 IMP Question.pdf
+[SUCCESS] 11:23:51 am - notes/CYBER SECURITY/Cyber security unit 1 one shot (1).pdf
+[SUCCESS] 11:24:05 am - notes/CYBER SECURITY/Cyber security unit 2 one shot.pdf
+[SUCCESS] 11:24:07 am - notes/CYBER SECURITY/Cyber security unit 3 Important question.pdf
+[SUCCESS] 11:24:17 am - notes/CYBER SECURITY/Cyber security unit 3 notes.pdf
+[SUCCESS] 11:24:26 am - notes/CYBER SECURITY/Cyber security Unit 4 Notes.pdf
+[SUCCESS] 11:24:33 am - notes/CYBER SECURITY/Cyber security unit 5 Notes.pdf
+[SUCCESS] 11:24:43 am - notes/CYBER SECURITY/Cyber Security.pdf
+[SUCCESS] 11:24:45 am - notes/CYBER SECURITY/CYBER-SECURITY-IMPORTANT-QUESTIONS.pdf
+[SUCCESS] 11:24:47 am - notes/CYBER SECURITY/Cyber-Security-Unit-1-COMPACT-One-Shot-Notes.pdf
+[SUCCESS] 11:24:50 am - notes/CYBER SECURITY/Cyber-Security-Unit-2-COMPACT-One-Shot-Notes.pdf
+[SUCCESS] 11:24:52 am - notes/CYBER SECURITY/Cyber-Security-Unit-3-COMPACT-One-Shot-Notes.pdf
+[SUCCESS] 11:24:55 am - notes/CYBER SECURITY/Cyber-Security-Unit-4-Compact-One-Shot-Notes.pdf
+[SUCCESS] 11:24:57 am - notes/CYBER SECURITY/Cyber-Security-Unit-5-COMPACT-One-Shot-Notes-(2)-pdf.pdf
+[SUCCESS] 11:25:04 am - notes/DAA/DAA Handwritten Notes.pdf
+[SUCCESS] 11:25:11 am - notes/DAA/DAA NOTES UNIVERSITY ACADEMY BY PSEUDONONYMOUS.pdf
+[SUCCESS] 11:25:18 am - notes/DAA/DAA UNIT 1 ONE SHOT notes.pdf
+[SUCCESS] 11:25:23 am - notes/DAA/DAA UNIT 2 ONE SHOT notes.pdf
+[SUCCESS] 11:25:28 am - notes/DAA/DAA UNIT 3 ONE SHOT notes.pdf
+[SUCCESS] 11:25:45 am - notes/DAA/DAA Unit 3,4.pdf
+[SUCCESS] 11:25:50 am - notes/DAA/DAA UNIT 4 ONE SHOT notes.pdf
+[SUCCESS] 11:25:54 am - notes/DAA/DAA UNIT 5 ONE SHOT notes.pdf
+[SUCCESS] 11:25:57 am - notes/DAA/DAA UNIT-5.pdf
+[SUCCESS] 11:26:16 am - notes/DAA/DAA unit2.pdf
+[SUCCESS] 11:26:20 am - notes/DAA/DAA-Notes.pdf
+[SUCCESS] 11:26:35 am - notes/DAA/DAA-Unit-1-by-Multiatoms.pdf
+[SUCCESS] 11:26:42 am - notes/DAA/DAA-Unit-4-by-Multiatoms (2).pdf
+[SUCCESS] 11:26:47 am - notes/DAA/Daa-Unit-5-by-Multiatoms.pdf
+[SUCCESS] 11:27:06 am - notes/DAA/Design Analysis and Algorithm 2024-2025.pdf
+[SUCCESS] 11:27:10 am - notes/DAA/Design and analysis of algorithms.pdf
+[SUCCESS] 11:27:16 am - notes/DAA/UNIT-02-DAA-By-Multiatoms (1).pdf
+[SUCCESS] 11:27:23 am - notes/DAA/Unit-3D.A.A-by-Multiatoms (1).pdf
+[SUCCESS] 11:27:25 am - notes/DATA ANALYTICS/Data Analytics All 5 Units.pdf
+[SUCCESS] 11:27:28 am - notes/DATA ANALYTICS/Data Analytics All 5 Units_(0).pdf
+[SUCCESS] 11:27:49 am - notes/DATA ANALYTICS/Data analytics new quantum.pdf
+[SUCCESS] 11:27:52 am - notes/DATA ANALYTICS/data_analytics_unit_1_one_shot_notes_by_brevilearning_yt_compres.pdf
+[SUCCESS] 11:27:54 am - notes/DATA ANALYTICS/Data_Analytics_Unit_1_one_shot_notes_by_brevilearning_YT_compres_(0).pdf
+[SUCCESS] 11:27:56 am - notes/DATA ANALYTICS/DA_unit_2_notes_for_OneShot_video_by_brevilearning_YT_compressed.pdf
+[SUCCESS] 11:27:59 am - notes/DATA ANALYTICS/da_unit_2_notes_for_one_shot_video_by_brevilearning_yt_compresse.pdf
+[SUCCESS] 11:28:01 am - notes/DATA ANALYTICS/DA_Unit_3_complete_notes_for_OneShot_video_by_brevilearning_YT_c.pdf
+[SUCCESS] 11:28:04 am - notes/DATA ANALYTICS/da_unit_3_complete_notes_for_one_shot_video_by_brevilearning_yt.pdf
+[SUCCESS] 11:28:06 am - notes/DATA ANALYTICS/DA_unit_4_notes_for_OneShot_video_by_brevilearning_YT_compressed.pdf
+[SUCCESS] 11:28:08 am - notes/DATA ANALYTICS/da_unit_4_notes_for_one_shot_video_by_brevilearning_yt_compresse.pdf
+[SUCCESS] 11:28:10 am - notes/DATA ANALYTICS/da_unit_5_notes_for_one_shot_video_by_brevilearning_yt_compresse.pdf
+[SUCCESS] 11:28:13 am - notes/DATA ANALYTICS/DA_Unit_5_notes_for_One_Shot_video_by_brevilearning_YT_compresse_(0).pdf
+[SUCCESS] 11:28:15 am - notes/DATA STRUCTURE/DATA STRUCTURE CLASS NOTES(gate2016.info).pdf
+[SUCCESS] 11:28:40 am - notes/DATA STRUCTURE/DATA STRUCTURE QUANTUM 2024-25.pdf
+[SUCCESS] 11:28:54 am - notes/DATA STRUCTURE/Data Structure Unit 1 Complete.pdf
+[SUCCESS] 11:28:56 am - notes/DATA STRUCTURE/data structure unit 1 unit 2 IMP.pdf
+[SUCCESS] 11:29:17 am - notes/DATA STRUCTURE/Data structure unit 2 one shot(stack).pdf
+[SUCCESS] 11:29:19 am - notes/DATA STRUCTURE/data structure unit 3 imp.pdf
+[SUCCESS] 11:29:21 am - notes/DATA STRUCTURE/data structure unit 4 imp.pdf
+[SUCCESS] 11:29:40 am - notes/DATA STRUCTURE/Data structure Unit 4 one shot.pdf
+[SUCCESS] 11:29:58 am - notes/DATA STRUCTURE/Data structure Unit 5 (Graph).pdf
+[SUCCESS] 11:30:00 am - notes/DATA STRUCTURE/Data structure unit 5 imp.pdf
+[SUCCESS] 11:30:05 am - notes/DATA STRUCTURE/DS U-3 ONE SHOT Notes_d6929866-44d9-4eb8-8de1-be2186ca57ba.pdf
+[SUCCESS] 11:30:12 am - notes/DATA STRUCTURE/DS U-4 ONE SHOT Notes_cfdfba56-1451-4965-80a7-f3e76b048945.pdf
+[SUCCESS] 11:30:18 am - notes/DATA STRUCTURE/DS-U-2-Combined-Notes.pdf
+[SUCCESS] 11:30:24 am - notes/DATA STRUCTURE/DS-UNIT-1-ONE-SHOT-BY-MULTI-ATOMS.pdf
+[SUCCESS] 11:30:28 am - notes/DATA STRUCTURE/DS-UNIT-2-ONE-SHOT-BY-MULTI-ATOMS.pdf
+[SUCCESS] 11:30:38 am - notes/DATA STRUCTURE/DS-Unit-4-by-MultiAtomsPlus.pdf
+[SUCCESS] 11:30:49 am - notes/DATA STRUCTURE/DS-UNIT-5-BY-MULTIATOMSPLUS.pdf
+[SUCCESS] 11:30:57 am - notes/DATA STRUCTURE/DS_U_1_P_1_+_P_2_ONE_SHOT_Notes_0e50b595_0984_4035_aadc_3fa33c33.pdf
+[SUCCESS] 11:31:01 am - notes/DATA STRUCTURE/DS_U_5_ONE_SHOT_Notes_Updated_e39dac1c_ee07_446e_9569_9d6639b6c9.pdf
+[SUCCESS] 11:31:07 am - notes/DATA STRUCTURE/Unit3-DS-ByMultiAtoms.pdf
+[SUCCESS] 11:31:11 am - notes/DATA WAREHOUSING/DATA WAREHOUSE AND DATA MINING ALL UNIT BY BREVILEARNING (1).pdf
+[SUCCESS] 11:31:14 am - notes/DATA WAREHOUSING/DATA WAREHOUSE AND DATA MINING ALL UNIT BY BREVILEARNING.pdf
+[SUCCESS] 11:31:19 am - notes/DBMS/bcs501-dbms-unit-1-comprehensive-study-notes-and-overview.pdf
+[SUCCESS] 11:31:42 am - notes/DBMS/Database Management System 2024-205 (1).pdf
+[SUCCESS] 11:31:52 am - notes/DBMS/DBMS Complete Notes Handwritten.pdf
+[SUCCESS] 11:31:55 am - notes/DBMS/DBMS PDF NOTES.pdf
+[SUCCESS] 11:32:18 am - notes/DBMS/DBMS U1 One shot Notes (1).pdf
+[SUCCESS] 11:32:30 am - notes/DBMS/DBMS U2 One shot BCS501 (1).pdf
+[SUCCESS] 11:32:38 am - notes/DBMS/DBMS UNIT 1 ONE SHOT Notes (1).pdf
+[SUCCESS] 11:32:43 am - notes/DBMS/DBMS UNIT 2 Combined Notes.pdf
+[SUCCESS] 11:32:47 am - notes/DBMS/DBMS UNIT 3 ONE SHOT Notes.pdf
+[SUCCESS] 11:33:02 am - notes/DBMS/DBMS Unit 3 One shot.pdf
+[SUCCESS] 11:33:08 am - notes/DBMS/DBMS unit 3 Updated by engineering Express.pdf
+[SUCCESS] 11:33:28 am - notes/DBMS/DBMS Unit 4 One shot Notes By RRSIMT.pdf
+[SUCCESS] 11:33:34 am - notes/DBMS/DBMS UNIT 4 ONE SHOT Notes.pdf
+[SUCCESS] 11:33:38 am - notes/DBMS/DBMS Unit 5 Complete Notes (RRSIMT Classes).pdf
+[SUCCESS] 11:33:41 am - notes/DBMS/DBMS UNIT 5 ONE SHOT Notes.pdf
+[SUCCESS] 11:33:46 am - notes/DBMS/DBMS Unit-2 by Engineering Express.pdf
+[SUCCESS] 11:34:01 am - notes/DBMS/DBMS Unit-4 by Engineering Express.pdf
+[SUCCESS] 11:34:08 am - notes/DBMS/DBMS-Unit-1-By-Multi-Atoms-Plus.pdf
+[SUCCESS] 11:34:12 am - notes/DBMS/DBMS-Unit-2-Notes-By-Multi-Atoms-Plus.pdf
+[SUCCESS] 11:34:14 am - notes/DBMS/DBMS-Unit-3-Notes-By-MultiAtomsPlus (1).pdf
+[SUCCESS] 11:34:19 am - notes/DBMS/DBMS-Unit-4-Notes-By-MultiAtomsPlus.pdf
+[SUCCESS] 11:34:21 am - notes/DBMS/DBMS-Unit-5-By-Multi-Atoms-Plus.pdf
+[SUCCESS] 11:34:24 am - notes/DBMS/dbms.pdf
+[SUCCESS] 11:34:26 am - notes/DEEP LEARNING/1762357113758_DEEP LEARNING (BAI-701) Unit-1.pdf
+[SUCCESS] 11:34:30 am - notes/DEEP LEARNING/1762357171816_DEEP-LEARNING Unit-2.pdf
+[SUCCESS] 11:34:32 am - notes/DEEP LEARNING/1764614206849_UNIT-3 deep-learning.pdf
+[SUCCESS] 11:34:35 am - notes/DEEP LEARNING/1765091270395_DEEP LEARNING unit-5.pdf
+[SUCCESS] 11:34:38 am - notes/DEEP LEARNING/1765565961562_DEEP LEARNING unit-4---.pdf
+[SUCCESS] 11:34:52 am - notes/DEEP LEARNING/DEEP LEARNING ALL UNIT BY BREVI LEARNING.pdf
+[SUCCESS] 11:35:19 am - notes/DEEP LEARNING/Deep Learning lecture.pdf
+[SUCCESS] 11:35:22 am - notes/DEEP LEARNING/Deep Learning Notes All Unit.pdf
+[SUCCESS] 11:35:25 am - notes/DEEP LEARNING/Deep Learning Unique AppSites.pdf
+[SUCCESS] 11:35:49 am - notes/DIGITAL LOGIC/DE UNIT 01.pdf
+[SUCCESS] 11:36:12 am - notes/DIGITAL LOGIC/DE UNIT 02.pdf
+[SUCCESS] 11:36:17 am - notes/DIGITAL LOGIC/DE UNIT 03.pdf
+[SUCCESS] 11:36:22 am - notes/DIGITAL LOGIC/DE UNIT 04.pdf
+[SUCCESS] 11:36:37 am - notes/DIGITAL LOGIC/DE UNIT 05.pdf
+[SUCCESS] 11:36:40 am - notes/DIGITAL LOGIC/Digital Electronics All unit IMP.pdf
+[SUCCESS] 11:36:52 am - notes/DIGITAL LOGIC/Digital Electronics BOE310 quantum.pdf
+[SUCCESS] 11:36:56 am - notes/DIGITAL LOGIC/Digital electronics important question.pdf
+[SUCCESS] 11:37:14 am - notes/DIGITAL LOGIC/digital electronics unit 1.pdf
+[SUCCESS] 11:37:26 am - notes/DIGITAL LOGIC/digital electronics unit 2.pdf
+[SUCCESS] 11:37:33 am - notes/DIGITAL LOGIC/digital electronics unit 3m.pdf
+[SUCCESS] 11:37:40 am - notes/DIGITAL LOGIC/digital electronics unit 5.pdf
+[SUCCESS] 11:37:43 am - notes/DIGITAL LOGIC/DSD UNIT 5.pdf
+[SUCCESS] 11:37:47 am - notes/DIGITAL LOGIC/DSD-(U-4)-DE(U-5)-pdf-ONE-SHOT-NOTES.pdf
+[SUCCESS] 11:37:51 am - notes/DIGITAL LOGIC/DSD-U-1-Combined-Notes.pdf
+[SUCCESS] 11:38:16 am - notes/DIGITAL LOGIC/DSD-U-1-ONE-SHOT-NOTES.pdf
+[SUCCESS] 11:38:20 am - notes/DIGITAL LOGIC/DSD-U-2-Combined-Notes.pdf
+[SUCCESS] 11:38:46 am - notes/DIGITAL LOGIC/DSD-U-2-ONE-SHOT-NOTES.pdf
+[SUCCESS] 11:38:51 am - notes/DIGITAL LOGIC/DSD-U-3-Combined-Notes.pdf
+[SUCCESS] 11:38:55 am - notes/DIGITAL LOGIC/DSD-U-3-ONE-SHOT-NOTES.pdf
+[SUCCESS] 11:38:59 am - notes/DIGITAL LOGIC/DSD-U-4-Combined-Notes.pdf
+[SUCCESS] 11:39:08 am - notes/DIGITAL LOGIC/DSD-U-5-One-Shot-Notes.pdf
+[SUCCESS] 11:39:33 am - notes/DISCRETE MATH/DSTL notes #UNIT-2,3,4,5 (1).pdf
+[SUCCESS] 11:39:54 am - notes/DISCRETE MATH/DSTL Quantum 2024-25.pdf
+[SUCCESS] 11:40:00 am - notes/DISCRETE MATH/DSTL U-1 Combined Notes_24560574_2024_02_23_11_14.pdf
+[SUCCESS] 11:40:25 am - notes/DISCRETE MATH/DSTL U-3 ONE SHOT NOTES_61970665-3b6a-4ef4-ab45-4ba55ad698ce.pdf
+[SUCCESS] 11:40:30 am - notes/DISCRETE MATH/DSTL U-4 ONE SHOT NOTES_74e3c7cd-cebe-4138-824d-578762a2b3a3.pdf
+[SUCCESS] 11:40:50 am - notes/DISCRETE MATH/DSTL U-5 ONE SHOT NOTES_7245c299-d118-408e-9222-5eef414c3066.pdf
+[SUCCESS] 11:40:52 am - notes/DISCRETE MATH/DSTL UNIT 1 ONE SHOT  (1).pdf
+[SUCCESS] 11:40:55 am - notes/DISCRETE MATH/dstl unit 2 one shot (1).pdf
+[SUCCESS] 11:40:58 am - notes/DISCRETE MATH/DSTL UNIT 3 one shot (1).pdf
+[SUCCESS] 11:41:00 am - notes/DISCRETE MATH/dstl unit 4 one shot (1).pdf
+[SUCCESS] 11:41:02 am - notes/DISCRETE MATH/DSTL UNIT 5.pdf
+[SUCCESS] 11:41:09 am - notes/DISCRETE MATH/DSTL UNIT-1 NOTES_3f7317ba-ff58-4ce0-9076-a40fd918c013.pdf
+[SUCCESS] 11:41:14 am - notes/DISCRETE MATH/DSTL UNIT-2 NOTES_58a1f086-087b-404d-b69a-cf2ec28e1343.pdf
+[SUCCESS] 11:41:23 am - notes/ELECTRICAL ENG 1ST YEAR/BEE 2023-24.pdf
+[SUCCESS] 11:41:29 am - notes/ELECTRICAL ENG 1ST YEAR/BEE IMPORTANT QUESTIONS.pdf
+[SUCCESS] 11:41:37 am - notes/ELECTRICAL ENG 1ST YEAR/BEE UNIT 2 ONESHOT.pdf
+[SUCCESS] 11:41:47 am - notes/ELECTRICAL ENG 1ST YEAR/BEE UNIT 3 ONESHOT.pdf
+[SUCCESS] 11:42:08 am - notes/ELECTRICAL ENG 1ST YEAR/BEE UNIT 4 ONESHOT.pdf
+[SUCCESS] 11:42:22 am - notes/ELECTRICAL ENG 1ST YEAR/BEE UNIT 5 ONESHOT REVISION.pdf
+[SUCCESS] 11:42:25 am - notes/ELECTRICAL ENG 1ST YEAR/BSS-UNIT-2-ONE-SHOT-NOTES.pdf
+[SUCCESS] 11:42:31 am - notes/ELECTRICAL ENG 1ST YEAR/electrical Unit 1 Oneshot.pdf
+[SUCCESS] 11:42:38 am - notes/ELECTRONIS ENG 1ST YEAR/Elections 2023-24 Quantum  (1).pdf
+[SUCCESS] 11:42:43 am - notes/ELECTRONIS ENG 1ST YEAR/UNIT - 5 ELECTRONICS.pdf
+[SUCCESS] 11:42:51 am - notes/ELECTRONIS ENG 1ST YEAR/UNIT 1 ELECTRONICS (1).pdf
+[SUCCESS] 11:42:57 am - notes/ELECTRONIS ENG 1ST YEAR/UNIT 2 ELECTRONICS (1).pdf
+[SUCCESS] 11:43:01 am - notes/ELECTRONIS ENG 1ST YEAR/UNIT 3 ELECTRONICS  (1).pdf
+[SUCCESS] 11:43:15 am - notes/ELECTRONIS ENG 1ST YEAR/UNIT 4 ELECTRONICS (2).pdf
+[SUCCESS] 11:43:20 am - notes/FMS MECHNICAL ENG 1ST YEAR/FME UNIT 1.pdf.pdf
+[SUCCESS] 11:43:23 am - notes/FMS MECHNICAL ENG 1ST YEAR/FME UNIT 2.pdf
+[SUCCESS] 11:43:27 am - notes/FMS MECHNICAL ENG 1ST YEAR/FME UNIT 3.pdf
+[SUCCESS] 11:43:33 am - notes/FMS MECHNICAL ENG 1ST YEAR/FME UNIT 4.pdf
+[SUCCESS] 11:43:39 am - notes/FMS MECHNICAL ENG 1ST YEAR/FME UNIT 5.pdf
+[SUCCESS] 11:43:49 am - notes/IOT/IOT 2022-23.pdf
+[SUCCESS] 11:44:03 am - notes/IOT/IOT ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:44:07 am - notes/MACHINE LEARNING/5_6318985980158154280.pdf
+[SUCCESS] 11:44:17 am - notes/MACHINE LEARNING/Machine learning Quantum 2024-2025.pdf
+[SUCCESS] 11:44:22 am - notes/MACHINE LEARNING/Machine Learning Technique.pdf
+[SUCCESS] 11:44:27 am - notes/MACHINE LEARNING/Machine Learning Techniques Quantum (RRSIMT) (2).pdf
+[SUCCESS] 11:44:34 am - notes/MACHINE LEARNING/Machine Learning Techniques Quantum 2024-2025.pdf
+[SUCCESS] 11:44:38 am - notes/MACHINE LEARNING/Machine Learning Techniques.pdf
+[SUCCESS] 11:44:41 am - notes/MACHINE LEARNING/ml unit 1.pdf
+[SUCCESS] 11:44:48 am - notes/MACHINE LEARNING/MLT ALL UNIT BY ENGINEERING BEING.pdf
+[SUCCESS] 11:44:53 am - notes/MACHINE LEARNING/MLT ALL UNIT BY MASTER TECH EDU.pdf
+[SUCCESS] 11:45:01 am - notes/MACHINE LEARNING/MLT ALL UNIT HAND WRITTEN.pdf
+[SUCCESS] 11:45:04 am - notes/MACHINE LEARNING/MLT All Unit Important Questions AKTU (Edushine Classes).pdf
+[SUCCESS] 11:45:40 am - notes/MACHINE LEARNING/MLT by engineering express.pdf
+[FATAL] notes/MACHINE LEARNING/MLT UNIT 1,2,3,4 BY ENGINEERING EXPRESS.pdf: Server Overloaded (502) after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT UNIT 3.pdf: Server Overloaded (502) after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT unit 3_(0).pdf: stream has been aborted after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT UNIT 5.pdf: Server Overloaded (502) after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT unit 5_(0).pdf: stream has been aborted after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT UNIT-1 (Multi Atom).pdf: stream has been aborted after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT-ONE-SHOT-UNIT-4 (1).pdf: Server Overloaded (502) after 3 attempts
+[FATAL] notes/MACHINE LEARNING/MLT_PYQ_23-20.pdf: Server Overloaded (502) after 3 attempts
+[SUCCESS] 11:47:51 am - notes/MATH 1/ENG. MATH-1 UNIT-1 MATRICES (DR. ANUJ KUMAR).pdf
+[SUCCESS] 11:48:00 am - notes/MATH 1/ENG. MATH-1 UNIT-2 DIFF. CALCULUS-I  (DR. ANUJ KUMAR).pdf
+[SUCCESS] 11:48:05 am - notes/MATH 1/ENG. MATH-1 UNIT-3 DIFF. CALCULUS-II (DR. ANUJ KUMAR).pdf
+[SUCCESS] 11:48:14 am - notes/MATH 1/ENG. MATH-1 UNIT-4 MULTIPLE INTEGRATION  (DR. ANUJ KUMAR).pdf
+[SUCCESS] 11:48:22 am - notes/MATH 1/ENG. MATH-1 UNIT-5 VECTOR CALCULUS (DR. ANUJ KUMAR).pdf
+[SUCCESS] 11:48:32 am - notes/MATH 1/Engineering Maths Quantum(1).pdf
+[SUCCESS] 11:48:36 am - notes/MATH 1/Maths 1 NP Bali (M1).pdf
+[SUCCESS] 11:48:42 am - notes/MATH 1/maths 1 quantum_compressed.pdf
+[SUCCESS] 11:48:49 am - notes/MATH 1/Maths1-Unit1-byMultiAtoms (3).pdf
+[SUCCESS] 11:48:57 am - notes/MATH 1/Maths1-Unit2-byMultiAtoms.pdf
+[SUCCESS] 11:49:05 am - notes/MATH 1/Maths1-Unit3-byMultiAtoms.pdf
+[SUCCESS] 11:49:11 am - notes/MATH 1/Maths1-Unit4-byMultiAtoms.pdf
+[SUCCESS] 11:49:18 am - notes/MATH 1/Maths1-Unit5-byMultiAtoms  (1).pdf
+[SUCCESS] 11:49:22 am - notes/MATH 4/2 marks que maths 4 by multiatoms (2).pdf
+[SUCCESS] 11:49:24 am - notes/MATH 4/btech-as-4-sem-maths-4-kas402-2022.pdf
+[SUCCESS] 11:49:26 am - notes/MATH 4/KAS-302 -402,   PUT Model Questions.pdf
+[SUCCESS] 11:49:29 am - notes/MATH 4/M4 FORMULAE.pdf
+[SUCCESS] 11:49:35 am - notes/MATH 4/M4 UNIT 1.pdf
+[SUCCESS] 11:49:41 am - notes/MATH 4/M4 UNIT 2.pdf
+[SUCCESS] 11:50:04 am - notes/MATH 4/M4 UNIT 3.pdf
+[SUCCESS] 11:50:09 am - notes/MATH 4/M4 UNIT 4.pdf
+[SUCCESS] 11:50:34 am - notes/MATH 4/M4 UNIT 5.pdf
+[SUCCESS] 11:50:42 am - notes/MATH 4/MATH IV MODEL PAPER.pdf
+[SUCCESS] 11:50:51 am - notes/MATH 4/MATHS 4 ALL UNITS MULTI ATOMS NOTES.pdf
+[SUCCESS] 11:50:54 am - notes/MATH 4/maths 4 unit 4.pdf
+[SUCCESS] 11:51:06 am - notes/MATH 4/Maths 4.pdf
+[SUCCESS] 11:51:18 am - notes/MATH 4/maths-4-notes.pdf
+[SUCCESS] 11:51:20 am - notes/MATH 4/Maths-4PYQs.pdf
+[SUCCESS] 11:51:23 am - notes/MATH 4/unit 1 maths 4.pdf
+[SUCCESS] 11:51:31 am - notes/MATH 4/Unit 1.pdf
+[SUCCESS] 11:51:34 am - notes/MATH 4/unit 2 maths 4.pdf
+[SUCCESS] 11:51:42 am - notes/MATH 4/Unit 2.pdf
+[SUCCESS] 11:51:45 am - notes/MATH 4/unit 3 maths 4.pdf
+[SUCCESS] 11:51:53 am - notes/MATH 4/Unit 3.pdf
+[SUCCESS] 11:51:57 am - notes/MATH 4/Unit 4.pdf
+[SUCCESS] 11:52:00 am - notes/MATH 4/unit 5 maths 4.pdf
+[SUCCESS] 11:52:07 am - notes/MATH 4/Unit 5-1.pdf
+[SUCCESS] 11:52:15 am - notes/MATH 4/Unit-1,PDE-Maths-KAS-302-402.pdf
+[SUCCESS] 11:52:21 am - notes/MATH 4/Unit-2, Application of PDE,KAS-302-402.pdf
+[SUCCESS] 11:52:29 am - notes/MATH 4/Unit-3, Statistical techniques-I, KAS-302-402.pdf
+[SUCCESS] 11:52:44 am - notes/MATH 4/Unit-4, Statistical techniques-II, KAS-303-402.pdf
+[SUCCESS] 11:52:58 am - notes/MATH 4/Unit-5, Statistical techniques-III, KAS-302-402.pdf
+[SUCCESS] 11:53:05 am - notes/MATH 4/[N.P._Bali,_Manish_Goyal]_A_Textbook_of_Engineerin.pdf
+[SUCCESS] 11:53:08 am - notes/NLP/NLP UNIT-01.pdf
+[SUCCESS] 11:53:11 am - notes/NLP/NLP UNIT-02.pdf
+[SUCCESS] 11:53:14 am - notes/NLP/NLP UNIT-03.pdf
+[SUCCESS] 11:53:16 am - notes/NLP/NLP UNIT-04.pdf
+[SUCCESS] 11:53:18 am - notes/NLP/NLP UNIT-05.pdf
+[SUCCESS] 11:53:27 am - notes/NLP/nlp-quantum.pdf
+[SUCCESS] 11:53:31 am - notes/OOPS JAVA/JAVA U-1 Combined Notes.pdf
+[SUCCESS] 11:53:34 am - notes/OOPS JAVA/Java U-2 Combined notes (1).pdf
+[SUCCESS] 11:53:37 am - notes/OOPS JAVA/Java U-3 Lec-1 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:53:40 am - notes/OOPS JAVA/Java U-3 Lec-2 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:53:44 am - notes/OOPS JAVA/Java U-3 Lec-3 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:53:46 am - notes/OOPS JAVA/Java U-3 Lec-4 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:53:50 am - notes/OOPS JAVA/Java U-3 Lec-5 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:53:54 am - notes/OOPS JAVA/Java U-4 Lec-1 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:53:57 am - notes/OOPS JAVA/Java U-4 Lec-2 Notes(Th+P+Ex).pdf
+[SUCCESS] 11:54:04 am - notes/OOPS JAVA/Java U-5 Notes.pdf.pdf
+[SUCCESS] 11:54:11 am - notes/OOPS JAVA/OOPS WITH JAVA ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:54:19 am - notes/OOPS JAVA/oops with java notes Itechworld.pdf
+[SUCCESS] 11:54:36 am - notes/OPERATING SYSTEM/OS ALL UNIT BY ENGINEERING EXPRESS.pdf
+[SUCCESS] 11:54:48 am - notes/OPERATING SYSTEM/OS ALL UNIT BY HANDWRITTEN 1.pdf
+[SUCCESS] 11:55:01 am - notes/OPERATING SYSTEM/OS ALL UNIT BY HANDWRITTEN 2.pdf
+[SUCCESS] 11:55:31 am - notes/OPERATING SYSTEM/OS ALL UNIT BY HANDWRITTEN 3.pdf
+[SUCCESS] 11:55:42 am - notes/OPERATING SYSTEM/OS ALL UNIT BY LAKSHYA ACADEMY.pdf
+[SUCCESS] 11:55:53 am - notes/OPERATING SYSTEM/OS ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 11:56:10 am - notes/OPERATING SYSTEM/OS ALL UNIT HANDWRITTEN.pdf
+[SUCCESS] 11:56:13 am - notes/OPERATING SYSTEM/OS ALL UNIT NOTES.pdf
+[SUCCESS] 11:56:25 am - notes/OPERATING SYSTEM/OS ALL UNIT SHORT NOTES.pdf
+[SUCCESS] 11:56:29 am - notes/OPERATING SYSTEM/OS APL UNIT BY KNOWLEDGE GATE.pdf
+[SUCCESS] 11:56:32 am - notes/OPERATING SYSTEM/OS BY AKTU WALA.pdf
+[SUCCESS] 11:57:09 am - notes/OPERATING SYSTEM/os latest quantum.pdf
+[SUCCESS] 11:57:10 am - notes/OPERATING SYSTEM/OS QUESTION BANK BY ENGINEERING EXPRESS.pdf
+[SUCCESS] 11:57:15 am - notes/PPS/PPS (Latest 20222-2023) Quantum Series {Searchable}.pdf
+[SUCCESS] 11:57:18 am - notes/PPS/PPS-Unit-1-By-Multi-Atoms_watermark.pdf
+[SUCCESS] 11:57:23 am - notes/PPS/PPS-Unit-3-Notes-By-Multi-Atoms_watermark.pdf
+[SUCCESS] 11:57:27 am - notes/PPS/PPS-Unit-4-Notes-By-Multi-Atoms_watermark.pdf
+[SUCCESS] 11:57:32 am - notes/PPS/PPS-Unit-5-Notes-By-Multi-Atoms_watermark.pdf
+[SUCCESS] 11:57:44 am - notes/PPS/Programming for problem solving Pps(1).pdf
+[SUCCESS] 11:57:50 am - notes/PPS/unit 2 multiatoms.pdf
+[SUCCESS] 11:58:11 am - notes/PROJECT MANAGEMENT/Project Management QUANTUM.pdf
+[SUCCESS] 11:58:36 am - notes/PROJECT MANAGEMENT/Project_Management_Notes.pdf
+[SUCCESS] 11:58:42 am - notes/PYTHON/All-Units-Python-Notes-By-MultiAtomsPlus (1).pdf
+[SUCCESS] 11:58:43 am - notes/PYTHON/List of important Programs-Python Programming.pdf
+[SUCCESS] 11:58:46 am - notes/PYTHON/Python All Notes.pdf
+[SUCCESS] 11:58:48 am - notes/PYTHON/Python All Unit Important Questions.pdf
+[SUCCESS] 11:58:50 am - notes/PYTHON/Python cheatsheat.pdf
+[SUCCESS] 11:58:52 am - notes/PYTHON/PYTHON IMPORTANT QUESTIONS.pdf
+[SUCCESS] 11:58:54 am - notes/PYTHON/python important.pdf
+[SUCCESS] 11:59:16 am - notes/PYTHON/Python Programming.pdf
+[SUCCESS] 11:59:18 am - notes/PYTHON/Python PYQs (acc to New Syll)_52268398_2025_02_10_00_35.pdf
+[SUCCESS] 11:59:20 am - notes/PYTHON/Python Question By E.E.pdf
+[SUCCESS] 11:59:24 am - notes/PYTHON/Python_U_1_ONE_SHOT_Notes_3274a73a_505d_4b2b_b69f_60ec9ea3db65.pdf
+[SUCCESS] 11:59:28 am - notes/PYTHON/PYTHON_U_1_ONE_SHOT_NOTES_83a8d728_ae25_4f07_9256_9e048a8bdf50.pdf
+[SUCCESS] 11:59:35 am - notes/PYTHON/Python_U_2_ONE_SHOT_Notes_cfb7e558_544b_4546_8c92_5a74653b99f8.pdf
+[SUCCESS] 11:59:44 am - notes/PYTHON/PYTHON_U_2_ONE_SHOT_NOTES_pdf_17660d16_54c2_493a_a7a5_b1898cea73.pdf
+[SUCCESS] 11:59:52 am - notes/PYTHON/Python_U_3_ONE_SHOT_Notes_ed872098_db56_449d_b3c0_d3b6d1eb71a9.pdf
+[SUCCESS] 11:59:54 am - notes/PYTHON/PYTHON_U_4_ONE_SHOT_NOTES_5fb3c31c_1918_47a2_bf55_feb50cb9a8c9.pdf
+[SUCCESS] 11:59:57 am - notes/PYTHON/Python_U_4_ONE_SHOT_Notes_742d01d8_5b23_4d7a_b581_01097c22c904.pdf
+[SUCCESS] 12:00:00 pm - notes/PYTHON/Python_U_5_ONE_SHOT_Notes_6aea861d_4c17_4fe4_b424_fab45d24a094.pdf
+[SUCCESS] 12:00:02 pm - notes/SOFT COMPUTING/APPLICATION-OF-SOFT-COMPUTING-KCS-056 (1).pdf
+[SUCCESS] 12:00:32 pm - notes/SOFT COMPUTING/SOFT COMPUTING NEW QUANTUM 2024-25.pdf
+[SUCCESS] 12:01:22 pm - notes/SOFT COMPUTING/Soft Computing Unit 1   Unit 2 By RRSIMT  (2).pdf
+[SUCCESS] 12:01:39 pm - notes/SOFT COMPUTING/Soft Computing Unit 3   4 One shot by RRSIMT  (1).pdf
+[SUCCESS] 12:01:42 pm - notes/SOFT COMPUTING/Soft computing Unit 5 Notes (1).pdf
+[SUCCESS] 12:01:49 pm - notes/SOFT COMPUTING/Soft Computing Unit 5 One shot by RRSIMT (1).pdf
+[SUCCESS] 12:02:00 pm - notes/SOFT COMPUTING/Soft Computing.pdf
+[SUCCESS] 12:02:02 pm - notes/SOFT COMPUTING/Unit 1 - Soft Computing - www.rgpvnotes.in.pdf
+[SUCCESS] 12:02:04 pm - notes/SOFT COMPUTING/Unit 2 - Soft Computing - www.rgpvnotes.in.pdf
+[SUCCESS] 12:02:07 pm - notes/SOFT COMPUTING/Unit 3 - Soft Computing - www.rgpvnotes.in.pdf
+[SUCCESS] 12:02:09 pm - notes/SOFT COMPUTING/Unit 4 - Soft Computing - www.rgpvnotes.in.pdf
+[SUCCESS] 12:02:11 pm - notes/SOFT SKILL/Soft Skills Complete Notes ( Unit 1-5) (2)_watermark (1).pdf
+[SUCCESS] 12:02:52 pm - notes/SOFT SKILL/Soft Skills Quantum.pdf
+[SUCCESS] 12:02:58 pm - notes/SOFT SKILL/SoftSkills1.pdf
+[SUCCESS] 12:03:04 pm - notes/SOFTWARE ENGINEERING/Edushine se u-2.pdf
+[SUCCESS] 12:03:10 pm - notes/SOFTWARE ENGINEERING/Edushine se u-5.pdf
+[SUCCESS] 12:03:14 pm - notes/SOFTWARE ENGINEERING/Edushine se unit -3.pdf
+[SUCCESS] 12:03:21 pm - notes/SOFTWARE ENGINEERING/Edushine se unit-1.pdf
+[SUCCESS] 12:03:27 pm - notes/SOFTWARE ENGINEERING/Edushine se unit-4.pdf
+[SUCCESS] 12:03:29 pm - notes/SOFTWARE ENGINEERING/new modified all unit.pdf
+[SUCCESS] 12:03:35 pm - notes/SOFTWARE ENGINEERING/SE UNIT-1 MULTI ATOMS.pdf
+[SUCCESS] 12:03:40 pm - notes/SOFTWARE ENGINEERING/SE UNIT-2  MULTI ATOMS.pdf
+[SUCCESS] 12:03:44 pm - notes/SOFTWARE ENGINEERING/SE UNIT-3 MULTI ATOMS.pdf
+[SUCCESS] 12:03:49 pm - notes/SOFTWARE ENGINEERING/SE UNIT-4 MULTI ATOMS (1).pdf
+[SUCCESS] 12:03:54 pm - notes/SOFTWARE ENGINEERING/SE UNIT-5 MULTI ATOMS.pdf
+[SUCCESS] 12:04:00 pm - notes/SOFTWARE ENGINEERING/Software Engg. One Shot Notes.pdf
+[SUCCESS] 12:04:32 pm - notes/SOFTWARE ENGINEERING/Software Engineer Quantum latest 2024-25.pdf
+[SUCCESS] 12:04:37 pm - notes/SOFTWARE ENGINEERING/Software_Engineering_in_6_Hours_lyst1728638742594.pdf
+[SUCCESS] 12:04:41 pm - notes/SOFTWARE ENGINEERING/Unit 1 Software engineering.pdf
+[SUCCESS] 12:04:44 pm - notes/SOFTWARE ENGINEERING/Unit 2 Software engineering.pdf
+[SUCCESS] 12:04:47 pm - notes/SOFTWARE ENGINEERING/Unit 3 Software engineering.pdf
+[SUCCESS] 12:04:51 pm - notes/SOFTWARE ENGINEERING/Unit 4 Software engineering.pdf
+[SUCCESS] 12:04:56 pm - notes/SOFTWARE ENGINEERING/Unit 5 Software engineering.pdf
+[SUCCESS] 12:05:06 pm - notes/TECHNICAL COMMUNICATION/875847700-TC-All-Units-Notes-By-Multi-Atoms.pdf
+[SUCCESS] 12:05:13 pm - notes/TECHNICAL COMMUNICATION/Quantam.pdf
+[SUCCESS] 12:05:17 pm - notes/TECHNICAL COMMUNICATION/TC Unit 1 (1).pdf
+[SUCCESS] 12:05:20 pm - notes/TECHNICAL COMMUNICATION/TC Unit 2 (1).pdf
+[SUCCESS] 12:05:23 pm - notes/TECHNICAL COMMUNICATION/TC Unit 3 (1).pdf
+[SUCCESS] 12:05:26 pm - notes/TECHNICAL COMMUNICATION/TC Unit 4 (1).pdf
+[SUCCESS] 12:05:29 pm - notes/TECHNICAL COMMUNICATION/TC Unit 5 (1).pdf
+[SUCCESS] 12:05:31 pm - notes/TECHNICAL COMMUNICATION/TC_Unit_1_Fundamentals_of_Technical_Communication_by_Kulbhushan.pdf
+[SUCCESS] 12:05:34 pm - notes/TECHNICAL COMMUNICATION/TC_Unit_2_Forms_of_Technical_Communication_by_Kulbhushan_Krazy_K.pdf
+[SUCCESS] 12:05:36 pm - notes/TECHNICAL COMMUNICATION/TC_Unit_3_Technical_Presentation_Strategies_ _Techniques_by_Kulb.pdf
+[SUCCESS] 12:05:37 pm - notes/TECHNICAL COMMUNICATION/TC_Unit_4_Technical_Communication_Skills_by_Kulbhushan_Krazy_Kak.pdf
+[SUCCESS] 12:05:39 pm - notes/TECHNICAL COMMUNICATION/TC_Unit_5_Dimensions_of_Oral_Communication_ _Voice_Dynamics_by_K.pdf
+[SUCCESS] 12:06:00 pm - notes/TOC/TAFL ALL UNIT BY HANDWRITTEN.pdf
+[SUCCESS] 12:06:02 pm - notes/TOC/TAFL All Unit Important Questions.pdf
+[SUCCESS] 12:06:04 pm - notes/TOC/TAFL ALL UNIT SHORT NOTES.pdf
+[SUCCESS] 12:06:12 pm - notes/TOC/TAFL ALL UNITS BY KRAZY KAKSHA.pdf
+[SUCCESS] 12:06:16 pm - notes/TOC/TAFL ALL UNITS HANDWRITTEN.pdf
+[SUCCESS] 12:06:24 pm - notes/TOC/TAFL Books Adesh K Pandey.pdf
+[SUCCESS] 12:06:56 pm - notes/TOC/tafl rela quantum.pdf
+[SUCCESS] 12:07:01 pm - notes/TOC/TAFL U-1 One Shot Notes_8201e578-004c-42ad-9330-ded41098e03a.pdf
+[SUCCESS] 12:07:04 pm - notes/TOC/TAFL U-4 One Shot Notes_f8e4617f-77c7-4a80-93fd-d27e7b1039fc.pdf
+[SUCCESS] 12:07:08 pm - notes/TOC/TAFL Unit 1 Complete Notes.pdf
+[SUCCESS] 12:07:11 pm - notes/TOC/TAFL UNIT 1 HANDWRITTEN.pdf
+[SUCCESS] 12:07:19 pm - notes/TOC/TAFL UNIT 1 NUMERICAL PART 1.pdf
+[SUCCESS] 12:07:28 pm - notes/TOC/TAFL UNIT 1 NUMERICAL PART 2.pdf
+[SUCCESS] 12:07:32 pm - notes/TOC/TAFL UNIT 1,2,3 BY DSALGO.pdf
+[SUCCESS] 12:07:40 pm - notes/TOC/TAFL UNIT 1,2,3,4 BY ENGINEERING EXPRESS.pdf
+[SUCCESS] 12:07:45 pm - notes/TOC/TAFL UNIT 1,2,3,4 HANDWRITTEN.pdf
+[SUCCESS] 12:07:49 pm - notes/TOC/TAFL Unit 2 Complete Notes.pdf
+[SUCCESS] 12:07:51 pm - notes/TOC/TAFL UNIT 2 HANDWRITTEN.pdf
+[SUCCESS] 12:08:04 pm - notes/TOC/TAFL UNIT 2 NUMERICAL.pdf
+[SUCCESS] 12:08:13 pm - notes/TOC/TAFL UNIT 2,3,4,5 HANDWRITTEN.pdf
+[SUCCESS] 12:08:16 pm - notes/TOC/TAFL Unit 3 Complete Notes.pdf
+[SUCCESS] 12:08:19 pm - notes/TOC/TAFL UNIT 3 HANDWRITTEN.pdf
+[SUCCESS] 12:08:21 pm - notes/TOC/TAFL UNIT 4 HANDWRITTEN.pdf
+[SUCCESS] 12:08:24 pm - notes/TOC/TAFL Unit 4,5 notes.pdf
+[SUCCESS] 12:08:26 pm - notes/TOC/TAFL UNIT 5 HANDWRITTEN.pdf
+[SUCCESS] 12:08:31 pm - notes/TOC/TAFL UNIT-3-2.pdf
+[SUCCESS] 12:08:35 pm - notes/TOC/TAFL UNIT-4 One Shot Notes_39082246_2024_07_16_00_17.pdf
+[SUCCESS] 12:08:38 pm - notes/TOC/TAFL_UNIT_2_One_Shot_Notes_7e57d43e_9ed7_4dec_a231_4a5039a7ce14.pdf
+[SUCCESS] 12:08:42 pm - notes/TOC/TAFL_UNIT_5_One_Shot_Notes_pdf_553c1853_e020_4fe4_b1a0_dbb02eae4.pdf
+[SUCCESS] 12:08:46 pm - notes/TOC/TOC BY KNOWLEDGE GATE.pdf
+[SUCCESS] 12:08:47 pm - notes/UHV/Holistic technology UHV unit 4.pdf
+[SUCCESS] 12:08:53 pm - notes/UHV/UHV ALL UNIT BY MULTI ATOMS.pdf
+[SUCCESS] 12:08:54 pm - notes/UHV/UHV PYQ (1).pdf
+[SUCCESS] 12:08:57 pm - notes/UHV/UHV Quantum.pdf
+[SUCCESS] 12:09:00 pm - notes/UHV/UHV quantum_(0).pdf
+[SUCCESS] 12:09:02 pm - notes/UHV/UHV U-1 Complete notes.pdf
+[SUCCESS] 12:09:05 pm - notes/UHV/UHV U-2 Complete notes.pdf
+[SUCCESS] 12:09:07 pm - notes/UHV/UHV U-3 Complate notes.pdf
+[SUCCESS] 12:09:10 pm - notes/UHV/UHV U-4 Complete Notes.pdf
+[SUCCESS] 12:09:12 pm - notes/UHV/UHV U-5 Complete Notes.pdf
+[SUCCESS] 12:09:15 pm - notes/UHV/UHV UNIT 1.pdf
+[SUCCESS] 12:09:18 pm - notes/UHV/UHV unit 2 part 1.pdf
+[SUCCESS] 12:09:20 pm - notes/UHV/UHV UNIT 2 PART 2.pdf
+[SUCCESS] 12:09:23 pm - notes/UHV/UHV UNIT 3 PART 1.pdf
+[SUCCESS] 12:09:25 pm - notes/UHV/UHV UNIT 3 PART 2.pdf
+[SUCCESS] 12:09:30 pm - notes/UHV/UHV unit 4 part 1.pdf
+[SUCCESS] 12:09:32 pm - notes/UHV/UHV unit-1 (1).pdf
+[SUCCESS] 12:09:35 pm - notes/UHV/UHV unit-2.pdf
+[SUCCESS] 12:09:37 pm - notes/UHV/UHV UNIT-3.pdf
+[SUCCESS] 12:09:56 pm - notes/UHV/UHV UNIT-4.pdf
+[SUCCESS] 12:10:21 pm - notes/UHV/UHV UNIT-5 (1).pdf
+[SUCCESS] 12:10:24 pm - notes/UHV/uhv-quantum BVE301.pdf
+[SUCCESS] 12:10:26 pm - notes/UHV/UHV_III_understanding_the_human_beings_comprehensivily_aktu_6th.pdf
+[SUCCESS] 12:10:38 pm - notes/UHV/understanding the human being quantum.pdf
+[SUCCESS] 12:10:41 pm - notes/UHV/unit 1 uhv multi atoms.pdf
+[SUCCESS] 12:10:44 pm - notes/UHV/unit 2 uhv multi atoms.pdf
+[SUCCESS] 12:10:46 pm - notes/UHV/unit 3 uhv multi atoms.pdf
+[SUCCESS] 12:10:48 pm - notes/UHV/Unit 4 uhv Multiatoms_gt.pdf
+[SUCCESS] 12:10:51 pm - notes/UHV/unit 5 uhv multi atoms_gt.pdf
+[SUCCESS] 12:12:23 pm - notes/WEB TECHNOLOGY/final.pdf
+[SUCCESS] 12:12:27 pm - notes/WEB TECHNOLOGY/Question Bank with Solution Web technology(BCS-502) (2).pdf
+[SUCCESS] 12:12:31 pm - notes/WEB TECHNOLOGY/Unit-03 WT by Multiatomplus.pdf
+[SUCCESS] 12:12:36 pm - notes/WEB TECHNOLOGY/Web Tech UNIT 1 ONE SHOT Notes.pdf
+[SUCCESS] 12:12:41 pm - notes/WEB TECHNOLOGY/Web Tech UNIT 2 ONE SHOT Notes.pdf
+[SUCCESS] 12:12:45 pm - notes/WEB TECHNOLOGY/Web Tech UNIT 3 ONE SHOT Notes.pdf
+[SUCCESS] 12:12:48 pm - notes/WEB TECHNOLOGY/Web Tech UNIT 4 ONE SHOT Notes.pdf
+[SUCCESS] 12:12:50 pm - notes/WEB TECHNOLOGY/Web Tech UNIT 5 ONE SHOT Notes.pdf
+[SUCCESS] 12:12:53 pm - notes/WEB TECHNOLOGY/Web technology (askbooks.net).pdf
+[SUCCESS] 12:12:59 pm - notes/WEB TECHNOLOGY/Web Technology Handwritten Notes.pdf
+[SUCCESS] 12:13:05 pm - notes/WEB TECHNOLOGY/WEB TECHNOLOGY new quantum 2024-25.pdf
+[SUCCESS] 12:13:10 pm - notes/WEB TECHNOLOGY/web-tech Unit-4 by multiatomplus.pdf
+[SUCCESS] 12:13:13 pm - notes/WEB TECHNOLOGY/Web-tech Unit-5 by multiatomplus.pdf
+[SUCCESS] 12:13:16 pm - notes/WEB TECHNOLOGY/Web-Technology unit-01 by multiatomplus.pdf
+[SUCCESS] 12:13:20 pm - notes/WEB TECHNOLOGY/WT U2 One shot (RRSIMT).pdf
+[SUCCESS] 12:13:23 pm - notes/WEB TECHNOLOGY/WT U3 One shot Notes(Edushine Classes).pdf
+[SUCCESS] 12:13:28 pm - notes/WEB TECHNOLOGY/WT U4 One shot(Edushine Classes).pdf
+[SUCCESS] 12:13:32 pm - notes/WEB TECHNOLOGY/WT U5 One shot (Edushine Classes).pdf
+[SUCCESS] 12:13:37 pm - notes/WEB TECHNOLOGY/WT Unit 1 One shot (RRSIMT).pdf
+[SUCCESS] 12:13:40 pm - notes/WEB TECHNOLOGY/Wt unit-02.pdf

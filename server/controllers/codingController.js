@@ -202,16 +202,12 @@ async function tryServeFromCache({ msgId, req, res, fallbackContentType, fallbac
 }
 
 async function getTelegramClient() {
-    // If client is already connected and ready, return it
     if (client && client.connected && clientReady) return client;
     
-    // If a connection is already in progress, wait for it
     if (connectPromise) {
         try {
             return await connectPromise;
-        } catch (e) {
-            // If the previous attempt failed, we'll try again below
-        }
+        } catch (e) {}
     }
 
     connectPromise = (async () => {
@@ -229,25 +225,45 @@ async function getTelegramClient() {
             client = new TelegramClient(session, apiId, apiHash, {
                 connectionRetries: 10,
                 retryDelay: 2000,
-                autoReconnect: true
+                autoReconnect: true,
+                deviceModel: `AKTU_PREP_SERVER_${process.pid}` // Unique ID for this instance
             });
 
             await client.connect();
             log('Client', 'Connected successfully.');
             clientReady = true;
-            connectPromise = null; // Reset so future calls use the live client
+            connectPromise = null;
             return client;
         } catch (err) {
             log('Client', `Connection failed: ${err.message}`);
             connectPromise = null;
             clientReady = false;
-            client = null;
+            if (client) {
+                try { await client.disconnect(); } catch (e) {}
+                client = null;
+            }
             throw err;
         }
     })();
 
     return connectPromise;
 }
+
+exports.disconnectTelegram = async () => {
+    if (client) {
+        log('Client', 'Disconnecting Telegram client...');
+        try {
+            await client.disconnect();
+            log('Client', 'Disconnected.');
+        } catch (e) {
+            log('Client', `Disconnect error: ${e.message}`);
+        } finally {
+            client = null;
+            clientReady = false;
+            connectPromise = null;
+        }
+    }
+};
 
 // ─── Media entity cache ───────────────────────────────────────────────────────
 // Populated at startup by preWarmConnection() so first-click is instant
