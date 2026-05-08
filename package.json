@@ -8,7 +8,7 @@
         "dev": "vite",
         "build": "vite build",
         "start": "node server/index.js",
-        "postinstall": "cd server && npm install",
+        "postinstall": "node -e \"if(require('fs').existsSync('server')) { console.log('Installing server dependencies...'); require('child_process').execSync('cd server && npm install', {stdio: 'inherit'}); } else { console.log('Skipping server install (not found)'); }\"",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",
         "preview": "vite preview",

@@ -26,12 +26,14 @@ import {
     Globe
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, useClerk } from '@clerk/clerk-react';
 import { adminApi, addStudyMaterial } from '../services/api';
 import { toast } from 'sonner';
+import extractedData from '../data/all_extracted_materials.json';
 
 const QuestionsPage = () => {
-    const { user } = useUser();
+    const { user, isSignedIn } = useUser();
+    const { openSignIn } = useClerk();
     const isAdmin = user?.primaryEmailAddress?.emailAddress === 'vrat1087@gmail.com';
     const { subjectId } = useParams();
     const [questions, setQuestions] = useState([]);
@@ -39,7 +41,30 @@ const QuestionsPage = () => {
     const [subject, setSubject] = useState(null);
     const [loading, setLoading] = useState(true);
     const [expandedId, setExpandedId] = useState(null);
-    const [activeTab, setActiveTab] = useState('papers'); // 'papers', 'notes', or 'videos'
+    const [activeTab, setActiveTab] = useState('notes'); // Default to notes as per user preference
+    
+    // --- INTEGRATED EXTRACTED MATERIALS ---
+    const [externalMaterials, setExternalMaterials] = useState([]);
+
+    useEffect(() => {
+        if (subject) {
+            const courseKey = subject.course; // e.g. "B.Pharm"
+            const semKey = `${subject.semester}${subject.semester === 1 ? 'st' : subject.semester === 2 ? 'nd' : subject.semester === 3 ? 'rd' : 'th'} Sem`;
+            
+            if (extractedData[courseKey] && extractedData[courseKey][semKey]) {
+                const links = extractedData[courseKey][semKey];
+                const formatted = links.map((link, idx) => ({
+                    _id: `ext-${idx}`,
+                    title: `Premium Resource Pack #${idx + 1}`,
+                    description: `Comprehensive study material extracted for ${courseKey} ${semKey}.`,
+                    url: link,
+                    type: 'notes',
+                    isExternal: true
+                }));
+                setExternalMaterials(formatted);
+            }
+        }
+    }, [subject]);
     
     // Search & Filter State
     const [searchTerm, setSearchTerm] = useState('');
@@ -179,7 +204,9 @@ const QuestionsPage = () => {
         return url;
     };
 
-    const filteredMaterials = materials
+    const allMaterials = [...materials, ...externalMaterials];
+
+    const filteredMaterials = allMaterials
         .filter(m => {
             if (activeTab === 'notes' && m.type !== 'notes') return false;
             if (activeTab === 'videos' && m.type !== 'video') return false;
@@ -275,6 +302,31 @@ const QuestionsPage = () => {
             </div>
 
             <div className="relative z-10 max-w-6xl mx-auto px-6">
+                {!isSignedIn && (
+                    <motion.div 
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-10 p-8 rounded-[2.5rem] bg-indigo-600 shadow-2xl shadow-indigo-600/20 flex flex-col md:flex-row items-center justify-between gap-6 overflow-hidden relative group"
+                    >
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
+                        <div className="flex items-center gap-6 relative z-10">
+                            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center text-white backdrop-blur-xl">
+                                <ShieldCheck size={32} weight="fill" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-black italic uppercase tracking-tight text-white">Unlock Full Access</h3>
+                                <p className="text-white/70 text-sm font-medium">Register or Login now to download premium notes and watch all lectures.</p>
+                            </div>
+                        </div>
+                        <button 
+                            onClick={() => openSignIn()}
+                            className="px-10 py-5 bg-white text-indigo-600 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-slate-100 transition-all shadow-xl relative z-10"
+                        >
+                            Login / Register Now
+                        </button>
+                    </motion.div>
+                )}
+
                 {activeTab === 'papers' ? (
                     <div className="space-y-8">
                         {questions.length > 0 ? questions.map((q, idx) => (
@@ -354,9 +406,18 @@ const QuestionsPage = () => {
 
                                             <div className="mt-8 flex flex-col sm:flex-row items-center justify-between gap-6 px-4">
                                                 {q.fileUrl ? (
-                                                    <a href={`${SERVER_URL}${q.fileUrl}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center px-10 py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-white font-black text-xs uppercase tracking-widest transition-all shadow-2xl shadow-indigo-600/40 w-full sm:w-auto">
+                                                    <button 
+                                                        onClick={() => {
+                                                            if (!isSignedIn) {
+                                                                openSignIn();
+                                                                return;
+                                                            }
+                                                            window.open(`${SERVER_URL}${q.fileUrl}`, '_blank');
+                                                        }}
+                                                        className="flex items-center justify-center px-10 py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl text-white font-black text-xs uppercase tracking-widest transition-all shadow-2xl shadow-indigo-600/40 w-full sm:w-auto"
+                                                    >
                                                         <FilePdf size={20} weight="fill" className="mr-3" /> View Full Year Paper
-                                                    </a>
+                                                    </button>
                                                 ) : (
                                                     <div className="flex items-center gap-3 px-8 py-5 bg-white/5 rounded-2xl text-slate-500 font-black text-xs uppercase tracking-widest border border-dashed border-white/10 w-full sm:w-auto">
                                                         <Clock size={20} weight="duotone" className="text-indigo-500" /> Full Paper Coming Soon
@@ -417,8 +478,18 @@ const QuestionsPage = () => {
                                             {m.type === 'video' ? <Video size={32} weight="duotone" /> : <BookOpen size={32} weight="duotone" />}
                                         </div>
                                         <div className="flex items-center gap-2">
+                                            {m.isExternal && (
+                                                <span className="px-4 py-1.5 bg-amber-500/20 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-amber-400 border border-amber-500/20 flex items-center gap-2">
+                                                    <Sparkle size={12} weight="fill" /> PREMIUM RESOURCE
+                                                </span>
+                                            )}
                                             {m.title.toLowerCase().includes('unit') && (
                                                 <span className="px-4 py-1.5 bg-indigo-500/20 rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-indigo-400 border border-indigo-500/20">Unit Focused</span>
+                                            )}
+                                            {!isSignedIn && (
+                                                <div className="p-2 bg-slate-800 rounded-lg text-slate-500">
+                                                    <ShieldCheck size={18} weight="bold" />
+                                                </div>
                                             )}
                                             {isAdmin && (
                                                 <button 
@@ -434,27 +505,45 @@ const QuestionsPage = () => {
                                     <p className="text-slate-400 font-medium text-sm mb-10 line-clamp-2 leading-relaxed">{m.description || 'Access high-quality study material for this topic.'}</p>
                                     
                                     {m.type === 'video' ? (
-                                        <a href={m.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-full py-5 bg-red-600 hover:bg-red-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-red-600/40">
+                                        <button 
+                                            onClick={() => {
+                                                if (!isSignedIn) {
+                                                    openSignIn();
+                                                    return;
+                                                }
+                                                window.open(m.url, '_blank', 'noopener,noreferrer');
+                                            }}
+                                            className="flex items-center justify-center w-full py-5 bg-red-600 hover:bg-red-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-red-600/40"
+                                        >
                                             <PlayCircle size={20} weight="fill" className="mr-2" /> WATCH ON YOUTUBE
-                                        </a>
+                                        </button>
                                     ) : (
                                         <div className="flex flex-col gap-4">
                                             <div className="grid grid-cols-2 gap-4">
                                                 <button 
-                                                    onClick={() => setViewPdfUrl(getDrivePreviewUrl(m.url))}
+                                                    onClick={() => {
+                                                        if (!isSignedIn) {
+                                                            openSignIn();
+                                                            return;
+                                                        }
+                                                        setViewPdfUrl(getDrivePreviewUrl(m.url));
+                                                    }}
                                                     className="flex items-center justify-center py-5 bg-indigo-600 hover:bg-indigo-500 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all shadow-2xl shadow-indigo-600/40"
                                                 >
                                                     <Eye size={20} weight="bold" className="mr-2" /> VIEW
                                                 </button>
-                                                <a 
-                                                    href={getDriveDownloadUrl(m.url)} 
-                                                    download 
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
+                                                <button 
+                                                    onClick={() => {
+                                                        if (!isSignedIn) {
+                                                            openSignIn();
+                                                            return;
+                                                        }
+                                                        window.open(getDriveDownloadUrl(m.url), '_blank');
+                                                    }}
                                                     className="flex items-center justify-center py-5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-black text-xs uppercase tracking-widest text-white transition-all"
                                                 >
                                                     <DownloadSimple size={20} weight="bold" className="mr-2" /> DOWNLOAD
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     )}

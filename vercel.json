@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://aktu-prep.onrender.com/api/:path*"
+    },
+    {
+      "source": "/uploads/:path*",
+      "destination": "https://aktu-prep.onrender.com/uploads/:path*"
+    },
+    {
+      "source": "/notes/:path*",
+      "destination": "https://aktu-prep.onrender.com/notes/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

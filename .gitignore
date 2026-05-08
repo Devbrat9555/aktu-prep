@@ -48,3 +48,6 @@ server/.env
 public/notes/
 temp_notes/
 dist/
+
+.vercel
+.env*.local

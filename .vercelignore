@@ -1,0 +1,11 @@
+node_modules
+dist
+dev-dist
+public/notes
+server
+temp_notes
+scratch
+*.log
+.git
+.github
+.husky

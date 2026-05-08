@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useUser } from '@clerk/clerk-react';
+import { useUser, useClerk } from '@clerk/clerk-react';
 import { 
     Terminal, 
     Code, 
@@ -21,7 +21,8 @@ import {
 } from '@phosphor-icons/react';
 
 const CodingPage = () => {
-    const { user } = useUser();
+    const { user, isSignedIn } = useUser();
+    const { openSignIn } = useClerk();
     const [groupedResources, setGroupedResources] = useState({});
     const [activeBatch, setActiveBatch] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -124,6 +125,10 @@ const CodingPage = () => {
         const isZip = (item.title || '').toLowerCase().includes('.zip');
         
         const handleClick = async () => {
+            if (!isSignedIn) {
+                openSignIn();
+                return;
+            }
             if (isZip) {
                 // Direct download for ZIP files
                 window.open(`/api/coding/stream/${item.url.split('/').pop()}`, '_blank');
@@ -299,15 +304,19 @@ const CodingPage = () => {
                                     </div>
                                     <div className="flex gap-3">
                                         {cheatSheets.map((sheet, i) => (
-                                            <a 
+                                            <button 
                                                 key={sheet._id}
-                                                href={`/api/coding/stream/${sheet.url.split('/').pop()}`}
-                                                target="_blank"
-                                                rel="noreferrer"
+                                                onClick={() => {
+                                                    if (!isSignedIn) {
+                                                        openSignIn();
+                                                        return;
+                                                    }
+                                                    window.open(`/api/coding/stream/${sheet.url.split('/').pop()}`, '_blank');
+                                                }}
                                                 className="px-6 py-3 bg-white/5 hover:bg-emerald-500 hover:text-white border border-white/10 rounded-2xl text-xs font-black uppercase tracking-widest transition-all"
                                             >
                                                 Part {i + 1}
-                                            </a>
+                                            </button>
                                         ))}
                                     </div>
                                 </div>
