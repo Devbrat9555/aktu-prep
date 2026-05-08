@@ -57,8 +57,8 @@ const QuestionsPage = () => {
                 const links = extractedData[courseKey][semKey];
                 const formatted = links.map((link, idx) => ({
                     _id: `ext-${idx}`,
-                    title: `Premium Resource Pack #${idx + 1}`,
-                    description: `Comprehensive study material extracted for ${courseKey} ${semKey}.`,
+                    title: `${subject.name.replace(' Notes', '')} - Unit Wise Pack ${idx + 1}`,
+                    description: `Detailed unit-wise notes and resources for ${subject.name}. Includes hand-picked materials from the official curriculum.`,
                     url: link,
                     type: 'notes',
                     isExternal: true
@@ -190,18 +190,25 @@ const QuestionsPage = () => {
 
     const getDriveDownloadUrl = (url) => {
         if (!url || !url.includes('drive.google.com')) return url;
-        const match = url.match(/\/d\/([^\/]+)/);
-        if (match && match[1]) {
-            return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+        const fileMatch = url.match(/\/d\/([^\/]+)/);
+        const folderMatch = url.match(/\/folders\/([^\/]+)/);
+        
+        if (fileMatch && fileMatch[1]) {
+            return `https://drive.google.com/uc?export=download&id=${fileMatch[1]}`;
         }
-        return url;
+        return url; // Folders don't have a direct download URL like this
     };
 
     const getDrivePreviewUrl = (url) => {
         if (!url || !url.includes('drive.google.com')) return url;
-        const match = url.match(/\/d\/([^\/]+)/);
-        if (match && match[1]) {
-            return `https://drive.google.com/file/d/${match[1]}/preview`;
+        const fileMatch = url.match(/\/d\/([^\/]+)/);
+        const folderMatch = url.match(/\/folders\/([^\/]+)/);
+        
+        if (fileMatch && fileMatch[1]) {
+            return `https://drive.google.com/file/d/${fileMatch[1]}/preview`;
+        }
+        if (folderMatch && folderMatch[1]) {
+            return `https://drive.google.com/embeddedfolderview?id=${folderMatch[1]}#list`;
         }
         return url;
     };
