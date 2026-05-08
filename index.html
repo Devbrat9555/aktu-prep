@@ -13,6 +13,12 @@
             data-website-id="2ebb1c5f-08c8-4e56-a50b-50e84479068d"
             data-performance="true"
         ></script>
+        <script>
+            // Pre-warm the backend immediately to reduce cold-start delay
+            try {
+                fetch('/api/courses', { mode: 'no-cors' }).catch(() => {});
+            } catch (e) {}
+        </script>
         <title>AKTU Prep</title>
     </head>
 

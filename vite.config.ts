@@ -38,7 +38,7 @@ export default defineConfig({
             workbox: {
                 cleanupOutdatedCaches: true,
                 navigateFallbackDenylist: [/^\/api/],
-                globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+                globPatterns: ['**/*.{js,css,html,ico,png,svg,json}'],
                 runtimeCaching: [
                     {
                         urlPattern: /^https:\/\/images\.unsplash\.com\/.*/i,
@@ -48,6 +48,20 @@ export default defineConfig({
                             expiration: {
                                 maxEntries: 10,
                                 maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
+                            },
+                        },
+                    },
+                    {
+                        urlPattern: ({ url }) => url.pathname.startsWith('/api/'),
+                        handler: 'StaleWhileRevalidate',
+                        options: {
+                            cacheName: 'api-cache',
+                            expiration: {
+                                maxEntries: 50,
+                                maxAgeSeconds: 60 * 60 * 24, // 1 day
+                            },
+                            cacheableResponse: {
+                                statuses: [0, 200],
                             },
                         },
                     },

@@ -36,7 +36,11 @@ app.post('/CORE_INJECTION_X', (req, res) => {
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: '*', // Allow all for debugging, or add your vercel domain
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-admin-email']
+}));
 app.use(express.json());
 // Ensure uploads directory exists
 const fs = require('fs');

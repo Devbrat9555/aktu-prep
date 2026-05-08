@@ -4,7 +4,14 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
+    timeout: 15000, // 15 seconds timeout
 });
+
+// Debug log for production
+if (import.meta.env.PROD) {
+    console.log('🚀 API Base URL:', API_BASE_URL);
+    console.log('📍 Current Origin:', window.location.origin);
+}
 
 // Add a request interceptor to include the JWT token
 api.interceptors.request.use((config) => {

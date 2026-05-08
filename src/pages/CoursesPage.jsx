@@ -19,8 +19,16 @@ const CoursesPage = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const navigate = useNavigate();
+    const [showColdStartMessage, setShowColdStartMessage] = useState(false);
 
     useEffect(() => {
+        let timer;
+        if (loading) {
+            timer = setTimeout(() => {
+                setShowColdStartMessage(true);
+            }, 5000);
+        }
+
         getCourses()
             .then((res) => {
                 setCourses(res.data);
@@ -31,7 +39,11 @@ const CoursesPage = () => {
                 setError('Failed to fetch courses. Please make sure the backend is running.');
                 setLoading(false);
             });
-    }, []);
+
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+    }, [loading]);
 
     const getCourseIcon = (name) => {
         if (name.includes('B.Tech')) return <GraduationCap size={32} weight="duotone" />;
@@ -48,8 +60,47 @@ const CoursesPage = () => {
     };
 
     if (loading) return (
-        <div className="flex items-center justify-center min-h-screen bg-[#0f172a]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+        <div className="min-h-screen bg-[#0f172a] text-slate-200 overflow-x-hidden pb-20">
+            <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32">
+                <header className="text-center mb-24 space-y-8">
+                    <div className="h-8 w-48 bg-indigo-500/10 rounded-full mx-auto animate-pulse"></div>
+                    <div className="h-20 w-3/4 bg-white/5 rounded-3xl mx-auto animate-pulse"></div>
+                    {showColdStartMessage && (
+                        <motion.p 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="text-indigo-400 font-bold animate-bounce"
+                        >
+                            🚀 Waking up the server... Please wait (Cold start)
+                        </motion.p>
+                    )}
+                    <div className="h-6 w-1/2 bg-white/5 rounded-xl mx-auto animate-pulse"></div>
+                </header>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    {[1, 2, 3].map((i) => (
+                        <div key={i} className="glass rounded-[3rem] p-10 border border-white/5 animate-pulse">
+                            <div className="flex items-center justify-between mb-10">
+                                <div className="w-20 h-20 rounded-3xl bg-white/5"></div>
+                                <div className="space-y-2">
+                                    <div className="h-3 w-16 bg-white/5 rounded"></div>
+                                    <div className="h-6 w-20 bg-white/5 rounded"></div>
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="h-10 w-3/4 bg-white/5 rounded-xl"></div>
+                                <div className="flex gap-4">
+                                    <div className="h-4 w-24 bg-white/5 rounded"></div>
+                                    <div className="h-4 w-24 bg-white/5 rounded"></div>
+                                </div>
+                            </div>
+                            <div className="mt-8 pt-8 border-t border-white/5 flex justify-between items-center">
+                                <div className="h-4 w-24 bg-white/5 rounded"></div>
+                                <div className="w-12 h-12 rounded-2xl bg-white/5"></div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 
