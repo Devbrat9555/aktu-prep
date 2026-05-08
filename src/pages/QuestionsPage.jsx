@@ -23,7 +23,9 @@ import {
     Plus,
     X,
     UploadSimple,
-    Globe
+    Globe,
+    ShieldCheck,
+    Sparkle
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useUser, useClerk } from '@clerk/clerk-react';
