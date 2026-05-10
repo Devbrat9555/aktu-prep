@@ -61,7 +61,7 @@ const InstallPWA: React.FC = () => {
                 initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -100, opacity: 0 }}
-                className="fixed top-6 left-6 right-6 md:left-auto md:right-12 md:w-[400px] z-[100]"
+                className="fixed top-20 left-6 right-6 md:left-auto md:right-12 md:w-[400px] z-[100]"
             >
                 <div className="relative group">
                     {/* Glow effect */}
