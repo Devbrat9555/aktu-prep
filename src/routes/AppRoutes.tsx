@@ -3,40 +3,49 @@
  * @description Main routing for AKTU Prep.
  */
 
-import Layout from '../components/Layout.jsx';
-import SettingsRoutes from './SettingsRoutes.js';
-import About from '../pages/About.jsx';
+import { lazy, Suspense } from 'react';
+import Layout from '../components/Layout.tsx';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import useAuth from '../hooks/useAuth.ts';
-import CoursesPage from '../pages/CoursesPage.jsx';
-import YearsPage from '../pages/YearsPage.jsx';
-import SemestersPage from '../pages/SemestersPage.jsx';
-import SubjectsPage from '../pages/SubjectsPage.jsx';
-import QuestionsPage from '../pages/QuestionsPage.jsx';
-import AdminPage from '../pages/AdminPage.jsx';
 
-import CommunityPage from '../pages/CommunityPage.jsx';
-import CodingPage from '../pages/CodingPage.jsx';
+// Lazy load components
+const SettingsRoutes = lazy(() => import('./SettingsRoutes.js'));
+const About = lazy(() => import('../pages/About.jsx'));
+const CoursesPage = lazy(() => import('../pages/CoursesPage.jsx'));
+const YearsPage = lazy(() => import('../pages/YearsPage.jsx'));
+const SemestersPage = lazy(() => import('../pages/SemestersPage.jsx'));
+const SubjectsPage = lazy(() => import('../pages/SubjectsPage.jsx'));
+const QuestionsPage = lazy(() => import('../pages/QuestionsPage.jsx'));
+const AdminPage = lazy(() => import('../pages/AdminPage.jsx'));
+const CommunityPage = lazy(() => import('../pages/CommunityPage.jsx'));
+const CodingPage = lazy(() => import('../pages/CodingPage.jsx'));
+const Donations = lazy(() => import('../pages/Donations.tsx'));
+const AIExpertPage = lazy(() => import('../pages/AIExpertPage.tsx'));
 
 export default function AppRoutes() {
     return (
-        <Routes>
-            <Route path="/" element={<Navigate to="/courses" replace />} />
-            
-            <Route element={<Layout />}>
-                <Route path="courses" element={<CoursesPage />} />
-                <Route path="coding" element={<CodingPage />} />
-                <Route path="years/:course" element={<YearsPage />} />
-                <Route path="semesters/:course/:year" element={<SemestersPage />} />
-                <Route path="subjects/:course/:year/:semester" element={<SubjectsPage />} />
-                <Route path="questions/:subjectId" element={<QuestionsPage />} />
-                <Route path="community" element={<CommunityPage />} />
-                <Route path="admin" element={<AdminPage />} />
-                <Route path="settings/*" element={<SettingsRoutes />} />
-                <Route path="about" element={<About landing={false} />} />
-                <Route path="*" element={<NotFoundPage />} />
-            </Route>
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen bg-[#0f172a]" />}>
+            <Routes>
+                <Route path="/" element={<Navigate to="/courses" replace />} />
+                
+                {/* Immersive Pages (No Global Navbar/Sidebar) */}
+                <Route path="ai-expert" element={<AIExpertPage />} />
+
+                <Route element={<Layout />}>
+                    <Route path="courses" element={<CoursesPage />} />
+                    <Route path="coding" element={<CodingPage />} />
+                    <Route path="donate" element={<Donations />} />
+                    <Route path="years/:course" element={<YearsPage />} />
+                    <Route path="semesters/:course/:year" element={<SemestersPage />} />
+                    <Route path="subjects/:course/:year/:semester" element={<SubjectsPage />} />
+                    <Route path="questions/:subjectId" element={<QuestionsPage />} />
+                    <Route path="community" element={<CommunityPage />} />
+                    <Route path="admin" element={<AdminPage />} />
+                    <Route path="settings/*" element={<SettingsRoutes />} />
+                    <Route path="about" element={<About landing={false} />} />
+                    <Route path="*" element={<NotFoundPage />} />
+                </Route>
+            </Routes>
+        </Suspense>
     );
 }
 

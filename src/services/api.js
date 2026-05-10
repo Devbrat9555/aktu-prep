@@ -59,6 +59,11 @@ export const adminApi = {
             'x-admin-email': 'vrat1087@gmail.com'
         }
     }),
+    
+    // Contribution Management
+    getPendingContributions: () => api.get('/admin/contributions/pending', { headers: { 'x-admin-email': 'vrat1087@gmail.com' } }),
+    approveContribution: (id) => api.post(`/admin/contributions/${id}/approve`, {}, { headers: { 'x-admin-email': 'vrat1087@gmail.com' } }),
+    deleteContribution: (id) => api.delete(`/admin/contributions/${id}`, { headers: { 'x-admin-email': 'vrat1087@gmail.com' } })
 };
 
 export const login = (credentials) => api.post('/auth/login', credentials);

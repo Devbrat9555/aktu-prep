@@ -21,21 +21,32 @@ exports.getYears = async (req, res) => {
 };
 
 exports.getSemesters = async (req, res) => {
-    const { course, year } = req.query;
-    const semesters = [year * 2 - 1, year * 2];
+    const { year } = req.query;
+    const numericYear = year ? parseInt(year.toString().replace(/[^0-9]/g, '')) : 0;
+    if (!numericYear) return res.json([]);
+    const semesters = [numericYear * 2 - 1, numericYear * 2];
     res.json(semesters);
 };
 
 exports.getSubjects = async (req, res) => {
     try {
-        const { course, year, semester } = req.query;
+        let { course, year, semester } = req.query;
         
-        // If parameters are missing or "undefined" as strings, return empty array instead of crashing
-        if (!course || course === 'undefined' || !year || year === 'undefined' || !semester || semester === 'undefined') {
+        if (!course || course === 'undefined') return res.json([]);
+
+        // Convert "1st Year" -> 1, "1st Sem" -> 1
+        const numericYear = year ? parseInt(year.toString().replace(/[^0-9]/g, '')) : null;
+        const numericSemester = semester ? parseInt(semester.toString().replace(/[^0-9]/g, '')) : null;
+
+        if (!numericYear || !numericSemester) {
             return res.json([]);
         }
 
-        const subjects = await Subject.find({ course, year, semester });
+        const subjects = await Subject.find({ 
+            course, 
+            year: numericYear, 
+            semester: numericSemester 
+        });
         res.json(subjects);
     } catch (err) {
         res.status(500).json({ error: err.message });

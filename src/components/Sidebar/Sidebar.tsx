@@ -133,12 +133,8 @@ const Sidebar = ({ showSidebar, setShowSidebar, hideMobileNavigation }: SidebarP
         }
     };
 
-    if (width === undefined) {
-        return <ModernLoader />;
-    }
-
     // Mobile: bottom navbar, Desktop: sidebar
-    const isMobile: boolean = width < 1024;
+    const isMobile: boolean = width !== undefined ? width < 1024 : false;
 
     if (isMobile) {
         if (hideMobileNavigation) return null;

@@ -40,4 +40,6 @@ export interface Stats {
     streaks: Streaks;
     heatmapData: Heatmap[];
     studyPlan: StudyPlan;
+    xp: number;
+    level: number;
 }

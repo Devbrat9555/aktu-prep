@@ -13,11 +13,13 @@ import {
     Stack
 } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import ContributionModal from '../components/ContributionModal';
 
 const CoursesPage = () => {
     const [courses, setCourses] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isContributeModalOpen, setIsContributeModalOpen] = useState(false);
     const navigate = useNavigate();
     const [showColdStartMessage, setShowColdStartMessage] = useState(false);
 
@@ -26,7 +28,7 @@ const CoursesPage = () => {
         if (loading) {
             timer = setTimeout(() => {
                 setShowColdStartMessage(true);
-            }, 5000);
+            }, 3000);
         }
 
         getCourses()
@@ -63,8 +65,8 @@ const CoursesPage = () => {
         <div className="min-h-screen bg-[#0f172a] text-slate-200 overflow-x-hidden pb-20">
             <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32">
                 <header className="text-center mb-24 space-y-8">
-                    <div className="h-8 w-48 bg-indigo-500/10 rounded-full mx-auto animate-pulse"></div>
-                    <div className="h-20 w-3/4 bg-white/5 rounded-3xl mx-auto animate-pulse"></div>
+                    <div className="h-10 w-64 bg-indigo-500/10 rounded-full mx-auto animate-pulse"></div>
+                    <div className="h-40 w-full md:w-3/4 bg-white/5 rounded-3xl mx-auto animate-pulse"></div>
                     {showColdStartMessage && (
                         <motion.p 
                             initial={{ opacity: 0 }}
@@ -121,8 +123,8 @@ const CoursesPage = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32">
                 <header className="text-center mb-24 space-y-8">
                     <motion.div 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-black uppercase tracking-[0.2em]"
                     >
                         <Sparkle size={16} weight="fill" className="animate-pulse" />
@@ -130,9 +132,8 @@ const CoursesPage = () => {
                     </motion.div>
                     
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
                         className="space-y-4"
                     >
                         <h1 className="text-6xl md:text-8xl font-black italic tracking-tighter uppercase leading-[0.9] text-white">
@@ -145,6 +146,42 @@ const CoursesPage = () => {
                     </motion.div>
                 </header>
 
+                {/* Community Contribution Section */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-20"
+                >
+                    <div className="relative group overflow-hidden p-8 md:p-12 bg-white/[0.02] border border-white/5 rounded-[3rem] backdrop-blur-3xl flex flex-col md:flex-row items-center justify-between gap-8 transition-all hover:bg-white/[0.04]">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full -mr-20 -mt-20 group-hover:bg-emerald-500/20 transition-all"></div>
+                        
+                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                            <div className="p-6 bg-emerald-500/20 rounded-[2rem] border border-emerald-500/30">
+                                <Stack size={48} weight="duotone" className="text-emerald-400" />
+                            </div>
+                            <div className="text-center md:text-left space-y-2">
+                                <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter">Share Your <span className="text-emerald-500">Resources</span></h2>
+                                <p className="text-slate-400 text-sm max-w-sm font-medium">
+                                    You can also add your own notes and lecture videos here. Share your materials to help other students and grow our library.
+                                </p>
+                            </div>
+                        </div>
+
+                        <button 
+                            onClick={() => setIsContributeModalOpen(true)}
+                            className="relative z-10 px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-white font-black uppercase tracking-widest text-xs rounded-2xl shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-3 active:scale-95"
+                        >
+                            Contribute Now <ArrowRight size={18} weight="bold" />
+                        </button>
+                    </div>
+                </motion.div>
+
+                <ContributionModal 
+                    isOpen={isContributeModalOpen} 
+                    onClose={() => setIsContributeModalOpen(false)} 
+                />
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {courses.map((course, idx) => {
                         const details = getCourseDetails(course.name);
@@ -153,9 +190,9 @@ const CoursesPage = () => {
                                 key={course._id}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: idx * 0.1 }}
+                                transition={{ duration: 0.3 }}
                                 onClick={() => navigate(`/years/${course.name}`)}
-                                className="group relative glass rounded-[3rem] p-10 border border-white/5 hover:border-indigo-500/30 transition-all duration-500 cursor-pointer overflow-hidden"
+                                className="group relative glass rounded-[3rem] p-10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 cursor-pointer overflow-hidden"
                             >
                                 {/* Decorative Gradient */}
                                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-indigo-500/5 blur-3xl group-hover:bg-indigo-500/10 transition-all"></div>

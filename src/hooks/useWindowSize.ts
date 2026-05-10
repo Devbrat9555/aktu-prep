@@ -11,8 +11,8 @@ const useWindowSize = () => {
     // State to store the window's width and height.
     // It's initialized with undefined to indicate that the size has not yet been measured on the client.
     const [windowSize, setWindowSize] = useState<windowSize>({
-        width: undefined,
-        height: undefined,
+        width: typeof window !== 'undefined' ? window.innerWidth : undefined,
+        height: typeof window !== 'undefined' ? window.innerHeight : undefined,
     });
 
     useEffect(() => {

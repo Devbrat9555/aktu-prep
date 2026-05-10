@@ -5,10 +5,24 @@ const contentController = require('../controllers/contentController');
 const bookmarkController = require('../controllers/bookmarkController');
 const adminController = require('../controllers/adminController');
 const codingController = require('../controllers/codingController');
+const aiController = require('../controllers/aiController');
+const contributionController = require('../controllers/contributionController');
 const auth = require('../middleware/auth');
 const upload = require('../middleware/upload');
 
 const adminAuth = require('../middleware/adminAuth');
+
+// AI Routes (Cached)
+router.post('/ai/query', aiController.queryAI);
+
+// Contribution Routes
+router.post('/contributions/submit', upload.single('file'), contributionController.submitContribution);
+router.get('/contributions/approved', contributionController.getApprovedContributions);
+
+// Admin Contribution Management (Protected)
+router.get('/admin/contributions/pending', adminAuth, contributionController.getPendingContributions);
+router.post('/admin/contributions/:id/approve', adminAuth, contributionController.approveContribution);
+router.delete('/admin/contributions/:id', adminAuth, contributionController.deleteContribution);
 
 // Auth Routes
 router.post('/auth/register', authController.register);

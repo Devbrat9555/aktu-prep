@@ -46,6 +46,8 @@ const StatsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             todayProgressPercent: 0,
             isTargetMetToday: false,
         },
+        xp: 0,
+        level: 1,
     });
 
     const [loading, setLoading] = useState(true);
@@ -390,7 +392,7 @@ const StatsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             progress: overallUniqueProgressPercent,
             accuracy: attempted ? Math.round((correctAttempts / attempted) * 100) : 0,
             question: question,
-            subjectStats: defaultSubjectStats, // The current default fallback for components not yet updated to use subjectStatsMap
+            subjectStats: defaultSubjectStats,
             subjectStatsMap,
             heatmapData: mappedHeatmap,
             streaks: { current: currentStreak, longest: longestStreak },
@@ -405,6 +407,13 @@ const StatsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 todayProgressPercent,
                 isTargetMetToday,
             },
+            xp: Math.round(
+                uniqueAttemptCount * 10 + 
+                correctAttempts * 5 + 
+                (isTargetMetToday ? 50 : 0) + 
+                currentStreak * 15
+            ),
+            level: Math.floor(Math.sqrt((uniqueAttemptCount * 10 + correctAttempts * 5) / 100)) + 1,
         });
 
         setLoading(false);

@@ -23,6 +23,7 @@
     "dependencies": {
         "@base-ui/react": "^1.2.0",
         "@clerk/clerk-react": "^5.61.6",
+        "@google/generative-ai": "^0.24.1",
         "@nivo/calendar": "^0.99.0",
         "@phosphor-icons/react": "^2.1.10",
         "@radix-ui/react-alert-dialog": "^1.1.15",

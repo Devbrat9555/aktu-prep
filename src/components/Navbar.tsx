@@ -1,11 +1,12 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { motion } from 'framer-motion';
-import { Notification, GraduationCap, Star, Lightning, List, X } from '@phosphor-icons/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Notification, GraduationCap, Star, Lightning, List, X, Microphone, MicrophoneSlash } from '@phosphor-icons/react';
 import NotificationDialog from './NotificationDialog.js';
 import useWindowSize from '../hooks/useWindowSize.ts';
 import { useNavigate } from 'react-router-dom';
 import { SignInButton, SignedIn, SignedOut, UserButton, useUser } from '@clerk/clerk-react';
 import FeedbackModal from './FeedbackModal';
+import { toast } from 'sonner';
 
 const Navbar = () => {
     const { user } = useUser();
@@ -35,15 +36,49 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [handleClickOutside]);
 
+    const [isListening, setIsListening] = useState(false);
+    const startVoiceSearch = () => {
+        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+            toast.error("Speech Recognition not supported in this browser.");
+            return;
+        }
+
+        const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+
+        recognition.onstart = () => setIsListening(true);
+        recognition.onend = () => setIsListening(false);
+        recognition.onerror = () => setIsListening(false);
+
+        recognition.onresult = (event: any) => {
+            const command = event.results[0][0].transcript.toLowerCase();
+            console.log('Voice Command:', command);
+            
+            if (command.includes('course') || command.includes('home')) navigate('/courses');
+            else if (command.includes('ai') || command.includes('expert')) navigate('/ai-expert');
+            else if (command.includes('coding')) navigate('/coding');
+            else if (command.includes('community')) navigate('/community');
+            else if (command.includes('setting')) navigate('/settings');
+            else if (command.includes('about')) navigate('/about');
+            else if (command.includes('donate')) navigate('/donate');
+            else toast.info(`Command "${command}" not recognized.`);
+        };
+
+        recognition.start();
+    };
+
     if (width === undefined) return null;
     const isMobile: boolean = width < 768;
 
     return (
         <motion.div
             className="py-4 px-6 flex justify-between items-center border-b border-white/5 bg-slate-900/50 backdrop-blur-md text-white sticky top-0 z-50"
-            initial={{ y: -50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: 'easeOut' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
         >
             <div
                 className="flex items-center gap-3 cursor-pointer group"
@@ -153,7 +188,6 @@ const Navbar = () => {
                         />
                     </SignedIn>
                 </div>
-
                 <motion.button
                     aria-label="Notifications"
                     className="relative p-2 hover:bg-white/5 rounded-xl transition-colors"
@@ -165,6 +199,16 @@ const Navbar = () => {
                     {unreadNotifications && (
                         <span className="absolute top-2 right-2 w-3 h-3 bg-indigo-500 rounded-full border-2 border-slate-900 animate-pulse"></span>
                     )}
+                </motion.button>
+
+                <motion.button
+                    aria-label="Voice Search"
+                    className={`p-2 rounded-xl transition-all ${isListening ? 'bg-indigo-600 text-white animate-pulse' : 'hover:bg-white/5 text-slate-400'}`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={startVoiceSearch}
+                >
+                    {isListening ? <MicrophoneSlash size={24} weight="fill" /> : <Microphone size={24} weight="duotone" />}
                 </motion.button>
 
                 <NotificationDialog

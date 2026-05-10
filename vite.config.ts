@@ -52,13 +52,13 @@ export default defineConfig({
                         },
                     },
                     {
-                        urlPattern: ({ url }) => url.pathname.startsWith('/api/'),
+                        urlPattern: ({ url }) => url.pathname.startsWith('/api/') || url.pathname.startsWith('/notes/') || url.pathname.startsWith('/uploads/'),
                         handler: 'StaleWhileRevalidate',
                         options: {
-                            cacheName: 'api-cache',
+                            cacheName: 'material-cache',
                             expiration: {
-                                maxEntries: 50,
-                                maxAgeSeconds: 60 * 60 * 24, // 1 day
+                                maxEntries: 100,
+                                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
                             },
                             cacheableResponse: {
                                 statuses: [0, 200],

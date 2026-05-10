@@ -13,7 +13,7 @@ import useStats from '../hooks/useStats.ts';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button.tsx';
 import { LightningIcon } from '@phosphor-icons/react';
-import { ArrowClockwiseIcon } from '@phosphor-icons/react';
+import { ArrowClockwiseIcon, Clock, Robot as RobotIcon, Trophy, DownloadSimple, ShareNetwork } from '@phosphor-icons/react';
 import { useGoals } from '@/hooks/useGoals.ts';
 import { useEffect, useMemo, useState } from 'react';
 import {
@@ -95,6 +95,55 @@ const Dashboard = () => {
                     Your preparation journey is {stats?.progress}% complete. Keep going!
                 </p>
             </motion.div>
+
+            {/* Exam Countdown & Neural Pulse */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div className="md:col-span-2 p-8 glass rounded-[3rem] border border-indigo-500/10 flex items-center justify-between overflow-hidden relative">
+                    <div className="relative z-10">
+                        <div className="flex items-center gap-2 mb-2">
+                            <Clock size={16} weight="fill" className="text-indigo-500 animate-pulse" />
+                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500">Exam Countdown</span>
+                        </div>
+                        <h2 className="text-4xl font-black italic uppercase tracking-tighter text-white">
+                            {stats?.studyPlan?.daysLeft || 0} <span className="text-indigo-500">Days</span> Left
+                        </h2>
+                        <p className="text-xs font-medium text-slate-400 mt-2 italic uppercase tracking-widest opacity-60">Target: GATE / AKTU SEMESTER</p>
+                    </div>
+                    <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-gradient-to-l from-indigo-500/5 to-transparent"></div>
+                </div>
+
+                <div className="p-8 glass rounded-[3rem] border border-white/5 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-2">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-500">System Pulse</span>
+                    </div>
+                    <h3 className="text-xl font-black italic uppercase tracking-tighter text-white">Neural Stable</h3>
+                    <p className="text-[10px] font-medium text-slate-500 mt-1 uppercase tracking-widest">Connection: 4ms</p>
+                </div>
+            </div>
+
+            {/* Feature Hub */}
+            <section className="mb-12">
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">Neural Hub</h2>
+                </div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {[
+                        { icon: RobotIcon, name: 'AI Expert', path: '/ai-expert', color: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/20' },
+                        { icon: DownloadSimple, name: 'Offline', path: '/downloads', color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20' },
+                        { icon: ShareNetwork, name: 'Community', path: '/community', color: 'bg-rose-500/10 text-rose-400 border-rose-500/20' }
+                    ].map((feature, i) => (
+                        <button 
+                            key={i}
+                            onClick={() => navigate(feature.path)}
+                            className={`p-6 rounded-[2.5rem] border ${feature.color} flex flex-col items-center gap-3 hover:scale-105 transition-all group`}
+                        >
+                            <feature.icon size={32} weight="duotone" className="group-hover:scale-110 transition-transform" />
+                            <span className="text-[10px] font-black uppercase tracking-widest">{feature.name}</span>
+                        </button>
+                    ))}
+                </div>
+            </section>
 
             <section className="w-full mb-4">
                 {/* Section header */}

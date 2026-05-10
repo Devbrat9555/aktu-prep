@@ -46,7 +46,7 @@ export const SidebarDesktop = ({
                 x: showSidebar ? 0 : '-100%',
                 width: isCollapsed ? '5rem' : '16rem',
             }}
-            transition={{ type: 'spring', stiffness: 200, damping: 30 }}
+            transition={{ duration: 0.2 }}
         >
             <div>
                 {/* Branding */}
@@ -55,7 +55,7 @@ export const SidebarDesktop = ({
                         className="flex items-center justify-center text-2xl font-bold text-white"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.6 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <GraduationCap 
                             size={32} 

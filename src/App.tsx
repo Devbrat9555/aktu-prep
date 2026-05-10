@@ -15,6 +15,7 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { GoalProvider } from './context/GoalProvider.tsx';
 import UserSync from './components/UserSync';
 import InstallPWA from './components/InstallPWA';
+import FloatingAIBuddy from './components/FloatingAIBuddy';
 
 /**
  * @function App
@@ -39,6 +40,7 @@ function App() {
                             <AppRoutes />
 
                             <InstallPWA />
+                            <FloatingAIBuddy />
                             {/* Vercel Speed Insights */}
                             <SpeedInsights />
                         </AppProvider>
