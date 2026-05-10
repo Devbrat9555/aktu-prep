@@ -355,11 +355,12 @@ const AdminPage = () => {
                                                         </div>
                                                     </td>
                                                     <td className="py-6 text-right pr-4">
+                                                        <div className="flex items-center justify-end gap-3">
                                                             <button 
                                                                 onClick={() => {
                                                                     const subject = encodeURIComponent("Congratulations from AKTU Prep! 🎁");
-                                                                    const body = encodeURIComponent(`Hi ${u.studentName},\n\nGreat work on AKTU Prep! We'd like to reward you with ₹50 for your contribution/performance.\n\nPlease share your GPay/PhonePe number.\n\nBest,\nAKTU Prep Admin`);
-                                                                    window.location.href = `mailto:${u.studentEmail}?subject=${subject}&body=${body}`;
+                                                                    const body = encodeURIComponent(`Hi ${u.name},\n\nGreat work on AKTU Prep! We'd like to reward you with ₹50 for your contribution/performance.\n\nPlease share your GPay/PhonePe number.\n\nBest,\nAKTU Prep Admin`);
+                                                                    window.location.href = `mailto:${u.email}?subject=${subject}&body=${body}`;
                                                                 }}
                                                                 className="w-10 h-10 bg-indigo-500/10 text-indigo-500 rounded-xl flex items-center justify-center hover:bg-indigo-500/20 transition-all border border-indigo-500/5"
                                                                 title="Send Reward"
