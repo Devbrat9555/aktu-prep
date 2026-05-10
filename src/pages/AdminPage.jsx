@@ -255,7 +255,6 @@ const AdminPage = () => {
                                 { id: 'question', label: 'Data Upload', icon: <Upload size={20} /> },
                                 { id: 'bulk_sync', label: 'BULK SYNC (9GB)', icon: <Lightning size={20} className="text-amber-500" /> },
                                 { id: 'manage_questions', label: 'Data Vault', icon: <Database size={20} /> },
-                                { id: 'contributions', label: 'Pending Approvals', icon: <HandHeart size={20} className="text-emerald-500" /> },
                                 { id: 'feedback', label: 'Pulse Monitor', icon: <Globe size={20} /> },
                                 { id: 'add_user', label: 'Initialize User', icon: <Plus size={20} /> },
                             ].map((tab) => (
@@ -652,74 +651,6 @@ const AdminPage = () => {
                                                 ></div>
                                             </div>
                                         </div>
-                                    )}
-                                </div>
-                            </div>
-                        )}
-                        {activeTab === 'contributions' && (
-                            <div className="space-y-12 animate-in fade-in">
-                                <div className="space-y-4">
-                                    <h2 className="text-3xl font-black italic uppercase tracking-tighter text-emerald-500">Student <span className="text-white">Contributions</span></h2>
-                                    <p className="text-slate-500 font-medium italic italic">Review and approve academic materials submitted by the community.</p>
-                                </div>
-
-                                <div className="grid grid-cols-1 gap-6">
-                                    {allContributions.length === 0 ? (
-                                        <div className="bg-black/40 p-20 rounded-[3rem] border border-white/5 text-center space-y-6">
-                                            <HandHeart size={48} className="mx-auto text-slate-700" />
-                                            <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">No pending contributions at the moment.</p>
-                                        </div>
-                                    ) : (
-                                        allContributions.filter(c => c.studentName.toLowerCase().includes(searchQuery.toLowerCase()) || c.subject.toLowerCase().includes(searchQuery.toLowerCase())).map(c => (
-                                            <motion.div 
-                                                key={c._id}
-                                                initial={{ opacity: 0, scale: 0.98 }}
-                                                animate={{ opacity: 1, scale: 1 }}
-                                                className="bg-black/40 p-8 rounded-[2.5rem] border border-white/5 hover:border-emerald-500/20 transition-all flex flex-col md:flex-row items-center justify-between gap-8 group"
-                                            >
-                                                <div className="flex items-center gap-6">
-                                                    <div className={`p-5 rounded-2xl border ${c.type === 'note' ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' : 'bg-rose-500/10 border-rose-500/20 text-rose-400'}`}>
-                                                        {c.type === 'note' ? <BookOpen size={32} weight="duotone" /> : <Lightning size={32} weight="duotone" />}
-                                                    </div>
-                                                    <div className="space-y-1">
-                                                        <div className="flex items-center gap-3">
-                                                            <h3 className="text-lg font-black italic uppercase tracking-tighter text-white">{c.subject}</h3>
-                                                            <span className="px-3 py-1 bg-white/5 rounded-full text-[8px] font-black uppercase tracking-widest text-slate-400 border border-white/5">
-                                                                {c.type}
-                                                            </span>
-                                                        </div>
-                                                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-                                                            <p className="text-[10px] font-black uppercase tracking-widest text-emerald-500">{c.course} &bull; {c.semester}</p>
-                                                            <p className="text-[10px] font-bold text-slate-500 italic">By: {c.studentName}</p>
-                                                        </div>
-                                                        <a 
-                                                            href={c.content} 
-                                                            target="_blank" 
-                                                            rel="noopener noreferrer"
-                                                            className="inline-flex items-center gap-2 mt-2 text-[10px] font-black uppercase tracking-widest text-indigo-400 hover:text-white transition-colors"
-                                                        >
-                                                            <Link size={14} /> View Material Source
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <div className="flex items-center gap-3 w-full md:w-auto">
-                                                    <button 
-                                                        onClick={() => handleApproveContribution(c._id)}
-                                                        className="flex-1 md:flex-none px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-white rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/20"
-                                                    >
-                                                        <CheckCircle size={18} weight="bold" /> Approve
-                                                    </button>
-                                                    <button 
-                                                        onClick={() => handleDeleteContribution(c._id)}
-                                                        className="flex-1 md:flex-none p-4 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 rounded-2xl border border-rose-500/10 transition-all flex items-center justify-center"
-                                                        title="Delete Submission"
-                                                    >
-                                                        <Trash size={20} />
-                                                    </button>
-                                                </div>
-                                            </motion.div>
-                                        ))
                                     )}
                                 </div>
                             </div>
