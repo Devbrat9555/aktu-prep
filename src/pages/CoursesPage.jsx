@@ -147,40 +147,7 @@ const CoursesPage = () => {
                 </header>
 
                 {/* Community Contribution Section */}
-                <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="mb-20"
-                >
-                    <div className="relative group overflow-hidden p-8 md:p-12 bg-white/[0.02] border border-white/5 rounded-[3rem] backdrop-blur-3xl flex flex-col md:flex-row items-center justify-between gap-8 transition-all hover:bg-white/[0.04]">
-                        <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full -mr-20 -mt-20 group-hover:bg-emerald-500/20 transition-all"></div>
-                        
-                        <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-                            <div className="p-6 bg-emerald-500/20 rounded-[2rem] border border-emerald-500/30">
-                                <Stack size={48} weight="duotone" className="text-emerald-400" />
-                            </div>
-                            <div className="text-center md:text-left space-y-2">
-                                <h2 className="text-2xl md:text-3xl font-black italic uppercase tracking-tighter">Share Your <span className="text-emerald-500">Resources</span></h2>
-                                <p className="text-slate-400 text-sm max-w-sm font-medium">
-                                    You can also add your own notes and lecture videos here. Share your materials to help other students and grow our library.
-                                </p>
-                            </div>
-                        </div>
-
-                        <button 
-                            onClick={() => setIsContributeModalOpen(true)}
-                            className="relative z-10 px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-white font-black uppercase tracking-widest text-xs rounded-2xl shadow-xl shadow-emerald-500/20 transition-all flex items-center gap-3 active:scale-95"
-                        >
-                            Contribute Now <ArrowRight size={18} weight="bold" />
-                        </button>
-                    </div>
-                </motion.div>
-
-                <ContributionModal 
-                    isOpen={isContributeModalOpen} 
-                    onClose={() => setIsContributeModalOpen(false)} 
-                />
+                {/* Removed Contribution Section */}
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                     {courses.map((course, idx) => {
