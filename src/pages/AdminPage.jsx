@@ -160,6 +160,27 @@ const AdminPage = () => {
         }
     };
 
+    const handleApproveContribution = async (id) => {
+        try {
+            await adminApi.approveContribution(id);
+            toast.success("CONTRIBUTION AUTHORIZED & LIVE.");
+            fetchData();
+        } catch (error) {
+            toast.error("AUTHORIZATION FAILED.");
+        }
+    };
+
+    const handleDeleteContribution = async (id) => {
+        if (!window.confirm("CRITICAL: Purge this contribution?")) return;
+        try {
+            await adminApi.deleteContribution(id);
+            toast.success("CONTRIBUTION PURGED.");
+            fetchData();
+        } catch (error) {
+            toast.error("PURGE REJECTED.");
+        }
+    };
+
     if (!isLoaded || loading) {
         return (
             <div className="min-h-screen bg-[#020617] flex flex-col items-center justify-center space-y-8">
@@ -234,6 +255,7 @@ const AdminPage = () => {
                                 { id: 'question', label: 'Data Upload', icon: <Upload size={20} /> },
                                 { id: 'bulk_sync', label: 'BULK SYNC (9GB)', icon: <Lightning size={20} className="text-amber-500" /> },
                                 { id: 'manage_questions', label: 'Data Vault', icon: <Database size={20} /> },
+                                { id: 'contributions', label: 'Pending Approvals', icon: <HandHeart size={20} className="text-emerald-500" /> },
                                 { id: 'feedback', label: 'Pulse Monitor', icon: <Globe size={20} /> },
                                 { id: 'add_user', label: 'Initialize User', icon: <Plus size={20} /> },
                             ].map((tab) => (

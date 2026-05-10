@@ -59,6 +59,11 @@ router.post('/feedback/:id/like', adminController.likePost);
 // --- SECURE KERNEL ZONE ---
 router.use('/admin', adminAuth); // Protect all following /admin routes
 
+// Student Contributions Management
+router.get('/admin/contributions/pending', contributionController.getPendingContributions);
+router.post('/admin/contributions/:id/approve', contributionController.approveContribution);
+router.delete('/admin/contributions/:id', contributionController.deleteContribution);
+
 // User Registry
 router.get('/admin/users', adminController.getAllUsers);
 router.post('/admin/users/add', adminController.adminAddUser);
