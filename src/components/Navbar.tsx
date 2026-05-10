@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Notification, GraduationCap, Star, Lightning, List, X, Microphone, MicrophoneSlash } from '@phosphor-icons/react';
+import { Notification, GraduationCap, Star, Lightning, List, X } from '@phosphor-icons/react';
 import NotificationDialog from './NotificationDialog.js';
 import useWindowSize from '../hooks/useWindowSize.ts';
 import { useNavigate } from 'react-router-dom';
@@ -36,39 +36,7 @@ const Navbar = () => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [handleClickOutside]);
 
-    const [isListening, setIsListening] = useState(false);
-    const startVoiceSearch = () => {
-        if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
-            toast.error("Speech Recognition not supported in this browser.");
-            return;
-        }
 
-        const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-
-        recognition.onstart = () => setIsListening(true);
-        recognition.onend = () => setIsListening(false);
-        recognition.onerror = () => setIsListening(false);
-
-        recognition.onresult = (event: any) => {
-            const command = event.results[0][0].transcript.toLowerCase();
-            console.log('Voice Command:', command);
-            
-            if (command.includes('course') || command.includes('home')) navigate('/courses');
-            else if (command.includes('ai') || command.includes('expert')) navigate('/ai-expert');
-            else if (command.includes('coding')) navigate('/coding');
-            else if (command.includes('community')) navigate('/community');
-            else if (command.includes('setting')) navigate('/settings');
-            else if (command.includes('about')) navigate('/about');
-            else if (command.includes('donate')) navigate('/donate');
-            else toast.info(`Command "${command}" not recognized.`);
-        };
-
-        recognition.start();
-    };
 
     if (width === undefined) return null;
     const isMobile: boolean = width < 768;
@@ -201,15 +169,7 @@ const Navbar = () => {
                     )}
                 </motion.button>
 
-                <motion.button
-                    aria-label="Voice Search"
-                    className={`p-2 rounded-xl transition-all ${isListening ? 'bg-indigo-600 text-white animate-pulse' : 'hover:bg-white/5 text-slate-400'}`}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={startVoiceSearch}
-                >
-                    {isListening ? <MicrophoneSlash size={24} weight="fill" /> : <Microphone size={24} weight="duotone" />}
-                </motion.button>
+
 
                 <NotificationDialog
                     isOpen={showNotifications}
