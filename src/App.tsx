@@ -16,7 +16,6 @@ import { GoalProvider } from './context/GoalProvider.tsx';
 import UserSync from './components/UserSync';
 import InstallPWA from './components/InstallPWA';
 import FloatingAIBuddy from './components/FloatingAIBuddy';
-import VoiceNavigator from './components/VoiceNavigator';
 
 /**
  * @function App
@@ -42,7 +41,6 @@ function App() {
 
                             <InstallPWA />
                             <FloatingAIBuddy />
-                            <VoiceNavigator />
                             {/* Vercel Speed Insights */}
                             <SpeedInsights />
                         </AppProvider>
