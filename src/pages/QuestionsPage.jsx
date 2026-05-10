@@ -200,12 +200,21 @@ const QuestionsPage = () => {
     };
 
     const getDrivePreviewUrl = (url) => {
-        if (!url || !url.includes('drive.google.com')) return url;
+        if (!url) return url;
+        
+        // If it's a Cloudinary or direct PDF link, use Google Docs Viewer for INSTANT loading
+        if (url.includes('cloudinary.com') || url.endsWith('.pdf')) {
+            return `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
+        }
+
+        if (!url.includes('drive.google.com')) return url;
+        
         const fileMatch = url.match(/\/d\/([^\/]+)/);
         const folderMatch = url.match(/\/folders\/([^\/]+)/);
         
         if (fileMatch && fileMatch[1]) {
-            return `https://drive.google.com/file/d/${fileMatch[1]}/preview`;
+            // Even for Google Drive, the Docs Viewer is often faster for large PDFs
+            return `https://docs.google.com/viewer?url=${encodeURIComponent(`https://drive.google.com/uc?id=${fileMatch[1]}`)}&embedded=true`;
         }
         if (folderMatch && folderMatch[1]) {
             return `https://drive.google.com/embeddedfolderview?id=${folderMatch[1]}#list`;
