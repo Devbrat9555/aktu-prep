@@ -12,14 +12,14 @@ const FloatingAIBuddy = () => {
     if (location.pathname === '/ai-expert') return null;
 
     return (
-        <div className="fixed bottom-8 left-8 z-[100]">
+        <div className="fixed bottom-24 right-8 md:bottom-8 md:right-8 z-[100]">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="absolute bottom-20 left-0 w-80 bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 shadow-2xl shadow-indigo-500/20"
+                        className="absolute bottom-20 right-0 w-80 bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-[2.5rem] p-6 shadow-2xl shadow-indigo-500/20"
                     >
                         <div className="flex items-center gap-4 mb-6">
                             <div className="p-3 bg-indigo-500/20 rounded-2xl border border-indigo-500/30">
