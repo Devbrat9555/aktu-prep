@@ -66,6 +66,9 @@ exports.getPendingContributions = async (req, res) => {
     }
 };
 
+const Subject = require('../models/Subject');
+const StudyMaterial = require('../models/StudyMaterial');
+
 // Admin: Approve a contribution
 exports.approveContribution = async (req, res) => {
     try {
@@ -73,14 +76,42 @@ exports.approveContribution = async (req, res) => {
         const contribution = await Contribution.findById(id);
         if (!contribution) return res.status(404).json({ error: "Contribution not found." });
 
+        // Find the matching subject in the database
+        // We match by name, course and semester (converted to numbers)
+        const numericYear = contribution.semester ? parseInt(contribution.semester.replace(/[^0-9]/g, '')) : 1;
+        const actualSemester = contribution.semester ? parseInt(contribution.semester.replace(/[^0-9]/g, '')) : 1;
+        
+        const subject = await Subject.findOne({ 
+            name: contribution.subject,
+            course: contribution.course,
+            semester: actualSemester
+        });
+
+        if (!subject) {
+            return res.status(404).json({ 
+                error: "Target subject not found in database. Please add the subject first or check for name mismatch." 
+            });
+        }
+
+        // Create new study material entry
+        const newMaterial = new StudyMaterial({
+            subjectId: subject._id,
+            title: `[Community] ${contribution.type === 'note' ? 'Notes' : 'Lecture'} by ${contribution.studentName}`,
+            type: contribution.type === 'note' ? 'notes' : 'video',
+            url: contribution.content,
+            description: `Contributed by ${contribution.studentName} (${contribution.studentEmail})`
+        });
+
+        await newMaterial.save();
+
+        // Update contribution status
         contribution.status = 'approved';
         await contribution.save();
         
-        // Note: In a real app, you might want to automatically add this to the Subjects/Materials table here.
-        
-        res.json({ message: "Contribution approved and live!" });
+        res.json({ message: "Contribution approved and deployed to subject page!" });
     } catch (error) {
-        res.status(500).json({ error: "Failed to approve contribution." });
+        console.error("Approval Error:", error);
+        res.status(500).json({ error: "Failed to approve contribution.", details: error.message });
     }
 };
 
