@@ -17,7 +17,8 @@ import {
     Upload,
     Sparkle,
     Lightning,
-    HandHeart
+    HandHeart,
+    Gift
 } from '@phosphor-icons/react';
 import { adminApi, getSubjects } from '../services/api';
 import { toast } from 'sonner';
@@ -354,7 +355,17 @@ const AdminPage = () => {
                                                         </div>
                                                     </td>
                                                     <td className="py-6 text-right pr-4">
-                                                        <div className="flex items-center justify-end gap-3">
+                                                            <button 
+                                                                onClick={() => {
+                                                                    const subject = encodeURIComponent("Congratulations from AKTU Prep! 🎁");
+                                                                    const body = encodeURIComponent(`Hi ${u.studentName},\n\nGreat work on AKTU Prep! We'd like to reward you with ₹50 for your contribution/performance.\n\nPlease share your GPay/PhonePe number.\n\nBest,\nAKTU Prep Admin`);
+                                                                    window.location.href = `mailto:${u.studentEmail}?subject=${subject}&body=${body}`;
+                                                                }}
+                                                                className="w-10 h-10 bg-indigo-500/10 text-indigo-500 rounded-xl flex items-center justify-center hover:bg-indigo-500/20 transition-all border border-indigo-500/5"
+                                                                title="Send Reward"
+                                                            >
+                                                                <Gift size={20} weight="duotone" />
+                                                            </button>
                                                             <button 
                                                                 onClick={() => handleToggleStatus(u._id, u.isActive)}
                                                                 className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all border border-white/5 ${u.isActive ? 'bg-amber-500/10 text-amber-500 hover:bg-amber-500/20' : 'bg-emerald-500/10 text-emerald-500 hover:bg-emerald-500/20'}`}
