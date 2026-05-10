@@ -58,10 +58,10 @@ const InstallPWA: React.FC = () => {
     return (
         <AnimatePresence>
             <motion.div 
-                initial={{ y: 100, opacity: 0 }}
+                initial={{ y: -100, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 100, opacity: 0 }}
-                className="fixed bottom-6 left-6 right-6 md:left-auto md:right-12 md:w-[400px] z-[100]"
+                exit={{ y: -100, opacity: 0 }}
+                className="fixed top-6 left-6 right-6 md:left-auto md:right-12 md:w-[400px] z-[100]"
             >
                 <div className="relative group">
                     {/* Glow effect */}
