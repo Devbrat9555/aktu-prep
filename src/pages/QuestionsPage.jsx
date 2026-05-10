@@ -202,9 +202,9 @@ const QuestionsPage = () => {
     const getDrivePreviewUrl = (url) => {
         if (!url) return url;
         
-        // If it's a Cloudinary or direct PDF link, use Google Docs Viewer for INSTANT loading
+        // Use direct URL for Cloudinary or other PDFs so browser's native viewer handles it (No size limit)
         if (url.includes('cloudinary.com') || url.endsWith('.pdf')) {
-            return `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
+            return url;
         }
 
         if (!url.includes('drive.google.com')) return url;
@@ -213,8 +213,8 @@ const QuestionsPage = () => {
         const folderMatch = url.match(/\/folders\/([^\/]+)/);
         
         if (fileMatch && fileMatch[1]) {
-            // Even for Google Drive, the Docs Viewer is often faster for large PDFs
-            return `https://docs.google.com/viewer?url=${encodeURIComponent(`https://drive.google.com/uc?id=${fileMatch[1]}`)}&embedded=true`;
+            // Native Drive preview is better for VERY large files
+            return `https://drive.google.com/file/d/${fileMatch[1]}/preview`;
         }
         if (folderMatch && folderMatch[1]) {
             return `https://drive.google.com/embeddedfolderview?id=${folderMatch[1]}#list`;
