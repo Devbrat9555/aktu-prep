@@ -149,15 +149,15 @@ const CoursesPage = () => {
                 {/* Community Contribution Section */}
                 {/* Removed Contribution Section */}
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    {courses.map((course, idx) => {
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {Array.isArray(courses) && courses.map((course, idx) => {
                         const details = getCourseDetails(course.name);
                         return (
                             <motion.div 
                                 key={course._id}
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ delay: idx * 0.1 }}
                                 onClick={() => navigate(`/years/${course.name}`)}
                                 className="group relative glass rounded-[3rem] p-10 border border-white/5 hover:border-indigo-500/30 transition-all duration-300 cursor-pointer overflow-hidden"
                             >
