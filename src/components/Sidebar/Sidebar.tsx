@@ -28,7 +28,7 @@ const Sidebar = ({ showSidebar, setShowSidebar, hideMobileNavigation }: SidebarP
     const location = useLocation();
     const { user } = useUser();
 
-    const isAdmin = user?.primaryEmailAddress?.emailAddress === "yadavdevbrat022@gmail.com";
+    const isAdmin = user?.primaryEmailAddress?.emailAddress === "vrat1087@gmail.com";
 
     const { width } = useWindowSize();
 
