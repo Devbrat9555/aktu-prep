@@ -7,7 +7,7 @@ const InstallPWA: React.FC = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        console.log('PWA: Checking install criteria...');
+        // console.log('PWA: Checking install criteria...');
         
         // For testing: Show button regardless, but it will only trigger install if event exists
         setIsVisible(true);

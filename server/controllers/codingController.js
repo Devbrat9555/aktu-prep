@@ -212,25 +212,30 @@ async function getTelegramClient() {
 
     connectPromise = (async () => {
         try {
-            log('Client', 'Initializing and connecting...');
-            const sessionString = process.env.TELEGRAM_STRING_SESSION || "";
-            const session = new StringSession(sessionString);
+            log('Client', 'Initializing and connecting with Bot Token...');
+            const botToken = process.env.TELEGRAM_BOT_TOKEN;
             const apiId = parseInt(process.env.TELEGRAM_API_ID);
             const apiHash = process.env.TELEGRAM_API_HASH;
 
-            if (!apiId || !apiHash) {
-                throw new Error("TELEGRAM_API_ID or TELEGRAM_API_HASH is missing in .env");
+            if (!apiId || !apiHash || !botToken) {
+                throw new Error("TELEGRAM_API_ID, TELEGRAM_API_HASH or TELEGRAM_BOT_TOKEN is missing in .env");
             }
 
+            // Using empty StringSession for a fresh bot connection every time
+            const session = new StringSession("");
+            
             client = new TelegramClient(session, apiId, apiHash, {
                 connectionRetries: 10,
                 retryDelay: 2000,
                 autoReconnect: true,
-                deviceModel: `AKTU_PREP_SERVER_${process.pid}` // Unique ID for this instance
+                deviceModel: `AKTU_PREP_SERVER_${process.pid}`
             });
 
-            await client.connect();
-            log('Client', 'Connected successfully.');
+            await client.start({
+                botAuthToken: botToken,
+            });
+            
+            log('Client', 'Connected successfully as Bot.');
             clientReady = true;
             connectPromise = null;
             return client;
